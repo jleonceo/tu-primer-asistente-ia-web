@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Su comportamiento · Tu primer asistente de IA">
+
+  <div class="mx-auto max-w-[940px] px-6 pb-16">
+
+    <!-- BARRA DE PROGRESO -->
+    <div class="py-[26px] pb-2">
+      <div class="mb-2 flex justify-between text-[.78rem] text-suave">
+        <span>El carácter de tu asistente</span>
+        <span>Paso 2 de 3 · Su comportamiento</span>
+      </div>
+      <div class="h-[7px] overflow-hidden rounded-full bg-linea">
+        <div class="h-full rounded-full bg-acento transition-[width_.35s_ease]" style="width:50%"></div>
+      </div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="mb-5 rounded-lg bg-tinta px-[30px] py-[30px] text-[#eef0f3]">
+      <h2 class="mb-2 text-[1.5rem] font-bold tracking-tight">Cómo se comporta: esto es lo que lo hace tuyo</h2>
+      <p class="text-[.98rem] text-[#c3c9d2]">
+        Aquí <b class="text-white">no hay cuatro preguntas y listo.</b> Estas son las normas que tu asistente cumple
+        <b class="text-white">siempre</b>, en cualquier tarea, y es lo que más tiempo lleva afinar. Como empezar con la hoja en blanco cuesta, te damos <b class="text-white">ejemplos reales</b>. Elige los que te encajen,
+        cámbialos, añade los tuyos. No hace falta acertar hoy: esto se mejora con el uso. <b class="text-white">Con marcar tres o cuatro que te encajen basta para empezar</b>; si no sabes por dónde, ve a Honestidad y Tono.
+      </p>
+    </div>
+
+    <!-- recordatorio del modelo mental (#6): esto aún no es la IA -->
+    <p class="mb-5 text-[.82rem] leading-relaxed text-suave">Recuerda: esto todavía no es la IA. Sigues preparando el texto de tu asistente; lo llevarás a tu Claude al final.</p>
+
+    <!-- LAYOUT DOS COLUMNAS -->
+    <div class="grid grid-cols-1 items-start gap-6 md:grid-cols-[1fr_300px]">
+
+      <!-- BIBLIOTECA DE OPCIONES -->
+      <div class="flex flex-col gap-[22px]">
+
+        <!-- 1 · Honestidad -->
+        <div class="cat">
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">1 · Honestidad</h3>
+          <div class="mb-3 text-[.85rem] text-suave">Lo más importante. Una IA que te dice la verdad ayuda más que una que te agrada.</div>
+          <label class="opcion"><input type="checkbox" data-r="Si no estás seguro, dímelo en vez de inventarte la respuesta."><span class="txt"><b>Si no estás seguro, dímelo; no te lo inventes.</b><span>Una respuesta inventada hace más daño que un "no lo sé".</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Prefiero la verdad incómoda a que me des la razón para quedar bien."><span class="txt"><b>Dime la verdad aunque incomode.</b><span>Darte la razón para agradar es un engaño suave.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="No me des una falsa sensación de que voy bien si no es así."><span class="txt"><b>No me hagas creer que voy bien si no es verdad.</b><span>La falsa sensación de logro te perjudica.</span></span></label>
+        </div>
+
+        <!-- 2 · Verificar -->
+        <div class="cat">
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">2 · Antes de afirmar, comprueba</h3>
+          <div class="mb-3 text-[.85rem] text-suave">Para que no te dé por ciertas cosas que no lo son.</div>
+          <label class="opcion"><input type="checkbox" data-r="Comprueba los datos antes de darlos por ciertos; no tires de memoria."><span class="txt"><b>Verifica antes de afirmar.</b><span>Lo que cuenta es el dato real, no lo que recuerda.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Las cuentas y los números, calcúlalos con rigor, no los estimes."><span class="txt"><b>Los números, calculados con rigor.</b><span>Nada de cifras "a ojo".</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Si citas una fuente o un dato, asegúrate de que existe."><span class="txt"><b>Si cita algo, que exista.</b><span>Nada de fuentes inventadas.</span></span></label>
+        </div>
+
+        <!-- 3 · Tono -->
+        <div class="cat">
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">3 · Cómo me habla</h3>
+          <div class="mb-3 text-[.85rem] text-suave">El tono. Aquí empieza a sonar a ti.</div>
+          <label class="opcion"><input type="checkbox" data-r="Háblame de usted, con cercanía pero con respeto."><span class="txt"><b>De usted, cercano.</b><span>(o cámbialo por "de tú" más abajo)</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Ve al grano, sin rodeos ni relleno."><span class="txt"><b>Al grano, sin rollos.</b><span>Primero lo importante.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Nada de jerga; si usas un término técnico, explícamelo en lenguaje normal."><span class="txt"><b>Cero jerga.</b><span>Si un palabro es inevitable, que lo explique.</span></span></label>
+        </div>
+
+        <!-- 4 · Forma de trabajar -->
+        <div class="cat">
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">4 · Cómo trabaja conmigo</h3>
+          <div class="mb-3 text-[.85rem] text-suave">Su forma de actuar, paso a paso.</div>
+          <label class="opcion"><input type="checkbox" data-r="Propón antes de hacer; espera mi visto bueno antes de cambios importantes."><span class="txt"><b>Propón, no ejecutes a lo loco.</b><span>Tú das el OK antes de los cambios importantes.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Un paso cada vez; no te adelantes."><span class="txt"><b>Un paso cada vez.</b><span>Sin correr ni saltarse cosas.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Si hay varias opciones, dímelas en vez de elegir tú por mí."><span class="txt"><b>Si hay opciones, que me las diga.</b><span>Decides tú, no él.</span></span></label>
+        </div>
+
+        <!-- 5 · Lo tuyo — multi-entrada F1 -->
+        <div class="cat">
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">5 · Lo tuyo</h3>
+          <div class="mb-3 text-[.85rem] text-suave">Lo que no esté arriba. Escríbelo con tus palabras y pulsa <b>Añadir</b> (puedes añadir varias).</div>
+          <div class="flex gap-2">
+            <input class="anade flex-1" id="propia" placeholder="Ej: 'nunca me hables de política'" />
+            <button type="button" aria-label="Añadir norma" class="rounded-xl border-[1.5px] border-linea px-4 py-[11px] text-[.9rem] font-semibold text-tinta transition hover:border-acento hover:text-acento whitespace-nowrap" id="add-propia">Añadir +</button>
+          </div>
+          <div class="mt-[10px] flex flex-wrap gap-2" id="propias-list"></div>
+        </div>
+
+      </div>
+
+      <!-- PANEL LATERAL -->
+      <aside aria-label="Resumen de las normas que eliges" class="sticky top-[18px] rounded-lg bg-tinta p-5 text-[#eef0f3]">
+        <div class="mb-1 text-[.78rem] font-bold text-[#7ec8ad]">Sus normas de siempre</div>
+        <h4 class="mb-3 text-[1rem] font-semibold text-white">Esto es su comportamiento</h4>
+        <div class="min-h-[60px] text-[.85rem] leading-[1.7] text-[#cfd4dc]" id="lista">
+          <span class="italic text-[#7c8493]">Ve marcando arriba y aparecerán aquí…</span>
+        </div>
+        <div class="mt-[14px] border-t border-[#343b49] pt-[10px] text-[.8rem] text-[#9aa1ac]" id="cuenta">0 normas elegidas</div>
+      </aside>
+
+    </div>
+
+    <!-- NOTA HONESTA -->
+    <div class="mt-[26px] rounded-md border border-acento-claro bg-[#eef6f2] px-[16px] py-[14px] text-[.9rem] text-tinta">
+      <b class="text-acento">Una cosa clara:</b> cuantas más normas le des y mejor las afines, mejor te conoce.
+      Pero esto no se acaba hoy: quien lleva meses tiene muchas más. Es un buen comienzo.
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <div class="mt-[18px] flex items-center justify-between gap-3">
+      <a class="inline-flex min-h-[44px] items-center rounded-xl px-4 py-3 font-semibold text-suave transition hover:text-tinta" href="/paso1">&larr; Atrás</a>
+      <button
+        class="rounded-xl bg-acento px-[26px] py-3 font-semibold text-white shadow-[0_5px_16px_rgba(46,106,87,.25)] transition hover:-translate-y-0.5"
+        id="siguiente"
+      >Siguiente: su memoria &rarr;</button>
+    </div>
+
+  </div>
+
+</Layout>
+
+<style>
+  .opcion {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--color-papel);
+    border: 1px solid var(--color-linea);
+    border-radius: 12px;
+    padding: 13px 15px;
+    margin-bottom: 9px;
+    cursor: pointer;
+    transition: border-color .12s, background .12s;
+  }
+  .opcion:hover { border-color: var(--color-acento); }
+  .opcion.on { border-color: var(--color-acento); background: #eef6f2; }
+  /* Foco de teclado: el label entero (área clicable ≥44px) muestra el anillo
+     cuando el checkbox interno recibe foco (RAG_UI reglas 22 y 28). */
+  .opcion:focus-within {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 2px;
+  }
+  .opcion input {
+    margin-top: 4px;
+    accent-color: var(--color-acento);
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+  }
+  .opcion .txt b { display: block; font-size: .96rem; color: var(--color-tinta); }
+  .opcion .txt span { font-size: .84rem; color: var(--color-suave); }
+  .anade {
+    border: 1.5px dashed var(--color-linea);
+    border-radius: 12px;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: .92rem;
+    background: transparent;
+    color: var(--color-tinta);
+  }
+  .anade:focus { outline: 3px solid var(--color-acento); outline-offset: 2px; border-color: var(--color-acento); }
+  .pitem {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #eef6f2;
+    border: 1px solid var(--color-acento-claro);
+    border-radius: 20px;
+    padding: 6px 6px 6px 13px;
+    font-size: .86rem;
+    color: var(--color-tinta);
+  }
+  .pitem button {
+    border: none;
+    background: var(--color-acento-claro);
+    color: var(--color-acento);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: .95rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pitem button:hover { background: var(--color-acento); color: #fff; }
+  @media (max-width: 780px) {
+    aside { position: static; }
+  }
+</style>
+
+<script>
+  var checks = document.querySelectorAll('.opcion input');
+  var lista = document.getElementById('lista');
+  var cuenta = document.getElementById('cuenta');
+  var propia = document.getElementById('propia');
+  var addBtn = document.getElementById('add-propia');
+  var propiasList = document.getElementById('propias-list');
+  var propias = [];
+
+  function dataRs() {
+    return Array.prototype.map.call(checks, function(c) { return c.getAttribute('data-r'); });
+  }
+
+  // Restaurar lo elegido si se vuelve a esta página
+  (function restaurar() {
+    var prev = [];
+    try { prev = JSON.parse(localStorage.getItem('ht_normas') || '[]'); } catch(e) { prev = []; }
+    if (!prev.length) return;
+    var rs = dataRs();
+    checks.forEach(function(c) {
+      if (prev.indexOf(c.getAttribute('data-r')) !== -1) { c.checked = true; }
+    });
+    propias = prev.filter(function(r) { return rs.indexOf(r) === -1; });
+  })();
+
+  function pintarPropias() {
+    propiasList.innerHTML = '';
+    propias.forEach(function(p, i) {
+      var chip = document.createElement('span');
+      chip.className = 'pitem';
+      chip.innerHTML = '<span></span><button type="button">&times;</button>';
+      chip.querySelector('span').textContent = p;
+      chip.querySelector('button').setAttribute('aria-label', 'Quitar: ' + p);
+      chip.querySelector('button').addEventListener('click', function() {
+        propias.splice(i, 1);
+        pintarPropias();
+        pintar();
+      });
+      propiasList.appendChild(chip);
+    });
+  }
+
+  function pintar() {
+    var reglas = [];
+    checks.forEach(function(c) {
+      c.closest('.opcion').classList.toggle('on', c.checked);
+      if (c.checked) { reglas.push(c.getAttribute('data-r')); }
+    });
+    reglas = reglas.concat(propias);
+    if (reglas.length) {
+      lista.innerHTML = reglas.map(function(r) { return '· ' + r.replace(/</g, '&lt;'); }).join('<br>');
+    } else {
+      lista.innerHTML = '<span class="italic text-[#7c8493]">Ve marcando arriba y aparecerán aquí…</span>';
+    }
+    cuenta.textContent = reglas.length + (reglas.length === 1 ? ' norma elegida' : ' normas elegidas');
+    localStorage.setItem('ht_normas', JSON.stringify(reglas));
+  }
+
+  function anadir() {
+    var v = propia.value.trim();
+    if (!v) return;
+    propias.push(v);
+    propia.value = '';
+    pintarPropias();
+    pintar();
+    propia.focus();
+  }
+
+  addBtn.addEventListener('click', anadir);
+  propia.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); anadir(); }
+  });
+  checks.forEach(function(c) { c.addEventListener('change', pintar); });
+
+  document.getElementById('siguiente').addEventListener('click', function() {
+    pintar();
+    window.location.href = '/paso3';
+  });
+
+  pintarPropias();
+  pintar();
+</script>

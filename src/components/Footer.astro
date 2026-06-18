@@ -1,0 +1,16 @@
+---
+import { marca, footer } from '../data/site.js';
+---
+<footer class="mt-20 border-t border-linea bg-crema-deep py-10 text-center text-[.82rem] text-suave">
+  <div class="mx-auto max-w-[960px] px-6">
+    <a href="/" class="font-display text-[1.1rem] font-bold tracking-tight text-tinta no-underline whitespace-nowrap">
+      {marca.nombre}<span class="text-acento">{marca.nombreAcento}</span>
+    </a>
+    <div class="my-3 flex flex-wrap justify-center gap-4">
+      {footer.nav.map((i) => (
+        <a href={i.href} class="text-suave no-underline transition hover:text-acento">{i.texto}</a>
+      ))}
+    </div>
+    <p class="mx-auto max-w-[54ch] text-[.78rem] leading-relaxed text-suave">{footer.nota}</p>
+  </div>
+</footer>

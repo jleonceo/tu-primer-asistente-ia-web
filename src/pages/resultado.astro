@@ -1,0 +1,545 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Tu asistente, listo · Tu primer asistente de IA">
+
+  <div class="mx-auto max-w-[680px] px-6 pb-16">
+
+    <!-- BARRA DE PROGRESO -->
+    <div class="py-[26px] pb-2">
+      <div class="mb-2 flex justify-between text-[.78rem] text-suave">
+        <span>Hecho. Tu asistente está listo.</span>
+        <span>Tu asistente</span>
+      </div>
+      <div class="h-[7px] overflow-hidden rounded-full bg-linea">
+        <div class="h-full rounded-full bg-acento" style="width:100%"></div>
+      </div>
+    </div>
+
+    <!-- F4: aviso si todo sigue siendo el ejemplo por defecto -->
+    <div id="aviso-generico" class="hidden mb-4 rounded-md border-2 border-[#7ec8ad] bg-[#eef6f2] px-4 py-4 text-[.9rem]">
+      <b class="text-acento">Un momento antes de que copies esto:</b> los campos siguen siendo nuestro ejemplo, no los tuyos.
+      Puedes <a href="/paso1" class="font-semibold text-acento underline">volver al inicio y personalizarlo</a> (unos minutos), o copiar este texto sabiendo que es genérico y ajustarlo tú a mano en Claude.
+    </div>
+
+    <!-- aviso "asistente muy básico": dio la tarea pero nada más (calidad del output) -->
+    <div id="aviso-basico" class="hidden mb-4 rounded-md border-2 border-[#7ec8ad] bg-[#eef6f2] px-4 py-4 text-[.9rem]">
+      <b class="text-acento">Tu asistente ha salido muy básico:</b> solo le has dado la tarea. Funcionará, pero no sonará especialmente <b class="text-tinta">tuyo</b>.
+      Si <a href="/paso1" class="font-semibold text-acento underline">vuelves y le añades</a> aunque sea un ejemplo, una norma de comportamiento o un dato que recuerde de ti, la diferencia es enorme: es justo eso lo que lo hace tuyo.
+    </div>
+
+    <!-- TARJETA PRINCIPAL — el texto copiable -->
+    <div class="card">
+      <div class="paso-label">Tu asistente</div>
+      <h2 class="mt-1 mb-1 text-[1.5rem] font-bold tracking-tight" id="titulo">Esto lo has hecho tú</h2>
+      <p class="ayuda">
+        Aquí está, en un solo texto, todo lo que has decidido: su tarea, cómo se comporta y
+        qué recuerda de ti. Esto es tu asistente, y se lo das a tu Claude para que sea tuyo.
+      </p>
+
+      <!-- Caja de texto copiable -->
+      <div class="salida">
+        <div class="salida-barra">
+          <span class="salida-et">Tu asistente (cópialo entero)</span>
+          <button class="copiar" id="copiar">Copiar</button>
+        </div>
+        <pre id="texto" tabindex="0" aria-label="Texto de tu asistente, desplazable" class="font-mono text-[.86rem] leading-[1.55] text-tinta bg-papel px-[18px] py-[18px] whitespace-pre-wrap break-words max-h-[380px] overflow-auto m-0">Cargando…</pre>
+      </div>
+
+      <!-- Botón descargar original -->
+      <div class="mt-2 flex justify-end">
+        <button class="rounded-xl border-[1.5px] border-linea px-4 py-2 text-[.85rem] font-semibold text-tinta transition hover:border-acento hover:text-acento" id="descargar">
+          Descargar como .txt
+        </button>
+      </div>
+
+      <!-- F10: informe explicativo descargable -->
+      <div class="mt-3 rounded-md border border-linea bg-crema px-4 py-3 text-[.88rem] text-suave">
+        <b class="text-tinta">¿Quieres llevarte también la explicación?</b>
+        El botón de abajo descarga un informe en texto (.md, un archivo de texto que abre cualquier programa) que explica qué has creado y por qué funciona.
+        Útil si quieres replicarlo más adelante o contárselo a alguien.
+        <div class="mt-2">
+          <button class="rounded-xl border-[1.5px] border-linea px-4 py-2 text-[.85rem] font-semibold text-tinta transition hover:border-acento hover:text-acento" id="descargar-informe">
+            Descargar la explicación
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CÓMO DARLE VIDA EN CLAUDE -->
+    <div class="card">
+      <div class="paso-label">El último paso, el que cuenta</div>
+      <h2 class="mt-1 mb-1 text-[1.5rem] font-bold tracking-tight">Cómo darle vida en tu Claude</h2>
+      <p class="ayuda">
+        Hasta aquí lo has preparado. Ahora lo guardas en tu Claude, que es donde
+        <b>perdura</b> y deja de vivir solo en esta pantalla. Es el único paso que ocurre fuera de
+        esta web; es más sencillo de lo que parece y te lo marcamos uno a uno.
+      </p>
+      <ol class="pasos-claude">
+        <li>
+          <b>Copia el texto de arriba</b> con el botón "Copiar".
+        </li>
+        <li>
+          <b>Abre Claude</b> (en el navegador, claude.ai) y entra en <b>Proyectos</b>. Crea uno nuevo
+          y ponle el nombre de tu asistente.
+          <span>¿No ves "Proyectos"? Está en el menú de la izquierda, o entra directo en claude.ai/projects. Y si tu cuenta no tuviera Proyectos, no pasa nada: pega tu asistente al principio de cada conversación nueva. Es más manual, pero funciona igual.</span>
+        </li>
+        <li>
+          <b>Pega el texto</b> en el apartado "Instrucciones del proyecto" y guárdalo.
+          <span>Eso es exactamente lo que acabas de crear: mismo contenido, ahí se queda guardado.</span>
+        </li>
+        <li>
+          <b>Ábrele un chat nuevo dentro del Proyecto</b> y pídele algo real tuyo. Si responde a tu
+          manera, ha funcionado.
+          <span>El detalle que marca la diferencia (en la interfaz actual de Claude.ai): abre el chat desde dentro del Proyecto, con su nombre arriba, no con el "Nuevo chat" de la pantalla de inicio. Así es como Claude tiene en cuenta lo que le has enseñado.</span>
+        </li>
+      </ol>
+      <p class="mt-3 text-[.88rem] text-suave [&_b]:text-tinta">¿Se te atasca alguno de estos pasos dentro de Claude? Más abajo tienes <b>un prompt que puedes pegarle</b> para que te guíe él mismo.</p>
+    </div>
+
+    <!-- F2 + F8: los archivos reales — plegado por defecto (#2) -->
+    <details class="card">
+      <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+        <div class="paso-label">Para usuarios avanzados · opcional</div>
+        <h2 class="mt-1 text-[1.3rem] font-bold tracking-tight">¿Algún día quieres los archivos en tu ordenador? <span class="text-[.85rem] font-normal text-suave">(toca para abrir)</span></h2>
+      </summary>
+      <p class="ayuda mt-3">
+        No necesitas nada de esto para usar tu asistente. Pero si algún día pasas de "pegar en Claude.ai" a
+        tener archivos en tu ordenador (la forma de los usuarios avanzados), así se llaman y dónde van:
+      </p>
+      <div class="skill-card">
+        <div class="skill-fila">
+          <b>Lo que pusiste como tarea</b> (qué hace) → es tu <b>skill</b>.<br>
+          <span class="text-[.88rem] text-suave">Archivo: <code class="rounded bg-crema px-1">.claude/skills/nombre-de-tu-asistente/SKILL.md</code></span>
+        </div>
+        <div class="skill-fila">
+          <b>Las normas que elegiste</b> (cómo se comporta) → van en <b>CLAUDE.md</b>.<br>
+          <span class="text-[.88rem] text-suave">Archivo: <code class="rounded bg-crema px-1">CLAUDE.md</code> en la raíz de tu proyecto. Este archivo manda sobre todo lo demás.</span>
+        </div>
+        <div class="skill-fila">
+          <b>Lo que quieres que recuerde</b> de ti → es su <b>memoria</b>.<br>
+          <span class="text-[.88rem] text-suave">Son los archivos de notas que el asistente va escribiendo según lo usas.</span>
+        </div>
+      </div>
+      <div class="nota-aviso">
+        Si hoy solo vas a usar Claude.ai (el navegador), <b>no necesitas ninguno de estos archivos</b>.
+        Pegarlo en "Instrucciones del proyecto" hace exactamente lo mismo, sin tecnicismos.
+        Estos nombres solo te hacen falta si llegas a usar la herramienta de terminal <b>Claude Code</b>, que se instala aparte.
+        <br><span class="mt-2 block text-[.85rem]">Para profundizar, la documentación oficial de Anthropic: <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener" class="font-semibold text-acento underline underline-offset-2">las skills en Claude Code</a> · <a href="https://support.claude.com/en/articles/12512176-what-are-skills" target="_blank" rel="noopener" class="font-semibold text-acento underline underline-offset-2">qué son las skills</a> (en claude.ai también puedes gestionarlas en Personalizar → Skills, sin instalar nada).</span>
+      </div>
+    </details>
+
+    <!-- F11: tarjeta-puente — degradada a secundario/plegado (#3).
+         El camino principal es copiar y pegar en un Proyecto (arriba).
+         Esto es la alternativa por chat, plegada para no competir con él. -->
+    <details class="card puente-card">
+      <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+        <div class="paso-label-puente">Otra forma de hacerlo · opcional</div>
+        <h2 class="mt-1 text-[1.3rem] font-bold tracking-tight">¿Prefieres hacerlo por chat? <span class="text-[.85rem] font-normal text-suave">(toca para abrir)</span></h2>
+      </summary>
+      <p class="ayuda mt-3">
+        <b>No hace falta que hagas las dos cosas.</b> Lo de arriba (copiar tu asistente y pegarlo en un Proyecto) es el camino principal.
+        Esto es una <b>alternativa</b>: si rellenar formularios se te ha hecho cuesta arriba, copia el prompt de abajo,
+        pégalo en tu Claude y él te lleva paso a paso por conversación, la forma más natural si prefieres el diálogo.
+      </p>
+
+      <!-- Prompt copiable -->
+      <div class="salida mb-3">
+        <div class="salida-barra">
+          <span class="salida-et">Prompt para pegar en tu Claude</span>
+          <button class="copiar" id="copiar-prompt">Copiar prompt</button>
+        </div>
+        <pre id="prompt-texto" class="font-mono text-[.84rem] leading-[1.55] text-tinta bg-papel px-[18px] py-[18px] whitespace-pre-wrap break-words max-h-[220px] overflow-auto m-0">Quiero crear un asistente personalizado para una tarea que hago con frecuencia. Ayúdame paso a paso:
+
+1. Primero pregúntame qué tarea quiero automatizar o mejorar.
+2. Luego pregúntame para quién va el resultado y qué espera.
+3. Pídeme un ejemplo bueno y uno malo de lo que quiero conseguir.
+4. Pregúntame qué debe evitar siempre.
+5. Ayúdame a elegir las normas de comportamiento que más me convienen (honestidad, tono, forma de trabajar).
+6. Pregúntame qué necesitas recordar de mí para no tener que repetírtelo cada vez.
+
+Al final, dime en un solo bloque de texto todo lo que hemos decidido: eso es mi asistente, y lo pegaré en las instrucciones de un Proyecto de Claude.
+
+Empieza por la primera pregunta.</pre>
+      </div>
+
+      <p class="text-[.88rem] text-suave">
+        Si en cualquier momento te atascas con algo de tu asistente, <b class="text-tinta">pregúntale directamente a tu Claude</b>.
+        Para eso está. Y si te quedan dudas, las más habituales están resueltas en <a href="/preguntas" class="font-semibold text-acento no-underline hover:underline">Preguntas</a>.
+      </p>
+    </details>
+
+    <!-- AUTORÍA -->
+    <div class="mb-6 rounded-lg bg-acento-claro px-[28px] py-[26px] text-center">
+      <div class="mb-2 text-[.8rem] font-bold text-acento">Conviene que lo tengas claro</div>
+      <p class="mx-auto max-w-[52ch] text-[1.08rem] text-tinta">
+        La plantilla y los ejemplos los pusimos nosotros. Pero <b>las decisiones (tu tarea, tu tono,
+        tus límites, lo que recuerda de ti) las pusiste tú</b>. Por eso esto es tuyo, no nuestro.
+      </p>
+    </div>
+
+    <!-- DOS HONESTAS -->
+    <h2 class="mb-3 text-center text-[1.25rem] font-bold tracking-tight">Dos cosas honestas antes de irte</h2>
+    <div class="mb-8 grid grid-cols-1 gap-[14px] md:grid-cols-2">
+      <div class="rounded-md bg-tinta px-5 py-[18px] text-[#eef0f3]">
+        <b class="mb-1 block text-[.98rem] text-white">Sobre tu privacidad</b>
+        <span class="text-[.88rem] text-[#c3c9d2]">Lo que escribes a Claude pasa por los servidores de Anthropic. No metas contraseñas ni datos
+        muy sensibles. El texto de instrucciones que has creado es tuyo y se queda contigo.</span>
+      </div>
+      <div class="rounded-md bg-tinta px-5 py-[18px] text-[#eef0f3]">
+        <b class="mb-1 block text-[.98rem] text-white">Sobre la fiabilidad</b>
+        <span class="text-[.88rem] text-[#c3c9d2]">Esto reduce los errores, no los elimina. Un asistente ayuda, pero a veces se equivoca:
+        lo que de verdad cuenta (los datos y los números) revísalo siempre tú.</span>
+      </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <div class="mt-6 flex items-center justify-between gap-3">
+      <a class="inline-flex min-h-[44px] items-center rounded-xl px-4 py-3 font-semibold text-suave transition hover:text-tinta" href="/paso3">&larr; Atrás</a>
+      <a
+        class="rounded-xl bg-acento px-[26px] py-3 font-semibold text-white no-underline shadow-[0_5px_16px_rgba(46,106,87,.25)] transition hover:-translate-y-0.5"
+        href="/evolucion"
+      >Cómo mejorarlo con el uso &rarr;</a>
+    </div>
+
+    <p class="mt-5 text-center text-[.9rem] text-suave">
+      Ya tienes algo que funciona. Lo que lo hace <b>realmente tuyo</b> es usarlo y, poco a poco,
+      ajustarlo a tu gusto.
+    </p>
+
+    <!-- SIGUIENTE PELDAÑO: esta skill es el primer peldaño; el siguiente es un equipo (#5) -->
+    <a href="/nivel-2" class="group mt-8 flex flex-col gap-1 rounded-lg border border-linea bg-papel px-6 py-5 no-underline transition hover:border-acento hover:shadow-[0_12px_30px_rgba(28,33,43,.07)]">
+      <div class="text-[.8rem] font-semibold text-suave">El siguiente peldaño · Nivel 2</div>
+      <div class="font-display text-[1.15rem] font-semibold text-tinta group-hover:text-acento">Cuando una skill se te quede corta, el siguiente paso es un equipo →</div>
+      <p class="mt-1 text-[.92rem] leading-relaxed text-suave">
+        Lo que acabas de crear es <b class="text-tinta">una skill</b>: el primer peldaño. Más adelante puedes montar
+        <b class="text-tinta">varias skills que trabajan juntas</b>, con un coordinador que reparte y un verificador que comprueba.
+        No se genera solo: se construye igual que esta, paso a paso.
+      </p>
+    </a>
+
+  </div>
+
+</Layout>
+
+<style>
+  .card {
+    background: var(--color-papel);
+    border: 1px solid var(--color-linea);
+    border-radius: 8px;
+    padding: 34px 32px;
+    margin: 16px 0 24px;
+    box-shadow: 0 8px 30px rgba(31,36,48,.05);
+  }
+  .puente-card {
+    border-color: var(--color-linea);
+    background: var(--color-papel);
+  }
+  .paso-label {
+    font-size: .8rem;
+    letter-spacing: .01em;
+    color: var(--color-acento);
+    font-weight: 700;
+  }
+  .paso-label-puente {
+    font-size: .8rem;
+    letter-spacing: .01em;
+    color: var(--color-acento);
+    font-weight: 700;
+  }
+  .ayuda {
+    color: var(--color-suave);
+    font-size: .95rem;
+    margin-bottom: 18px;
+  }
+  .salida {
+    background: var(--color-papel);
+    border: 1.5px solid var(--color-acento);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 8px 0 6px;
+  }
+  .salida-barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eef6f2;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-acento-claro);
+  }
+  .salida-et {
+    font-size: .8rem;
+    letter-spacing: .01em;
+    color: var(--color-acento);
+    font-weight: 700;
+  }
+  .copiar {
+    font-size: .85rem;
+    font-weight: 600;
+    background: var(--color-acento);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: transform .12s;
+    font-family: inherit;
+  }
+  .copiar:hover { transform: translateY(-1px); }
+  .copiar.ok { background: var(--color-verde); }
+  .skill-card {
+    background: var(--color-papel);
+    border: 1.5px solid var(--color-acento);
+    border-radius: 8px;
+    padding: 24px 26px;
+    margin: 8px 0 18px;
+  }
+  .skill-fila {
+    font-size: .93rem;
+    color: var(--color-suave);
+    padding: 8px 0;
+    border-top: 1px solid var(--color-linea);
+    line-height: 1.55;
+  }
+  .skill-fila b { color: var(--color-tinta); }
+  .nota-aviso {
+    font-size: .9rem;
+    background: #eef6f2;
+    border: 1px solid var(--color-acento-claro);
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: var(--color-tinta);
+    margin-bottom: 18px;
+  }
+  .nota-aviso b { color: var(--color-acento); }
+  .pasos-claude {
+    counter-reset: p;
+    list-style: none;
+    margin: 14px 0 6px;
+    padding: 0;
+  }
+  .pasos-claude li {
+    position: relative;
+    padding: 12px 0 12px 44px;
+    border-top: 1px solid var(--color-linea);
+  }
+  .pasos-claude li b { color: var(--color-tinta); }
+  .pasos-claude li span {
+    display: block;
+    font-size: .9rem;
+    color: var(--color-suave);
+  }
+  .pasos-claude li::before {
+    counter-increment: p;
+    content: counter(p);
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-acento-claro);
+    color: var(--color-acento);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+  }
+  .hidden { display: none; }
+</style>
+
+<script>
+  function g(k) { return (localStorage.getItem(k) || '').trim(); }
+  function arr(k) {
+    try { var a = JSON.parse(localStorage.getItem(k) || '[]'); return Array.isArray(a) ? a : []; }
+    catch(e) { return []; }
+  }
+
+  var tarea  = g('ht_tarea');
+  var quien  = g('ht_quien');
+  var bueno  = g('ht_bueno');
+  var malo   = g('ht_malo');
+  var nunca  = g('ht_nunca');
+  var sinEjemplos = (localStorage.getItem('ht_sin_ejemplos') === '1');
+  var normas = arr('ht_normas');
+  var memoria = arr('ht_memoria');
+
+  var titulo = g('ht_titulo');
+  if (!titulo) { titulo = tarea ? tarea : 'Mi asistente'; }
+  if (titulo.length > 52) { titulo = titulo.slice(0, 52) + '…'; }
+  document.getElementById('titulo').textContent = titulo;
+
+  // F4: detectar si el usuario no personalizó nada (compara con los valores por defecto)
+  var EJEMPLO_TAREA_DEFAULT = 'Responder reseñas sin sonar a robot';
+  var esPorDefecto = (
+    (!tarea || tarea === EJEMPLO_TAREA_DEFAULT) &&
+    !quien &&
+    (sinEjemplos || (!bueno && !malo)) &&
+    !nunca &&
+    normas.length === 0 &&
+    memoria.length === 0
+  );
+  // Si no rellenó NADA en absoluto, el mensaje correcto es "Aún no has creado nada"
+  // (más abajo). El aviso de "los campos siguen siendo nuestro ejemplo" solo aplica
+  // cuando hay algo cargado por defecto; en vacío total se contradirían.
+  var esVacioTotal = (!tarea && normas.length === 0 && memoria.length === 0);
+  if (esPorDefecto && !esVacioTotal) {
+    document.getElementById('aviso-generico').classList.remove('hidden');
+  }
+
+  // Aviso "muy básico": dio la tarea pero ninguna otra señal (calidad del output)
+  var senales = (quien ? 1 : 0) + ((!sinEjemplos && (bueno || malo)) ? 1 : 0) + (nunca ? 1 : 0) + normas.length + memoria.length;
+  if (!esPorDefecto && tarea && senales === 0) {
+    document.getElementById('aviso-basico').classList.remove('hidden');
+  }
+
+  // Construir el texto del asistente
+  var L = [];
+  L.push('# ' + (titulo || 'Mi asistente'));
+  L.push('');
+  L.push('## QUÉ HACE (su tarea)');
+  L.push(tarea || '(sin definir)');
+  L.push('');
+  if (quien) L.push('Para quién: ' + quien);
+  if (sinEjemplos) {
+    L.push('(Sin ejemplos de bueno/malo: se añadirán con el uso)');
+  } else {
+    if (bueno) L.push('Un buen resultado: ' + bueno);
+    if (malo)  L.push('Evitar (un mal resultado): ' + malo);
+  }
+  if (nunca) L.push('Nunca debe: ' + nunca);
+  if (normas.length) {
+    L.push('');
+    L.push('## CÓMO SE COMPORTA (sus normas de siempre)');
+    normas.forEach(function(n) { L.push('- ' + n); });
+  }
+  if (memoria.length) {
+    L.push('');
+    L.push('## QUÉ RECUERDA DE MÍ');
+    memoria.forEach(function(m) { L.push('- ' + m); });
+  }
+  var texto = L.join('\n');
+  document.getElementById('texto').textContent = texto;
+
+  // Si llegó sin rellenar nada en absoluto
+  if (!tarea && !normas.length && !memoria.length) {
+    document.getElementById('titulo').textContent = 'Aún no has creado nada';
+    document.getElementById('texto').textContent =
+      'Parece que has llegado aquí sin rellenar los pasos.\nVuelve al inicio y crea tu asistente.';
+  }
+
+  // Botón copiar el asistente
+  var btnCopiar = document.getElementById('copiar');
+  btnCopiar.addEventListener('click', function() {
+    function ok() {
+      btnCopiar.textContent = '¡Copiado!';
+      btnCopiar.classList.add('ok');
+      setTimeout(function() { btnCopiar.textContent = 'Copiar'; btnCopiar.classList.remove('ok'); }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(ok, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var t = document.getElementById('texto');
+      var r = document.createRange();
+      r.selectNodeContents(t);
+      var s = window.getSelection();
+      s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand('copy'); ok(); } catch(e) {}
+      s.removeAllRanges();
+    }
+  });
+
+  // Botón descargar el asistente como .txt
+  document.getElementById('descargar').addEventListener('click', function() {
+    var nombre = (titulo || 'mi-asistente').toLowerCase().replace(/[^a-z0-9áéíóúñ ]/gi, '').replace(/\s+/g, '-').slice(0, 40) || 'mi-asistente';
+    var blob = new Blob([texto], { type: 'text/plain;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = nombre + '.txt';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+  // F10: botón descargar informe explicativo .md
+  document.getElementById('descargar-informe').addEventListener('click', function() {
+    var nombre = (titulo || 'mi-asistente').toLowerCase().replace(/[^a-z0-9áéíóúñ ]/gi, '').replace(/\s+/g, '-').slice(0, 40) || 'mi-asistente';
+    var fecha = new Date().toLocaleDateString('es-ES');
+    var informe = [];
+    informe.push('# Informe de tu asistente personalizado');
+    informe.push('_Creado con la guía «Tu primer asistente de IA» — ' + fecha + '_');
+    informe.push('');
+    informe.push('## Qué has creado');
+    informe.push('Has construido un asistente de IA personalizado llamado **' + titulo + '**.');
+    informe.push('Está formado por tres bloques: la tarea (qué hace), el comportamiento (cómo actúa siempre) y la memoria (lo que sabe de ti).');
+    informe.push('');
+    informe.push('## Bloque 1 — La tarea (tu skill)');
+    informe.push('Este bloque define para qué sirve el asistente: es su tarea principal.');
+    informe.push('');
+    informe.push('**Tarea:** ' + (tarea || '(no definida)'));
+    if (quien) informe.push('**Para quién:** ' + quien);
+    if (sinEjemplos) {
+      informe.push('**Ejemplos:** no añadiste ninguno; el asistente es más genérico hasta que los incluyas.');
+    } else {
+      if (bueno) informe.push('**Ejemplo bueno:** ' + bueno);
+      if (malo)  informe.push('**Ejemplo malo:** ' + malo);
+    }
+    if (nunca) informe.push('**Nunca debe:** ' + nunca);
+    informe.push('');
+    informe.push('## Bloque 2 — El comportamiento (las normas)');
+    informe.push('Estas son las reglas que el asistente cumple siempre, en cualquier tarea.');
+    informe.push('');
+    if (normas.length) {
+      normas.forEach(function(n) { informe.push('- ' + n); });
+    } else {
+      informe.push('_(No elegiste normas de comportamiento)_');
+    }
+    informe.push('');
+    informe.push('## Bloque 3 — La memoria');
+    informe.push('Lo que el asistente no te volverá a preguntar. Crece con el uso: cada vez que le dices "recuerda esto", lo añade.');
+    informe.push('');
+    if (memoria.length) {
+      memoria.forEach(function(m) { informe.push('- ' + m); });
+    } else {
+      informe.push('_(No añadiste datos de memoria)_');
+    }
+    informe.push('');
+    informe.push('## Cómo replicarlo');
+    informe.push('1. Abre Claude.ai y crea un Proyecto nuevo.');
+    informe.push('2. Pega el contenido del archivo `' + nombre + '.txt`  en el campo "Instrucciones del proyecto".');
+    informe.push('3. Abre un chat desde dentro del Proyecto (no desde el botón general).');
+    informe.push('4. Pídele algo real tuyo: si responde a tu manera, funciona.');
+    informe.push('');
+    informe.push('---');
+    informe.push('_Informe generado automáticamente. Los datos nunca salieron de tu navegador._');
+
+    var blob = new Blob([informe.join('\n')], { type: 'text/markdown;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'informe-' + nombre + '.md';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+  // F11: botón copiar el prompt de acompañamiento
+  var btnPrompt = document.getElementById('copiar-prompt');
+  var promptTexto = document.getElementById('prompt-texto').textContent;
+  btnPrompt.addEventListener('click', function() {
+    function ok() {
+      btnPrompt.textContent = '¡Copiado!';
+      btnPrompt.classList.add('ok');
+      setTimeout(function() { btnPrompt.textContent = 'Copiar prompt'; btnPrompt.classList.remove('ok'); }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(promptTexto).then(ok, fallback2);
+    } else { fallback2(); }
+    function fallback2() {
+      var t = document.getElementById('prompt-texto');
+      var r = document.createRange();
+      r.selectNodeContents(t);
+      var s = window.getSelection();
+      s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand('copy'); ok(); } catch(e) {}
+      s.removeAllRanges();
+    }
+  });
+</script>

@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ejemplos } from '../data/ejemplos.js';
+const { intro, avisoCuenta, tarjetas, desdeCero } = ejemplos;
+---
+<Layout title="Ejemplos — Tu primer asistente de IA" description="Elige un punto de partida y crea tu primer asistente personalizado. Ejemplos reales de tareas que puedes delegar hoy.">
+
+  <!-- CABECERA DE SECCIÓN -->
+  <section class="px-6 pb-[48px] pt-[72px] text-center">
+    <div class="mx-auto max-w-[700px]">
+      <div class="eyebrow mb-3">{intro.k}</div>
+      <h1 class="mb-4 text-[clamp(2rem,5vw,2.7rem)] font-bold leading-[1.08]">{intro.titulo}</h1>
+      <p class="mx-auto mb-5 max-w-[52ch] text-[1.12rem] text-suave [&_b]:text-tinta" set:html={intro.sub} />
+
+      <!-- micro-paso conceptual (#5): las 3 piezas antes de empezar + puerta a Nivel 1 -->
+      <div class="mx-auto mb-3 max-w-[60ch] rounded-md border border-linea bg-crema-deep px-5 py-4 text-left text-[.95rem] leading-relaxed text-suave [&_b]:text-tinta" set:html={intro.primer} />
+      <a href={intro.primerLink.href} class="lnk mb-6 inline-block text-[.92rem]">{intro.primerLink.texto} →</a>
+
+      <!-- aviso temprano de cuenta, antes de la rejilla -->
+      <div class="inline-flex items-center gap-2 rounded-full border border-linea bg-papel px-4 py-2 text-[.9rem] text-suave">
+        <span aria-hidden="true" class="font-semibold text-verde">ℹ</span>
+        {avisoCuenta}
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTA EDITORIAL DE EJEMPLOS (antes una rejilla simétrica de tarjetas; ahora
+       filas separadas por filete: info a un lado, demo al otro = patrón de revista) -->
+  <div class="mx-auto max-w-[880px] px-6 pb-[70px]">
+    <div id="rejilla">
+
+      {tarjetas.map((t, i) => (
+        <article class={`reveal grid items-start gap-x-8 gap-y-4 py-9 md:grid-cols-[1fr_1.15fr] ${i > 0 ? 'border-t border-linea' : ''}`}>
+
+          <!-- Info de la tarea -->
+          <div>
+            <span class="eyebrow mb-2">{t.perfil}</span>
+            <h2 class="mb-2 text-[1.3rem] font-bold leading-tight">{t.titulo}</h2>
+            <p class="mb-5 text-[.98rem] leading-relaxed text-suave">{t.descripcion}</p>
+            <a href="/paso1" data-tarea={t.titulo} class="js-elige-tarea inline-flex w-fit items-center gap-1 rounded-xl border border-acento px-4 py-2 text-[.92rem] font-semibold text-acento no-underline transition hover:bg-acento hover:text-white">
+              Empezar con este →
+            </a>
+          </div>
+
+          <!-- demo precomputada estática: entrada → salida -->
+          <div class="overflow-hidden rounded-md border border-linea bg-crema">
+            <div class="px-4 pt-3 pb-2">
+              <div class="mb-[6px] text-[.74rem] font-bold text-suave">Tú le dices</div>
+              <p class="text-[.88rem] italic text-tinta">"{t.demoEntrada}"</p>
+            </div>
+            <div class="border-t border-linea bg-acento-claro px-4 py-3">
+              <div class="mb-[6px] text-[.74rem] font-bold text-acento">Tu asistente responde</div>
+              <p class="whitespace-pre-line text-[.88rem] text-tinta">{t.demoSalida}</p>
+            </div>
+          </div>
+
+        </article>
+      ))}
+
+    </div>
+
+    <!-- Desde cero -->
+    <p class="mt-10 text-center text-[1rem] text-suave">
+      {desdeCero.texto}
+      <a href={desdeCero.href} class="ml-1 font-semibold text-acento underline-offset-2 hover:underline">
+        {desdeCero.cta}
+      </a>
+    </p>
+  </div>
+
+  <script>
+    document.querySelectorAll('.js-elige-tarea').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var tarea = a.getAttribute('data-tarea') || '';
+        if (tarea) {
+          localStorage.setItem('ht_tarea', tarea);
+          localStorage.setItem('ht_titulo', tarea);
+        }
+        window.location.href = '/paso1';
+      });
+    });
+  </script>
+
+</Layout>

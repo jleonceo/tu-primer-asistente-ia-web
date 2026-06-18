@@ -1,0 +1,35 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# vscode
+.vscode/
+
+# internos — notas de trabajo y simulaciones (no forman parte de la web)
+_capturas_mejora/
+MEJORA_*.md
+sim_*.mjs
+
+# config local de Claude Code -- NUNCA se publica
+.claude/

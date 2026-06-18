@@ -1,0 +1,205 @@
+---
+// Plantilla común de las páginas de nivel (1 · una skill, 2 · un equipo,
+// 3 · un sistema). Recibe los datos en src/data/nivelN.js y los coloca.
+// Los "bloques" se renderizan según su tipo, para que cada nivel arme su
+// página combinando piezas sin repetir maquetación.
+import Layout from '../layouts/Layout.astro';
+const { data } = Astro.props;
+const { meta, n, nombre, titulo, lead, bloques = [], prev, next, cta } = data;
+
+const niveles = [
+  { n: '1', nombre: 'Una skill', href: '/nivel-1' },
+  { n: '2', nombre: 'Un equipo', href: '/nivel-2' },
+  { n: '3', nombre: 'Un sistema', href: '/nivel-3' },
+];
+---
+<Layout title={meta.title} description={meta.description}>
+
+  <!-- HERO del nivel -->
+  <section class="px-6 pt-[68px] pb-[14px]">
+    <div class="mx-auto max-w-[760px]">
+      <div class="eyebrow mb-4">Nivel {n} de 3 · {nombre}</div>
+      <h1 class="mb-[18px] max-w-[20ch] text-[clamp(2.1rem,5.2vw,3rem)] font-bold leading-[1.07]">{titulo}</h1>
+      <p class="max-w-[58ch] text-[1.15rem] leading-relaxed text-tinta-soft [&_b]:font-semibold [&_b]:text-tinta" set:html={lead} />
+    </div>
+  </section>
+
+  <!-- PROGRESO entre niveles -->
+  <div class="mx-auto max-w-[760px] px-6">
+    <div class="flex flex-wrap items-center gap-2 border-y border-linea py-3">
+      {niveles.map((x, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true" class="text-suave">→</span>}
+          <a
+            href={x.href}
+            class={`rounded-full px-3 py-1 text-[.86rem] no-underline transition ${x.n === n ? 'bg-acento text-white' : 'text-suave hover:text-acento'}`}
+          >
+            <span class="font-semibold">{x.n}.</span> {x.nombre}
+          </a>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <!-- BLOQUES -->
+  <div class="mx-auto max-w-[760px] px-6 pt-12">
+    {bloques.map((b) => (
+      <section class="reveal mb-14">
+
+        {b.tipo === 'intro' && (
+          <div>
+            {b.titulo && <h2 class="mb-4 text-[1.6rem] font-bold leading-snug">{b.titulo}</h2>}
+            {b.parrafos.map((p) => (
+              <p class="mb-4 text-[1.04rem] leading-relaxed text-tinta-soft [&_b]:text-tinta" set:html={p} />
+            ))}
+          </div>
+        )}
+
+        {b.tipo === 'piezas' && (
+          <div>
+            {b.titulo && <h2 class="mb-2 text-[1.6rem] font-bold">{b.titulo}</h2>}
+            {b.intro && <p class="mb-6 text-[1.04rem] leading-relaxed text-suave">{b.intro}</p>}
+            <div class="space-y-4">
+              {b.items.map((it, i) => (
+                <div class="rounded-lg border border-linea bg-papel p-6">
+                  <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span class="credo-n">{String(i + 1).padStart(2, '0')}</span>
+                    <h3 class="text-[1.2rem] font-bold">{it.etiqueta}</h3>
+                    <span class="text-[.9rem] italic text-acento-deep">{it.pregunta}</span>
+                  </div>
+                  <p class="mt-2 text-[1rem] leading-relaxed text-suave [&_b]:text-tinta" set:html={it.detalle} />
+                  {it.cristiano && <p class="mt-2 text-[.9rem] text-suave">Dicho fácil: <b class="font-semibold text-tinta">{it.cristiano}</b></p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {b.tipo === 'hilo' && (
+          <div>
+            {b.titulo && <h2 class="mb-2 text-[1.6rem] font-bold">{b.titulo}</h2>}
+            {b.intro && <p class="mb-6 text-[1.04rem] leading-relaxed text-suave [&_b]:text-tinta" set:html={b.intro} />}
+            <div class="relative space-y-5 border-l-2 border-acento-claro pl-7">
+              {b.pasos.map((p) => (
+                <div class="relative">
+                  <span class="absolute -left-[37px] flex h-6 w-6 items-center justify-center rounded-full bg-acento text-[.72rem] font-bold text-white">{p.pieza}</span>
+                  <p class="text-[1.02rem] leading-relaxed text-tinta-soft [&_b]:text-tinta" set:html={p.texto} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {b.tipo === 'preguntas' && (
+          <div>
+            {b.titulo && <h2 class="mb-2 text-[1.6rem] font-bold">{b.titulo}</h2>}
+            {b.intro && <p class="mb-6 text-[1.04rem] leading-relaxed text-suave">{b.intro}</p>}
+            <ol class="space-y-4">
+              {b.items.map((it, i) => (
+                <li class="flex gap-4">
+                  <span class="nivel-num flex-none text-[1.3rem] leading-tight">{i + 1}</span>
+                  <div>
+                    <p class="text-[1.05rem] font-semibold text-tinta">{it.q}</p>
+                    {it.ayuda && <p class="mt-1 text-[.96rem] leading-relaxed text-suave">{it.ayuda}</p>}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
+        {b.tipo === 'flujo' && (
+          <div>
+            {b.titulo && <h2 class="mb-2 text-[1.6rem] font-bold">{b.titulo}</h2>}
+            {b.intro && <p class="mb-6 text-[1.04rem] leading-relaxed text-suave [&_b]:text-tinta" set:html={b.intro} />}
+            <div class="flex flex-col gap-3">
+              {b.pasos.map((p, i) => (
+                <div class="flex items-stretch gap-3">
+                  <div class="flex flex-none flex-col items-center">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-full bg-acento-claro font-display font-bold text-acento">{i + 1}</span>
+                    {i < b.pasos.length - 1 && <span class="my-1 w-px flex-1 bg-linea"></span>}
+                  </div>
+                  <div class="pb-1">
+                    <div class="font-semibold text-tinta">{p.nombre}</div>
+                    <p class="text-[.97rem] leading-relaxed text-suave">{p.texto}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {b.cierre && <p class="mt-5 rounded-md bg-crema-deep px-5 py-4 text-[.98rem] leading-relaxed text-tinta [&_b]:text-acento-deep" set:html={b.cierre} />}
+          </div>
+        )}
+
+        {b.tipo === 'equipos' && (
+          <div>
+            {b.titulo && <h2 class="mb-2 text-[1.6rem] font-bold">{b.titulo}</h2>}
+            {b.intro && <p class="mb-6 text-[1.04rem] leading-relaxed text-suave">{b.intro}</p>}
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {b.items.map((it) => (
+                <div class="rounded-lg border border-linea bg-papel p-5">
+                  <h3 class="text-[1.08rem] font-bold text-tinta">{it.nombre}</h3>
+                  <p class="mt-1 text-[.95rem] leading-relaxed text-suave">{it.frase}</p>
+                  {it.prueba && <p class="mt-2 text-[.85rem] font-medium text-acento-deep">{it.prueba}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {b.tipo === 'taxonomia' && (
+          <div>
+            {b.titulo && <h2 class="mb-2 text-[1.6rem] font-bold">{b.titulo}</h2>}
+            {b.intro && <p class="mb-6 text-[1.04rem] leading-relaxed text-suave">{b.intro}</p>}
+            <div class="space-y-4">
+              {b.items.map((it) => (
+                <div class="rounded-lg border border-linea bg-papel p-5">
+                  <div class="flex flex-wrap items-baseline gap-x-3">
+                    <h3 class="text-[1.1rem] font-bold text-tinta">{it.tipo}</h3>
+                    <span class="text-[.85rem] text-acento-deep">{it.ejemplos}</span>
+                  </div>
+                  <p class="mt-1 text-[.97rem] leading-relaxed text-suave">{it.texto}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {b.tipo === 'destacado' && (
+          <div class="rounded-lg border-l-4 border-acento bg-papel px-7 py-6 shadow-[0_8px_28px_rgba(28,33,43,.05)]">
+            {b.titulo && <h3 class="mb-2 text-[1.2rem] font-bold text-tinta">{b.titulo}</h3>}
+            <p class="text-[1.04rem] leading-relaxed text-tinta-soft [&_b]:text-acento-deep" set:html={b.texto} />
+          </div>
+        )}
+
+      </section>
+    ))}
+  </div>
+
+  <!-- NAV entre niveles -->
+  <div class="mx-auto max-w-[760px] px-6">
+    <div class="grid grid-cols-1 gap-4 border-t border-linea pt-8 sm:grid-cols-2">
+      {prev ? (
+        <a href={prev.href} class="group rounded-lg border border-linea bg-papel p-5 no-underline transition hover:border-acento">
+          <div class="text-[.8rem] text-suave">← Antes</div>
+          <div class="mt-1 font-display text-[1.1rem] font-semibold text-tinta group-hover:text-acento">{prev.texto}</div>
+        </a>
+      ) : <div class="hidden sm:block"></div>}
+      {next && (
+        <a href={next.href} class="group rounded-lg border-l-4 border-acento bg-papel p-5 text-right no-underline transition hover:shadow-[0_12px_30px_rgba(46,106,87,.12)]">
+          <div class="text-[.8rem] text-acento-deep">Sigue →</div>
+          <div class="mt-1 font-display text-[1.1rem] font-semibold text-tinta">{next.texto}</div>
+        </a>
+      )}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  {cta && (
+    <section class="reveal mx-auto mt-14 mb-6 max-w-[760px] px-6 text-center">
+      <h2 class="mb-3 text-[1.7rem] font-bold">{cta.titulo}</h2>
+      {cta.sub && <p class="mx-auto mb-6 max-w-[50ch] text-suave">{cta.sub}</p>}
+      <a href={cta.href} class="btn-acento text-[1.02rem]">{cta.texto}</a>
+    </section>
+  )}
+
+</Layout>

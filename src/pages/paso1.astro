@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Paso 1 — Tu skill · Tu primer asistente de IA">
+
+  <div class="mx-auto max-w-[680px] px-6 pb-16">
+
+    <!-- BARRA DE PROGRESO -->
+    <div class="py-[26px] pb-2">
+      <div class="mb-2 flex justify-between text-[.78rem] text-suave">
+        <span id="prog-txt">Pregunta 1 de 4</span>
+        <span>Paso 1 de 3 · Tu skill</span>
+      </div>
+      <div class="h-[7px] overflow-hidden rounded-full bg-linea">
+        <div class="h-full rounded-full bg-acento transition-[width_.35s_ease]" id="relleno" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- ANCLA -->
+    <div class="my-[18px] inline-block rounded-md bg-acento-claro px-[14px] py-[9px] text-[.82rem] text-suave [&_b]:text-acento" id="ancla" aria-live="polite">
+      Estás creando tu <b>skill</b>: la primera cosa que tu asistente sabrá hacer — una tarea, escrita una vez, que se queda guardada.
+    </div>
+
+    <!-- Aclaración temprana: la web prepara el texto; la IA (Claude) está aparte -->
+    <p class="mb-3 text-[.82rem] leading-relaxed text-suave">Esto todavía no es la IA: aquí preparas el texto de tu asistente. Al final lo pegas en tu cuenta gratuita de <b class="text-tinta">Claude</b>, que es quien lo usa.</p>
+
+    <!-- PREGUNTA 1 -->
+    <div class="card paso" data-step="0">
+      <div class="paso-label">Tu tarea</div>
+      <h2 id="lbl-q1">¿En qué tarea pierdes más tiempo, o te repites más?</h2>
+      <p class="ayuda">Eso que haces una y otra vez y se te hace cuesta arriba. Si no se te ocurre, coge una de estas:</p>
+      <div class="chip-k">Toca una para usarla:</div>
+      <div class="chips" data-target="q1">
+        <button type="button" class="chip">Responder reseñas sin sonar a robot</button>
+        <button type="button" class="chip">Convertir un producto en una ficha para la tienda</button>
+        <button type="button" class="chip">Explicar algo difícil a quien no sabe del tema</button>
+      </div>
+      <textarea id="q1" aria-labelledby="lbl-q1" placeholder="Escríbelo con tus palabras..."></textarea>
+    </div>
+
+    <!-- PREGUNTA 2 -->
+    <div class="card paso hidden" data-step="1">
+      <div class="paso-label">Tu tarea</div>
+      <h2 id="lbl-q2">¿Quién recibe el resultado, y qué espera de ti?</h2>
+      <p class="ayuda">Esto le da el tono. No es lo mismo un cliente enfadado que tu jefe o un alumno.</p>
+      <textarea id="q2" aria-labelledby="lbl-q2" placeholder="¿A quién le hablas?"></textarea>
+    </div>
+
+    <!-- PREGUNTA 3 — con escape F6 -->
+    <div class="card paso hidden" data-step="2">
+      <div class="paso-label">Tu tarea</div>
+      <h2 id="lbl-q3">Pon un ejemplo BUENO y uno MALO</h2>
+      <p class="ayuda">Los dos importan: el bueno marca a dónde apuntar; el malo, de qué huir.</p>
+      <div class="mb-4 rounded-md bg-crema px-3 py-2 text-[.82rem] text-suave [&_b]:text-tinta">No hace falta que sea un caso real: con un ejemplo aproximado vale. <b>Lo que escribes se queda en tu navegador</b>, no lo enviamos a ningún sitio.</div>
+      <div class="chip-k">Bueno:</div>
+      <textarea id="q3a" aria-label="Un ejemplo bueno" placeholder="Una respuesta tuya que quedó bien..."></textarea>
+      <div class="chip-k mt-3">Malo:</div>
+      <textarea id="q3b" aria-label="Un ejemplo malo" placeholder="Una sosa o copiada..."></textarea>
+
+      <!-- F6: escape honesto -->
+      <div class="mt-4 rounded-md border border-linea bg-crema px-4 py-3">
+        <label class="flex cursor-pointer items-start gap-3">
+          <input type="checkbox" id="q3-escape" class="mt-1 accent-[#2e6a57]" />
+          <span class="text-[.9rem] text-suave">
+            <b class="text-tinta">No tengo un ejemplo a mano ahora mismo</b><br>
+            <span class="text-[.84rem]">Tu asistente funcionará, pero será más genérico: sin ejemplos tuyos, no puede afinar el estilo. Cuanto antes los añadas, mejor.</span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <!-- PREGUNTA 4 -->
+    <div class="card paso hidden" data-step="3">
+      <div class="paso-label">Tu tarea</div>
+      <h2 id="lbl-q4">¿Qué debe evitar SIEMPRE? ¿Qué no puede hacer nunca?</h2>
+      <p class="ayuda">Tus líneas rojas: lo que no quieres que haga nunca, pase lo que pase.</p>
+      <textarea id="q4" aria-labelledby="lbl-q4" placeholder="Nunca debe..."></textarea>
+    </div>
+
+    <!-- REVEAL -->
+    <div class="card paso hidden" data-step="4">
+      <div class="paso-label">Tu primera skill</div>
+      <h2>Esto lo has hecho tú</h2>
+      <p class="ayuda">Con tus cuatro respuestas, esta es tu skill. Yo solo la he ordenado:</p>
+      <div class="skill-card">
+        <div class="skill-card-t">Skill</div>
+        <h3 id="sk-titulo" class="mt-1 mb-3 text-[1.25rem] tracking-tight">Tu skill</h3>
+        <div class="skill-fila"><b>Qué hace:</b> <span id="sk-tarea">—</span></div>
+        <div class="skill-fila"><b>Para quién:</b> <span id="sk-quien">—</span></div>
+        <div class="skill-fila"><b>Suena así:</b> <span id="sk-bueno">—</span></div>
+        <div class="skill-fila"><b>Nunca:</b> <span id="sk-nunca">—</span></div>
+      </div>
+      <div class="nota-aviso">
+        <b>Lo que escribes se va guardando en este navegador</b>. Si cierras y vuelves
+        (en este mismo dispositivo), sigue aquí. Lo que aún falta es el paso final:
+        <b>llevarlo a tu Claude</b>, que es donde se queda para siempre. Antes, vamos a darle
+        dos cosas más: <b>cómo se comporta</b> y <b>qué recuerda</b>.
+        <br><span style="font-size:.82rem;color:var(--color-suave);font-weight:400">Una sola cosa: no salta de un aparato a otro. Si empiezas en el móvil, termínalo en el móvil.</span>
+      </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <div class="mt-2 flex items-center justify-between gap-3">
+      <button
+        class="inline-flex min-h-[44px] items-center rounded-xl px-4 py-3 font-semibold text-suave opacity-0 transition pointer-events-none"
+        id="atras"
+      >&larr; Atrás</button>
+      <button
+        class="rounded-xl bg-acento px-[26px] py-3 font-semibold text-white shadow-[0_5px_16px_rgba(46,106,87,.25)] transition hover:-translate-y-0.5"
+        id="siguiente"
+      >Siguiente &rarr;</button>
+    </div>
+
+  </div>
+
+</Layout>
+
+<style>
+  .card {
+    background: var(--color-papel);
+    border: 1px solid var(--color-linea);
+    border-radius: 18px;
+    padding: 34px 32px;
+    margin: 16px 0 24px;
+    box-shadow: 0 8px 30px rgba(31,36,48,.05);
+  }
+  .paso-label {
+    font-size: .8rem;
+    letter-spacing: .01em;
+    color: var(--color-acento);
+    font-weight: 700;
+  }
+  .card h2 {
+    font-size: 1.5rem;
+    letter-spacing: -.02em;
+    margin: 6px 0 6px;
+    color: var(--color-tinta);
+  }
+  .ayuda {
+    color: var(--color-suave);
+    font-size: .95rem;
+    margin-bottom: 18px;
+  }
+  textarea {
+    width: 100%;
+    border: 1.5px solid var(--color-linea);
+    border-radius: 12px;
+    padding: 13px 15px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-tinta);
+    background: var(--color-crema);
+    resize: vertical;
+    min-height: 54px;
+  }
+  textarea:focus { outline: none; border-color: var(--color-acento); background: #fff; }
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 16px; }
+  .chip {
+    font-family: inherit;
+    text-align: left;
+    font-size: .85rem;
+    background: var(--color-crema);
+    border: 1px solid var(--color-linea);
+    border-radius: 20px;
+    padding: 7px 13px;
+    min-height: 44px;          /* objetivo táctil RAG_UI regla 22 */
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--color-suave);
+    transition: all .12s;
+  }
+  .chip:hover { border-color: var(--color-acento); color: var(--color-acento); }
+  .chip-k { font-size: .78rem; color: var(--color-suave); margin-bottom: 7px; font-weight: 600; }
+  .mt-3 { margin-top: 12px; }
+  .mt-4 { margin-top: 16px; }
+  .skill-card {
+    background: var(--color-papel);
+    border: 1.5px solid var(--color-acento);
+    border-radius: 16px;
+    padding: 24px 26px;
+    margin: 8px 0 18px;
+  }
+  .skill-card-t {
+    font-size: .8rem;
+    letter-spacing: .01em;
+    color: var(--color-acento);
+    font-weight: 700;
+  }
+  .skill-fila {
+    font-size: .93rem;
+    color: var(--color-suave);
+    padding: 6px 0;
+    border-top: 1px solid var(--color-linea);
+  }
+  .skill-fila b { color: var(--color-tinta); }
+  .nota-aviso {
+    font-size: .9rem;
+    background: #eef6f2;
+    border: 1px solid var(--color-acento-claro);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--color-tinta);
+    margin-bottom: 18px;
+  }
+  .nota-aviso b { color: var(--color-acento); }
+  .hidden { display: none; }
+</style>
+
+<script>
+  var step = 0;
+  var total = 5;
+  var pasos = document.querySelectorAll('.paso');
+  var relleno = document.getElementById('relleno');
+  var progTxt = document.getElementById('prog-txt');
+  var ancla = document.getElementById('ancla');
+  var btnAtras = document.getElementById('atras');
+  var btnSig = document.getElementById('siguiente');
+  var escapeCheck = document.getElementById('q3-escape');
+
+  // Restaurar valores del localStorage al cargar la página
+  function set(id, key) {
+    var v = localStorage.getItem(key);
+    if (v) { document.getElementById(id).value = v; }
+  }
+  set('q1', 'ht_tarea');
+  set('q2', 'ht_quien');
+  set('q3a', 'ht_bueno');
+  set('q3b', 'ht_malo');
+  set('q4', 'ht_nunca');
+
+  // Restaurar el checkbox de escape
+  if (localStorage.getItem('ht_sin_ejemplos') === '1') {
+    escapeCheck.checked = true;
+  }
+
+  function val(id) {
+    var e = document.getElementById(id);
+    return e && e.value.trim() ? e.value.trim() : '';
+  }
+
+  function etiqueta() {
+    var t = val('q1');
+    if (!t) return 'tu asistente';
+    return (t.length > 46 ? t.slice(0, 46) + '…' : t);
+  }
+
+  function guardar() {
+    localStorage.setItem('ht_tarea', val('q1'));
+    localStorage.setItem('ht_quien', val('q2'));
+    localStorage.setItem('ht_bueno', val('q3a'));
+    localStorage.setItem('ht_malo',  val('q3b'));
+    localStorage.setItem('ht_nunca', val('q4'));
+    localStorage.setItem('ht_titulo', etiqueta() === 'tu asistente' ? '' : etiqueta());
+    // F6: guardar estado del escape
+    localStorage.setItem('ht_sin_ejemplos', escapeCheck.checked ? '1' : '0');
+  }
+
+  function anclaTxt() {
+    var t = etiqueta();
+    switch (step) {
+      case 0: return 'Estás creando tu <b>skill</b>: la primera cosa que tu asistente sabrá hacer — una tarea, escrita una vez, que se queda guardada.';
+      case 1: return 'Para tu skill de <b>' + t + '</b>… ¿quién recibe el resultado?';
+      case 2: return 'Para tu skill de <b>' + t + '</b>… enséñame el bueno y el malo.';
+      case 3: return 'Para tu skill de <b>' + t + '</b>… ¿qué no debe hacer nunca?';
+      case 4: return 'Tu skill está montada. Falta lo importante: <b>llevarla a tu Claude</b>.';
+    }
+    return '';
+  }
+
+  function pintar() {
+    for (var i = 0; i < pasos.length; i++) {
+      pasos[i].classList.toggle('hidden', i !== step);
+    }
+    relleno.style.width = ((step + 1) / total * 25) + '%';
+    ancla.innerHTML = anclaTxt();
+
+    // Botón atrás: invisible Y fuera del tabulador en el primer paso (#11 a11y:
+    // antes seguía siendo enfocable con teclado pese a estar oculto).
+    if (step === 0) {
+      btnAtras.classList.add('opacity-0', 'pointer-events-none');
+      btnAtras.disabled = true;
+      btnAtras.setAttribute('aria-hidden', 'true');
+    } else {
+      btnAtras.classList.remove('opacity-0', 'pointer-events-none');
+      btnAtras.disabled = false;
+      btnAtras.removeAttribute('aria-hidden');
+    }
+
+    if (step < 4) {
+      progTxt.textContent = 'Pregunta ' + (step + 1) + ' de 4';
+      btnSig.innerHTML = (step === 3) ? 'Ver mi skill &rarr;' : 'Siguiente &rarr;';
+    } else {
+      progTxt.textContent = '¡Hecho!';
+      btnSig.innerHTML = 'Siguiente: su comportamiento &rarr;';
+    }
+    if (step === 4) { rellenarSkill(); }
+  }
+
+  function rellenarSkill() {
+    document.getElementById('sk-tarea').textContent = val('q1') || '…';
+    document.getElementById('sk-quien').textContent = val('q2') || '…';
+    // F6: si marcó el escape, mostrar nota honesta en lugar del ejemplo
+    if (escapeCheck.checked) {
+      document.getElementById('sk-bueno').textContent = '(sin ejemplo: el asistente será más genérico)';
+    } else {
+      document.getElementById('sk-bueno').textContent = val('q3a') || '…';
+    }
+    document.getElementById('sk-nunca').textContent = val('q4') || '…';
+    document.getElementById('sk-titulo').textContent = etiqueta() === 'tu asistente' ? 'Tu skill' : etiqueta();
+  }
+
+  // Chips rellenan el textarea
+  document.querySelectorAll('.chips').forEach(function(grp) {
+    var target = grp.getAttribute('data-target');
+    grp.querySelectorAll('.chip').forEach(function(c) {
+      c.addEventListener('click', function() {
+        document.getElementById(target).value = c.textContent;
+        guardar();
+      });
+    });
+  });
+
+  // Guardar también al escribir
+  ['q1', 'q2', 'q3a', 'q3b', 'q4'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) { el.addEventListener('input', guardar); }
+  });
+
+  // Guardar también al cambiar el checkbox de escape
+  escapeCheck.addEventListener('change', guardar);
+
+  btnSig.addEventListener('click', function() {
+    guardar();
+    if (step < total - 1) {
+      step++;
+      pintar();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.location.href = '/paso2';
+    }
+  });
+
+  btnAtras.addEventListener('click', function() {
+    if (step > 0) {
+      step--;
+      pintar();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  pintar();
+</script>

@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { acerca } from '../data/acerca.js';
+---
+<Layout title="Qué es esto — Tu primer asistente de IA">
+  <div class="mx-auto max-w-[940px] px-6 pb-[60px] pt-[60px]">
+
+    <!-- CABECERA -->
+    <div class="mb-12 text-center">
+      <div class="eyebrow eyebrow-c mx-auto mb-3">Hablando claro</div>
+      <h1 class="mb-3 text-[clamp(2rem,5vw,2.6rem)] font-bold leading-tight">{acerca.titulo}</h1>
+      <p class="mx-auto max-w-[52ch] text-[1.12rem] text-suave">{acerca.subtitulo}</p>
+    </div>
+
+    <!-- SECCIONES DE PROSA -->
+    <div class="mx-auto max-w-[680px] space-y-6">
+
+      {acerca.secciones.map((sec) => (
+        <section class="reveal rounded-lg border border-linea bg-papel px-8 py-7" id={sec.id}>
+          <h2 class="mb-4 text-[1.35rem] font-bold text-tinta">{sec.h2}</h2>
+
+          {sec.parrafos && sec.parrafos.map((p) => (
+            <p class="mb-3 text-[.99rem] leading-relaxed text-suave last:mb-0 [&_b]:text-tinta [&_a]:font-semibold [&_a]:text-acento [&_a]:underline [&_a]:underline-offset-2" set:html={p} />
+          ))}
+
+          {sec.lista && (
+            <ul class="space-y-[10px]">
+              {sec.lista.map((item) => (
+                <li class="flex items-start gap-3">
+                  <div aria-hidden="true" class={`mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-md text-[.8rem] font-bold ${item.si ? 'bg-[rgba(46,106,87,.15)] text-verde' : 'bg-[rgba(91,100,114,.12)] text-suave'}`}>
+                    {item.si ? '✓' : '✕'}
+                  </div>
+                  <span class="text-[.97rem] text-suave [&_b]:text-tinta" set:html={item.texto} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
+
+      <!-- AVISO DE INDEPENDENCIA -->
+      <div class="reveal rounded-md border border-linea bg-acento-claro px-7 py-5 text-[.9rem] text-suave">
+        <b class="text-tinta">{acerca.avisoIndep.negrita}</b>{acerca.avisoIndep.texto}
+      </div>
+
+    </div>
+
+    <!-- CTA CIERRE -->
+    <div class="mt-12 text-center">
+      <a href={acerca.cta.href} class="btn-acento text-[1.05rem]">
+        {acerca.cta.texto}
+        <span class="mt-[10px] block text-[.85rem] font-normal text-acento-claro">{acerca.cta.sub}</span>
+      </a>
+    </div>
+
+  </div>
+</Layout>

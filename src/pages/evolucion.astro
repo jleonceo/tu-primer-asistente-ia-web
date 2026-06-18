@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { evolucion } from '../data/evolucion.js';
+const { meta, hero, lazo, notaHonesta, practica, notaAyuda, experiencia, recap, cierre } = evolucion;
+---
+<Layout title={meta.title} description={meta.description}>
+
+  <!-- HERO -->
+  <section class="px-6 pb-[48px] pt-[70px] text-center">
+    <div class="mx-auto max-w-[700px]">
+      <div class="eyebrow mb-3">{hero.k}</div>
+      <h1 class="mb-4 text-[clamp(2rem,5vw,2.7rem)] font-bold leading-[1.12]">{hero.titulo}</h1>
+      <p class="mx-auto max-w-[52ch] text-[1.12rem] text-suave [&_b]:text-tinta" set:html={hero.lead} />
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-[760px] px-6">
+
+    <!-- CADENA DE MEJORA (lazo) -->
+    <section class="reveal mb-10 rounded-lg border border-linea bg-papel px-8 py-[38px]">
+      <div class="eyebrow mb-5">{lazo.intro}</div>
+
+      <div class="flex flex-col gap-[14px]">
+        {lazo.eslabones.map((e) => (
+          <div class="flex items-start gap-4 rounded-md border border-linea bg-crema px-[22px] py-5">
+            <div class="flex h-[36px] w-[36px] flex-none items-center justify-center rounded-full bg-acento-claro font-display font-bold text-acento">
+              {e.n}
+            </div>
+            <div>
+              <b class="mb-[3px] block text-[1rem] text-tinta">{e.titulo}</b>
+              <span class="text-[.94rem] text-suave">{e.texto}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- bucle -->
+      <div class="mt-6 rounded-xl bg-acento-claro px-4 py-3 text-center text-[.95rem] font-semibold text-acento">
+        {lazo.bucle}
+      </div>
+
+      <!-- nota honesta -->
+      <div class="mt-6 rounded-xl border border-linea bg-[#eef6f2] px-[18px] py-[14px] text-[.9rem] text-tinta">
+        <b class="text-acento">{notaHonesta.titulo}</b>{' '}{notaHonesta.texto}
+      </div>
+    </section>
+
+    <!-- CÓMO SE HACE EN LA PRÁCTICA -->
+    <section class="reveal mb-10 rounded-lg border border-linea bg-papel px-8 py-[38px]">
+      <div class="eyebrow mb-1">{practica.k}</div>
+      <h2 class="mb-6 text-[1.6rem] font-bold">{practica.titulo}</h2>
+
+      <ol class="list-none">
+        {practica.pasos.map((p, i) => (
+          <li class="relative border-t border-linea py-[14px] pl-[44px] first:border-t-0">
+            <span class="absolute left-0 top-[13px] flex h-[28px] w-[28px] items-center justify-center rounded-full bg-acento-claro font-display text-[.88rem] font-bold text-acento">
+              {i + 1}
+            </span>
+            <b class="text-tinta">{p.b}</b>
+            <span class="mt-[3px] block text-[.92rem] text-suave [&_b]:font-semibold [&_b]:text-tinta" set:html={p.texto} />
+          </li>
+        ))}
+      </ol>
+
+      <!-- nota de ayuda -->
+      <div class="mt-6 rounded-xl border border-linea bg-[#eef6f2] px-[18px] py-[14px] text-[.9rem] text-tinta">
+        {notaAyuda.inicio}{' '}<b class="text-acento">{notaAyuda.b}</b>{' '}{notaAyuda.texto}
+      </div>
+    </section>
+
+    <!-- nuestra experiencia (#2): los archivos crecen con el uso; a este proyecto le pasó -->
+    <div class="reveal mb-10 border-l-4 border-linea bg-crema-deep px-6 py-5">
+      <b class="mb-1 block text-[.95rem] text-acento-deep">{experiencia.titulo}</b>
+      <p class="text-[.95rem] leading-relaxed text-suave">{experiencia.texto}</p>
+    </div>
+
+    <!-- RECAP consolidador (#7): cierra el recorrido recordando las 3 piezas + qué probar -->
+    <section class="reveal mb-10 rounded-lg border-2 border-acento bg-[#f3f9f6] px-8 py-[30px]">
+      <h2 class="mb-2 text-[1.4rem] font-bold text-tinta">{recap.titulo}</h2>
+      <p class="mb-3 text-[1rem] leading-relaxed text-suave [&_b]:text-tinta" set:html={recap.texto} />
+      <p class="text-[.96rem] font-semibold text-acento">{recap.accion}</p>
+    </section>
+
+    <!-- CIERRE -->
+    <div class="mb-10 flex flex-wrap items-center justify-center gap-4">
+      <a href={cierre.btnAtras.href}
+         class="inline-block rounded-xl border border-linea bg-papel px-7 py-[13px] text-[1rem] font-semibold text-tinta no-underline transition hover:-translate-y-0.5 hover:border-acento">
+        {cierre.btnAtras.texto}
+      </a>
+      <a href={cierre.btnInicio.href} class="btn-acento">
+        {cierre.btnInicio.texto}
+      </a>
+    </div>
+
+    <p class="pb-[30px] text-center text-[.9rem] text-suave">{cierre.nota}</p>
+
+  </div>
+</Layout>

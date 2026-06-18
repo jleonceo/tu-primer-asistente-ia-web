@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { inicio } from '../data/site.js';
+const { hero, paraQuien, demo, credo, ascenso, contexto, cierre } = inicio;
+---
+<Layout>
+  <!-- HERO con postura -->
+  <section class="px-6 pb-[52px] pt-[72px]">
+    <div class="mx-auto max-w-[760px]">
+      <div class="eyebrow mb-4">{hero.kicker}</div>
+      <h1 class="mb-[22px] max-w-[18ch] text-[clamp(2.4rem,6.2vw,3.7rem)] font-bold leading-[1.04] [&_em]:not-italic [&_em]:text-acento" set:html={hero.titulo} />
+      <p class="mb-[30px] max-w-[56ch] text-[1.18rem] leading-relaxed text-tinta-soft [&_b]:font-semibold [&_b]:text-tinta" set:html={hero.lead} />
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a href={hero.ctaHref} class="btn-acento text-[1.05rem]">
+          {hero.cta}
+          <span class="mt-[10px] block text-[.84rem] font-normal text-acento-claro">{hero.ctaSub}</span>
+        </a>
+        <a href={hero.linkHref} class="lnk text-[.98rem]">{hero.linkTexto} →</a>
+      </div>
+
+      <!-- Aclaración honesta, después del gancho: esta web no es la IA -->
+      <p class="mt-7 max-w-[56ch] rounded-md border border-linea bg-crema-deep px-5 py-3 text-[.9rem] leading-relaxed text-suave">{hero.aclara}</p>
+
+      <!-- PARA QUIÉN: que el visitante se reconozca sin deducirlo -->
+      <div class="mt-9 grid max-w-[56ch] grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="rounded-md border border-linea bg-papel px-5 py-4">
+          <div class="mb-1 text-[.8rem] font-bold text-verde">Esto es para ti si…</div>
+          <p class="text-[.94rem] leading-relaxed text-suave">{paraQuien.si}</p>
+        </div>
+        <div class="rounded-md border border-linea bg-crema-deep px-5 py-4">
+          <div class="mb-1 text-[.8rem] font-bold text-suave">No es para ti si…</div>
+          <p class="text-[.94rem] leading-relaxed text-suave">{paraQuien.no}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO antes/después -->
+  <section class="reveal px-6 py-[26px]">
+    <div class="mx-auto max-w-[940px]">
+      <div class="mb-7 max-w-[60ch]">
+        <div class="eyebrow mb-3">Un ejemplo</div>
+        <h2 class="mb-3 text-[1.9rem] font-bold leading-tight">{demo.titulo}</h2>
+        <p class="text-[1.05rem] text-suave">{demo.sub}</p>
+      </div>
+
+      <!-- pestañas de caso -->
+      <div id="demo" class="flex flex-wrap gap-2.5">
+        {demo.casos.map((c, i) => (
+          <button
+            type="button"
+            class="demo-tab rounded-full border border-linea bg-papel px-[15px] py-[7px] text-[.9rem] font-medium text-tinta-soft transition hover:border-acento"
+            data-i={i}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+          >{c.etiqueta}</button>
+        ))}
+      </div>
+
+      <!-- orden -->
+      <div class="mt-5 rounded-md border border-linea bg-crema-deep px-5 py-4 text-[.98rem] leading-relaxed text-tinta-soft">
+        <span class="mr-2 font-semibold text-acento-deep">Le pides:</span>
+        <span id="demo-orden">{demo.casos[0].orden}</span>
+      </div>
+
+      <!-- dos paneles -->
+      <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="rounded-lg border border-linea bg-papel p-6">
+          <div class="mb-3 flex items-center gap-2 text-[.86rem] font-semibold text-suave">
+            <span aria-hidden="true" class="flex h-5 w-5 items-center justify-center rounded-md bg-[rgba(91,100,114,.12)] text-suave">○</span>
+            Una IA que te acaba de conocer
+          </div>
+          <p id="demo-gen" class="demo-panel text-[.98rem] leading-relaxed text-suave">{demo.casos[0].generico}</p>
+        </div>
+        <div class="rounded-lg border-2 border-acento bg-[#f3f9f6] p-6 shadow-[0_10px_34px_rgba(46,106,87,.08)]">
+          <div class="mb-3 flex items-center gap-2 text-[.86rem] font-semibold text-acento">
+            <span aria-hidden="true" class="flex h-5 w-5 items-center justify-center rounded-md bg-acento-claro text-acento">●</span>
+            Tu asistente, con tu forma de trabajar
+          </div>
+          <p id="demo-tuyo" class="demo-panel text-[.98rem] leading-relaxed text-tinta">{demo.casos[0].tuyo}</p>
+        </div>
+      </div>
+      <p class="mt-3 text-[.82rem] italic text-suave">{demo.nota}</p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-[940px] px-6">
+
+    <!-- MANIFIESTO -->
+    <section class="reveal mt-[70px] mb-[64px]">
+      <div class="mb-9 max-w-[58ch]">
+        <h2 class="mb-2 text-[1.9rem] font-bold">{credo.titulo}</h2>
+        <p class="text-[1.05rem] text-suave">{credo.sub}</p>
+      </div>
+      <div class="grid grid-cols-1 gap-x-12 gap-y-7 md:grid-cols-2">
+        {credo.puntos.map((p, i) => (
+          <div class="flex gap-4">
+            <span class="credo-n flex-none pt-1">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="mb-1 text-[1.18rem] font-bold leading-snug">{p.t}</h3>
+              <p class="text-[.99rem] leading-relaxed text-suave">{p.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      {credo.remate && (
+        <p class="mt-7 text-[.96rem] leading-relaxed text-suave">
+          {credo.remate} <a href={credo.remateEnlace.href} class="lnk font-medium">{credo.remateEnlace.texto} →</a>
+        </p>
+      )}
+    </section>
+
+    <!-- ASCENSO por los 3 niveles -->
+    <section class="reveal mb-[64px]">
+      <div class="mb-9 max-w-[60ch]">
+        <div class="eyebrow mb-3">Los tres peldaños</div>
+        <h2 class="mb-2 text-[1.9rem] font-bold">{ascenso.titulo}</h2>
+        <p class="text-[1.05rem] text-suave">{ascenso.sub}</p>
+      </div>
+      <div class="space-y-4">
+        {ascenso.niveles.map((nv, i) => (
+          <a href={nv.href} class="group flex flex-col gap-4 rounded-lg border border-linea bg-papel p-6 no-underline transition hover:border-acento hover:shadow-[0_14px_36px_rgba(28,33,43,.07)] md:flex-row md:items-center" style={`margin-left:${i * 28}px`}>
+            <div class="flex flex-none items-center gap-4 md:w-[230px]">
+              <span class="nivel-num text-[2.4rem] leading-none">{nv.n}</span>
+              <div>
+                <div class="text-[.82rem] font-semibold text-suave">Nivel {nv.n}</div>
+                <div class="text-[1.25rem] font-bold text-tinta">{nv.nombre}</div>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div class="mb-1 font-display text-[1.05rem] font-semibold text-tinta">{nv.titulo}</div>
+              <p class="text-[.96rem] leading-relaxed text-suave">{nv.d}</p>
+              <p class="mt-2 text-[.88rem] font-medium text-acento-deep">{nv.prueba}</p>
+            </div>
+            <span class="flex-none self-start text-[1.4rem] text-acento transition group-hover:translate-x-1 md:self-center">→</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- DE DÓNDE SALE ESTO: nota honesta, sin cifras como gancho -->
+    <section class="reveal grano mb-[64px] rounded-lg bg-tinta px-7 py-[46px] text-[#eef0f3] md:px-10">
+      <div class="mx-auto max-w-[64ch] text-center">
+        <div class="eyebrow eyebrow-c mx-auto mb-4 text-[#7ec8ad] before:!bg-[#7ec8ad]">De dónde viene</div>
+        <h2 class="mb-3 text-[1.8rem] font-bold text-white">{contexto.titulo}</h2>
+        <p class="mx-auto max-w-[58ch] text-[1.05rem] leading-relaxed text-[#c4cad3]">{contexto.sub}</p>
+      </div>
+      <ul class="mx-auto mt-8 max-w-[640px] space-y-3 text-left">
+        {contexto.puntos.map((p) => (
+          <li class="flex gap-3 rounded-md border border-[rgba(255,255,255,.1)] bg-[rgba(255,255,255,.04)] px-5 py-4 text-[.96rem] leading-relaxed text-[#d3d8df]">
+            <span class="flex-none pt-0.5 text-[#7ec8ad]">·</span>
+            <span>{p}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="mx-auto mt-8 max-w-[60ch] text-center text-[.86rem] leading-relaxed text-[#9aa1ad]">{contexto.nota}</p>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="reveal mb-10 text-center">
+      <h2 class="mx-auto mb-3 max-w-[20ch] text-[2rem] font-bold">{cierre.titulo}</h2>
+      <p class="mx-auto mb-7 max-w-[52ch] text-[1.05rem] text-suave">{cierre.sub}</p>
+      <a href={cierre.ctaHref} class="btn-acento text-[1.05rem]">{cierre.cta}</a>
+    </section>
+
+  </div>
+
+  <!-- DEMO: cambio de caso, sin dependencias -->
+  <script is:inline define:vars={{ casos: demo.casos }}>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.demo-tab'));
+      var orden = document.getElementById('demo-orden');
+      var gen = document.getElementById('demo-gen');
+      var tuyo = document.getElementById('demo-tuyo');
+      if (!tabs.length || !orden || !gen || !tuyo) return;
+
+      function pintar(i) {
+        var c = casos[i];
+        if (!c) return;
+        [gen, tuyo].forEach(function (el) { el.classList.add('fading'); });
+        setTimeout(function () {
+          orden.textContent = c.orden;
+          gen.textContent = c.generico;
+          tuyo.textContent = c.tuyo;
+          [gen, tuyo].forEach(function (el) { el.classList.remove('fading'); });
+        }, 180);
+        tabs.forEach(function (t, j) { t.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+      }
+
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () { pintar(parseInt(t.getAttribute('data-i'), 10)); });
+      });
+    })();
+  </script>
+</Layout>

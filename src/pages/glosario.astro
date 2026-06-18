@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { glosario } from '../data/glosario.js';
+const { intro, terminos, mas, cierre, cta } = glosario;
+---
+<Layout title="Conceptos clave — Tu primer asistente de IA" description="Prompt, skill, asistente, agente y el vocabulario de los equipos de IA, explicado en lenguaje normal y con analogías. Sin jerga.">
+
+  <!-- CABECERA -->
+  <section class="px-6 pb-[40px] pt-[72px] text-center">
+    <div class="mx-auto max-w-[700px]">
+      <div class="eyebrow eyebrow-c mx-auto mb-3">{intro.k}</div>
+      <h1 class="mb-4 text-[clamp(2rem,5vw,2.7rem)] font-bold leading-[1.08]">{intro.titulo}</h1>
+      <p class="mx-auto max-w-[54ch] text-[1.12rem] text-suave [&_b]:text-tinta" set:html={intro.sub} />
+    </div>
+  </section>
+
+  <!-- ESCALERA DE CONCEPTOS -->
+  <div class="mx-auto max-w-[680px] px-6 pb-[24px]">
+    <div class="space-y-4">
+      {terminos.map((t, idx) => (
+        <div class="relative">
+          <section class="reveal rounded-lg border border-linea bg-papel px-7 py-6">
+            <div class="flex items-start gap-4">
+              <div class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-acento font-display text-[1.1rem] font-bold text-white">{t.num}</div>
+              <div>
+                <h2 class="text-[1.5rem] font-bold text-tinta">{t.palabra}</h2>
+                <p class="text-[.9rem] font-semibold text-acento">{t.corto}</p>
+              </div>
+            </div>
+            <p class="mt-4 text-[.99rem] leading-relaxed text-suave [&_b]:text-tinta" set:html={t.texto} />
+            <p class="mt-4 border-l-2 border-acento pl-3 text-[.92rem] italic text-suave">{t.frase}</p>
+          </section>
+          {idx < terminos.length - 1 && (
+            <div class="flex justify-center py-1 text-acento" aria-hidden="true">
+              <span class="text-[1.1rem] leading-none">↓</span>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- MÁS PALABRAS (segunda capa, opcional) -->
+  <section class="reveal mx-auto max-w-[760px] px-6 pt-10">
+    <div class="mb-6">
+      <div class="eyebrow mb-3">{mas.titulo}</div>
+      <p class="max-w-[58ch] text-[1rem] text-suave">{mas.sub}</p>
+    </div>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {mas.items.map((it) => (
+        <div class="rounded-lg border border-linea bg-papel p-5">
+          <h3 class="text-[1.02rem] font-bold text-tinta">{it.palabra}</h3>
+          <p class="mt-1 text-[.94rem] leading-relaxed text-suave">{it.def}</p>
+          <p class="mt-2 text-[.88rem] leading-relaxed text-acento-deep">{it.analogia}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <div class="mx-auto max-w-[680px] px-6 pt-12">
+    <div class="rounded-md border border-linea bg-acento-claro px-7 py-5 text-[.97rem] text-suave [&_b]:text-tinta">
+      <b>{cierre.negrita}</b>{cierre.texto}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="mt-10 mb-[70px] text-center">
+    <a href={cta.href} class="btn-acento text-[1.05rem]">
+      {cta.texto}
+      <span class="mt-[10px] block text-[.85rem] font-normal text-acento-claro">{cta.sub}</span>
+    </a>
+  </div>
+
+</Layout>
