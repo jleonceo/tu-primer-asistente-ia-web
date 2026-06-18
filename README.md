@@ -56,7 +56,7 @@ Prototipo en evolución. Se publica para **informar** y compartir el enfoque, no
 
 ## Ver la web
 
-Dirección en vivo pendiente de despliegue en Vercel.
+La web está publicada en **https://tu-primer-asistente-ia-web.vercel.app/**
 
 ## Licencia
 
@@ -109,7 +109,7 @@ A prototype in progress, published to **inform** and share the approach, not as 
 
 ## Live site
 
-Live URL pending Vercel deployment.
+The site is live at **https://tu-primer-asistente-ia-web.vercel.app/**
 
 ## License
 
