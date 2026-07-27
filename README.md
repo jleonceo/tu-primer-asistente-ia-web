@@ -2,7 +2,7 @@
 
 > Una web formativa, gratuita y sin programar, que te guía para crear tu primer asistente de IA: uno que recuerda tu forma de trabajar y mañana no la olvida.
 
-**⚠️ Esto es un prototipo.** Una pieza informativa, formativa y pedagógica: un punto de partida, no un producto terminado. Falta mucho trabajo por delante, y se irá puliendo y ampliando con el uso. Este repositorio contiene **el código de la web** (hecha con Astro) y esta explicación: qué resuelve y cómo se relaciona con el resto del trabajo.
+**Esto es un prototipo.** Una pieza informativa, formativa y pedagógica: un punto de partida y todavía no un producto terminado. Falta mucho trabajo por delante. Se irá puliendo y ampliando con el uso. Este repositorio contiene **el código de la web** (hecha con Astro) y esta explicación: qué resuelve y cómo se relaciona con el resto del trabajo.
 
 *(English version below: [jump to English](#english).)*
 
@@ -28,7 +28,7 @@ Además del recorrido, la web incluye:
 
 - Un **antes y después** con un ejemplo real, para ver el valor en segundos.
 - **El método honesto:** lo que se cree que hace la IA, frente a lo que se ha comprobado montándola de verdad. Sin promesas infladas.
-- **Conceptos clave:** un glosario que explica cada palabra (skill, CLAUDE.md, Markdown, agente, enjambre…) con analogías para quien no es del gremio.
+- **Los conceptos:** un glosario que explica cada palabra (skill, CLAUDE.md, Markdown, agente, enjambre…) con analogías para quien no es del gremio.
 - **Tres niveles**, de menos a más: una tarea, un equipo y un sistema. Al empezar solo necesitas el primero; los otros dos están para enseñar hasta dónde llega esto.
 
 ## Cómo está hecha (para quien quiera el detalle)
@@ -42,7 +42,7 @@ Por cómo está construida (estática, sin backend, sin credenciales), no maneja
 
 ## Cómo se relaciona con el resto del trabajo
 
-Esta web es la **cara visible y accesible** de un ecosistema más amplio: la puerta de entrada que explica, en lenguaje llano, conceptos que en otros repositorios están construidos y probados de verdad. Si la web te despierta la curiosidad, aquí es donde vive la ingeniería:
+Esta web es la **cara visible y accesible** de un trabajo más amplio: la puerta de entrada que explica, en lenguaje llano, conceptos que en otros repositorios están construidos y probados de verdad. Si la web te despierta la curiosidad, aquí es donde vive la ingeniería:
 
 - [**accounting-agent-swarm**](https://github.com/jleonceo/accounting-agent-swarm): un equipo de asistentes ("enjambre") que se reparten una tarea contable de principio a fin. Es el ejemplo de "sistema" que la web explica de forma sencilla.
 - [**verificacion-determinista-ia**](https://github.com/jleonceo/verificacion-determinista-ia): la pieza de verificación, código que recomprueba la coherencia del sistema **sin** depender de la IA. El guardarraíl que mantiene todo honesto.
@@ -70,7 +70,7 @@ El código de esta web y esta explicación se publican bajo licencia MIT (ver [L
 
 > A free, no-code educational website that walks you through creating your first AI assistant: one that remembers how you work and won't forget it tomorrow.
 
-**⚠️ This is a prototype.** An informative, educational piece: a starting point, not a finished product. There's a lot of work still ahead, and it will be refined and expanded over time. This repository contains **the website's code** (built with Astro) and this explanation: what it solves and how it connects to the rest of the work.
+**This is a prototype.** An informative, educational piece: a starting point, not a finished product. There's a lot of work still ahead. It will be refined and expanded over time. This repository contains **the website's code** (built with Astro) and this explanation: what it solves and how it connects to the rest of the work.
 
 ## The problem it solves
 
