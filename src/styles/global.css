@@ -31,6 +31,8 @@
 
   /* Líneas neutras y verde de "sí" (alineado al acento) */
   --color-linea: #e6e6e2;
+  /* Gris tenue para textos de relleno sobre el panel oscuro (24/09/2026; antes, hex suelto) */
+  --color-tenue: #7c8493;
   --color-verde: #2e6a57;
 
   /* Tipografía: cuerpo en sans del sistema; titulares en serif editorial */

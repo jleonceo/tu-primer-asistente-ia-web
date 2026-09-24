@@ -1,7 +1,7 @@
 // ============================================================
 // CONTENIDO DE LA WEB: fuente única de verdad (separado de la estructura).
 // Editar los textos AQUÍ; las páginas .astro solo los colocan.
-// 24/09/2026: reescrito con el registro de la guía de automatización del M6.
+// 24/09/2026: reescrito con el registro de la guía de estilo del proyecto.
 // Impersonal en las páginas que explican, tuteo solo en los pasos y el
 // resultado, botones en infinitivo. Sin cifras usadas como reclamo.
 // ============================================================
@@ -27,8 +27,8 @@ export const footer = {
   nav: [
     { href: '/', texto: 'Inicio' },
     { href: '/nivel-1', texto: 'Nivel 1 · Una skill' },
-    { href: '/nivel-2', texto: 'Nivel 2 · Un equipo' },
-    { href: '/nivel-3', texto: 'Nivel 3 · Un sistema' },
+    { href: '/nivel-2', texto: 'Nivel 2 · Un enjambre de skills' },
+    { href: '/nivel-3', texto: 'Nivel 3 · Un enjambre de enjambres' },
     { href: '/casos', texto: 'Casos' },
     { href: '/metodo', texto: 'El método' },
     { href: '/glosario', texto: 'Conceptos clave' },
@@ -37,6 +37,8 @@ export const footer = {
     { href: '/acerca', texto: 'Qué es esto' },
   ],
   nota: 'Prototipo sin uso comercial. Proyecto independiente, sin relación con Anthropic.',
+  // v1 web_prototipo (HTML suelto) · v2 web_astro · v3 web_nueva (junio) · v4 reescritura y mejoras del 24/09/2026
+  version: '4',
 };
 
 export const inicio = {
@@ -115,7 +117,7 @@ export const inicio = {
 
   // RECORRIDO: los tres niveles, como índice de la guía.
   ascenso: {
-    titulo: 'Tres niveles: una tarea, un equipo y un sistema',
+    titulo: 'Tres niveles: una skill, un enjambre de skills y un enjambre de enjambres',
     sub: 'La guía empieza por una sola tarea, que es el nivel 1. Los niveles 2 y 3 explican cómo se combinan varias skills cuando una sola no basta. Para empezar solo hace falta el primero.',
     niveles: [
       {
@@ -128,18 +130,18 @@ export const inicio = {
       },
       {
         n: '2',
-        nombre: 'Un equipo',
-        titulo: 'Varias skills que trabajan juntas',
+        nombre: 'Un enjambre de skills',
+        titulo: 'Varias skills que se reparten una tarea',
         d: 'Un coordinador reparte el trabajo entre especialistas y un verificador lo revisa antes de darlo por bueno.',
         prueba: 'Para tareas con varios pasos distintos.',
         href: '/nivel-2',
       },
       {
         n: '3',
-        nombre: 'Un sistema',
-        titulo: 'Un equipo de equipos',
-        d: 'Un director central lee cada encargo y lo envía al equipo que corresponde.',
-        prueba: 'Para cuando ya hay varios equipos.',
+        nombre: 'Un enjambre de enjambres',
+        titulo: 'Un enjambre para cada área de la empresa',
+        d: 'Una skill lee cada encargo y lo envía al enjambre del área que corresponde.',
+        prueba: 'Para cuando ya hay varios enjambres.',
         href: '/nivel-3',
       },
     ],
@@ -148,7 +150,7 @@ export const inicio = {
   // DE DÓNDE SALE: el origen de los ejemplos, sin cifras de reclamo.
   contexto: {
     titulo: 'De dónde sale lo que cuenta esta guía',
-    sub: 'Lo que se explica aquí sale de montar estos asistentes y equipos sobre la contabilidad de una empresa simulada. Los datos son ficticios, pero el sistema contable funciona y cada cifra tiene que cuadrar. Es la experiencia de quien lo ha montado, no una garantía que se pueda comprobar desde esta web.',
+    sub: 'Lo que se explica aquí sale de montar estos asistentes y enjambres sobre la contabilidad de una empresa simulada. Los datos son ficticios, pero el sistema contable funciona y cada cifra tiene que cuadrar. Es la experiencia de quien lo ha montado, no una garantía que se pueda comprobar desde esta web.',
     puntos: [
       'Las cifras que importan, como un importe o una fecha, las comprueba un programa. No se dan por buenas porque lo diga la IA.',
       'Un segundo revisor busca los errores del primero antes de cerrar una tarea.',

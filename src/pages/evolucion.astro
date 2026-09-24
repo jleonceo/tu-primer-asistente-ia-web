@@ -81,18 +81,22 @@ const { meta, hero, lazo, notaHonesta, practica, notaAyuda, experiencia, recap, 
       <p class="text-[.96rem] font-semibold text-acento">{recap.accion}</p>
     </section>
 
-    <!-- CIERRE -->
-    <div class="mb-10 flex flex-wrap items-center justify-center gap-4">
+    <!-- CIERRE. 24/09/2026: antes acababa en «Volver al inicio» y el recorrido no llevaba al nivel 2 -->
+    <p class="mb-5 text-center text-[.95rem] text-suave">{cierre.nota}</p>
+
+    <div class="mb-10 flex flex-wrap items-center justify-center gap-4 pb-[30px]">
       <a href={cierre.btnAtras.href}
          class="inline-block rounded-xl border border-linea bg-papel px-7 py-[13px] text-[1rem] font-semibold text-tinta no-underline transition hover:-translate-y-0.5 hover:border-acento">
         {cierre.btnAtras.texto}
       </a>
-      <a href={cierre.btnInicio.href} class="btn-acento">
+      <a href={cierre.btnInicio.href}
+         class="inline-block rounded-xl border border-linea bg-papel px-7 py-[13px] text-[1rem] font-semibold text-tinta no-underline transition hover:-translate-y-0.5 hover:border-acento">
         {cierre.btnInicio.texto}
       </a>
+      <a href={cierre.btnSiguiente.href} class="btn-acento">
+        {cierre.btnSiguiente.texto}
+      </a>
     </div>
-
-    <p class="pb-[30px] text-center text-[.9rem] text-suave">{cierre.nota}</p>
 
   </div>
 </Layout>

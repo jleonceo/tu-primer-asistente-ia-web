@@ -1,85 +1,83 @@
-// Nivel 3 · Un sistema (un "enjambre de enjambres"): el director central, los
-// tres tipos de equipo, la carga perezosa y el relevo, un recorrido de ejemplo
-// y la pirámide. Material: Registro_Enjambres_TechAcces, skill
-// orquestador-maestro (pasos 3 y 4, simulación de 31 casos) y el flujo del
-// enjambre contable.
-// 24/09/2026: reescrito con el registro de la guía del M6. Se corrige el cierre:
-// la revisión del 23/09/2026 midió que el director no siempre se carga al
-// empezar y que el reparto lo hace en la práctica un programa de apoyo.
+// Nivel 3 · Un enjambre de enjambres: qué es, la skill que reparte los encargos
+// entre enjambres, las tres clases de destino, un recorrido de ejemplo, por qué
+// todo pasa por ella, la carga perezosa, el orden de construcción y lo que falta.
+// Material: la skill de reparto del proyecto (su función, la carga perezosa y que
+// es la única que lanza subagentes), la simulación de 31 encargos y la revisión
+// del 23/09/2026.
+// 24/09/2026: reescrita desde lo que el lector necesita entender. Define el
+// enjambre de enjambres antes de usarlo y dice la causa de cada afirmación.
 export const nivel3 = {
   meta: {
-    title: 'Nivel 3 · Un sistema · Tu primer asistente de IA',
-    description: 'Un equipo de equipos, con un director central que envía cada encargo al equipo que corresponde. Cómo se reparte el trabajo y qué parte está aún sin terminar.',
+    title: 'Nivel 3 · Un enjambre de enjambres · Tu primer asistente de IA',
+    description: 'Un enjambre de enjambres reúne los enjambres de skills de una empresa, uno por área, y una skill que envía cada encargo al que corresponde. Qué problema resuelve, cómo recorre un encargo y qué parte falta por terminar.',
   },
   n: '3',
-  nombre: 'Un sistema',
-  titulo: 'Con varios equipos hace falta un director que decida cuál atiende cada encargo',
-  lead: 'Cuando hay varios equipos, alguien tiene que leer cada encargo y decidir cuál se ocupa. Ese es el nivel 3. Para empezar no hace falta, pero explica hacia dónde crece un sistema cuando se le añaden equipos.',
+  nombre: 'Un enjambre de enjambres',
+  titulo: 'Un enjambre de enjambres reúne los enjambres de una empresa y envía cada encargo al que corresponde',
+  lead: 'El nivel 2 explica qué es un enjambre: varias skills que se reparten una tarea con varios pasos. Cuando una empresa monta un enjambre para cada área, como la contabilidad, el marketing o el análisis de datos, el conjunto de todos ellos forma un <b>enjambre de enjambres</b>. Esta página explica cómo funciona el de este proyecto. Para crear el primer asistente no hace falta nada de lo que cuenta.',
   bloques: [
     {
       tipo: 'intro',
-      titulo: 'El director central reparte el trabajo entre los equipos',
+      titulo: 'Sin reparto, cada tarea obligaría a leer las instrucciones de todos los enjambres',
       parrafos: [
-        'En el nivel 2 cada equipo tiene su coordinador. En el nivel 3 hay además un <b>director central</b> por encima de todos, que es el primero en leer cada encargo.',
-        'Su trabajo es decidir qué equipo corresponde y pasarle el encargo solo a ese. Los demás equipos no se cargan, de modo que Claude no tiene que leer las instrucciones de todos para atender una sola tarea.',
-        'En el sistema de este proyecto, el director consulta un registro con todos los equipos y sus funciones para elegir el destino de cada encargo.',
+        'Cada enjambre tiene sus propias instrucciones. Las del enjambre de contabilidad explican cómo se registra una factura y las del de marketing, cómo se escribe una campaña. Si todas estuvieran cargadas a la vez, Claude tendría que leerlas enteras antes de cada respuesta aunque el encargo fuera de una sola área. Eso alarga cada respuesta y aumenta el riesgo de que aplique a una factura una norma pensada para un anuncio.',
+        'Por eso el enjambre de enjambres tiene una skill más, que no hace ningún trabajo de negocio. Su única función es leer cada encargo y cargar solo el enjambre que corresponde. Para elegirlo consulta una lista con todos los enjambres y la función de cada uno. En el proyecto esa skill se llama <b>orquestador maestro</b>. Dentro de cada enjambre sigue habiendo un coordinador, el del nivel 2, que reparte el trabajo entre sus skills.',
       ],
     },
     {
       tipo: 'taxonomia',
-      titulo: 'Los tres tipos de equipo que distingue el director',
-      intro: 'Para repartir el trabajo, el director clasifica cada equipo según su función. Estos son los tres tipos que usa el sistema:',
+      titulo: 'El orquestador reparte entre tres clases de destino',
+      intro: 'La lista que consulta el orquestador clasifica cada destino por la función que cumple, porque de esa clase depende cómo le entrega el encargo.',
       items: [
-        { tipo: 'De proyecto', ejemplos: 'contabilidad · análisis de datos · marketing', texto: 'Llevan una línea de trabajo de principio a fin y tienen su propio contexto de negocio. El de contabilidad conoce las facturas y el cuadre. El de marketing conoce los textos y las campañas. Cada uno trabaja solo en su dominio.' },
-        { tipo: 'De apoyo', ejemplos: 'programación · automatizaciones · verificadores', texto: 'No pertenecen a ningún proyecto y se llaman cuando hacen falta en cualquiera de ellos. Un verificador comprueba lo mismo lo pida quien lo pida.' },
-        { tipo: 'De herramienta', ejemplos: 'crear un PDF, un Word o un PowerPoint', texto: 'Resuelven una tarea concreta, sin coordinador ni contexto de negocio. El director las llama directamente, sin montar un equipo alrededor.' },
+        { tipo: 'Enjambres de área', ejemplos: 'contabilidad · análisis de datos · marketing', texto: 'Llevan un área de trabajo de principio a fin y tienen sus propias instrucciones de negocio. Las del de contabilidad cubren las facturas, las cuentas y el cuadre; las del de marketing, los textos y las campañas. Cada uno trabaja solo dentro de su área, de modo que sus normas no se mezclan con las de otro.' },
+        { tipo: 'De apoyo', ejemplos: 'programación · automatizaciones · verificadores', texto: 'No pertenecen a ningún área y cualquier enjambre puede necesitarlos. Un verificador, por ejemplo, comprueba un resultado con el mismo criterio tanto si viene de contabilidad como si viene de marketing.' },
+        { tipo: 'Herramientas', ejemplos: 'crear un PDF, un Word o un PowerPoint', texto: 'Resuelven una tarea concreta sin instrucciones de negocio, como convertir un texto en un PDF. El orquestador las usa directamente, porque para crear un documento no hace falta ningún enjambre.' },
       ],
-    },
-    {
-      tipo: 'destacado',
-      titulo: 'Todo el trabajo pasa por el director para que se pueda seguir',
-      texto: 'Los equipos no se llaman entre sí. En Claude Code hay además una limitación técnica: <b>un subagente no puede lanzar otro subagente</b>. Si cada equipo pudiera llamar a los demás, el recorrido de un encargo sería imposible de seguir y de revisar. Por eso el trabajo entra y sale siempre por el director.',
     },
     {
       tipo: 'flujo',
-      titulo: 'El recorrido de un encargo: «contabiliza esta factura»',
-      intro: 'Así recorre el sistema un encargo contable. El director interviene al principio y una persona decide al final:',
+      titulo: 'El recorrido de un encargo contable, desde que llega hasta que se aprueba',
+      intro: 'Este es el camino que sigue el encargo «contabiliza esta factura». El orquestador actúa al principio y una persona decide al final:',
       pasos: [
-        { nombre: 'Llega el encargo', texto: '«Contabiliza esta factura.» Lo lee primero el director central.' },
-        { nombre: 'El director elige el equipo', texto: 'Reconoce que es un encargo contable y se lo pasa solo al equipo de contabilidad. Los demás equipos no se cargan.' },
-        { nombre: 'El equipo trabaja', texto: 'Dentro de ese equipo, una skill lee la factura, otra prepara el asiento y una tercera comprueba que cuadra al céntimo.' },
-        { nombre: 'Queda en borrador', texto: 'El asiento espera en una tabla de borradores, sin tocar la contabilidad.' },
-        { nombre: 'Una persona aprueba', texto: 'Revisa el borrador y, solo con su visto bueno, el asiento entra en la contabilidad. Lo que no se puede deshacer lo decide siempre una persona.' },
+        { nombre: 'Llega el encargo', texto: 'El orquestador lee «contabiliza esta factura» antes que ningún enjambre.' },
+        { nombre: 'El orquestador elige el enjambre', texto: 'Reconoce que el encargo es contable y carga solo el enjambre de contabilidad. Las instrucciones de los demás enjambres no se leen.' },
+        { nombre: 'El enjambre hace el trabajo', texto: 'Dentro del enjambre, una skill extrae los datos de la factura, otra prepara el asiento y una tercera comprueba que el debe y el haber cuadran al céntimo.' },
+        { nombre: 'El asiento queda en borrador', texto: 'El asiento se guarda en una tabla de borradores, separada de la contabilidad, para que un error no llegue a los libros.' },
+        { nombre: 'Una persona lo aprueba', texto: 'Una persona revisa el borrador y, solo con su visto bueno, el asiento pasa a la contabilidad. En este proyecto, todo lo que no se puede deshacer lo decide una persona.' },
       ],
-      cierre: 'El director reparte, el equipo propone y la persona aprueba.',
+      cierre: 'Cada parte tiene una sola función: el orquestador elige el enjambre, el enjambre prepara el asiento y la persona decide si entra en la contabilidad.',
+    },
+    {
+      tipo: 'destacado',
+      titulo: 'El trabajo entra y sale siempre por el orquestador para poder revisarlo después',
+      texto: 'Los enjambres no se llaman entre sí. Cuando uno termina su parte y el encargo necesita a otro, lo indica al cerrar su trabajo y es el orquestador quien carga al siguiente. Así el recorrido de cada encargo queda en un solo sitio y se puede revisar paso a paso. En Claude Code, la versión de Claude que trabaja con los archivos del ordenador, hay además un límite técnico que obliga a hacerlo así: <b>un subagente no puede lanzar otro subagente</b>. Un subagente es una copia de Claude que recibe un encargo aislado y devuelve solo el resultado.',
     },
     {
       tipo: 'intro',
-      titulo: 'Cada equipo se carga solo cuando se necesita',
+      titulo: 'Cada enjambre se carga en el momento en que el encargo lo necesita',
       parrafos: [
-        'Los equipos <b>no se cargan todos a la vez</b>. El director carga solo el que va a usar y en el momento de usarlo. A esto se le llama carga perezosa. Es lo que permite añadir equipos sin que cada tarea obligue a leer más instrucciones.',
-        'Cuando un equipo termina su parte y hace falta otro, no lo llama él. Al cerrar su trabajo indica qué equipo debe seguir, el director lee esa indicación y llama al siguiente. El relevo pasa siempre por el director.',
+        'El orquestador no carga todos los enjambres al empezar a trabajar. Carga cada uno cuando el encargo lo necesita. A esa forma de trabajar se le llama <b>carga perezosa</b>. Gracias a ella se pueden añadir enjambres nuevos sin que cada tarea obligue a leer más instrucciones, porque un enjambre que no interviene en el encargo no se llega a leer.',
       ],
     },
     {
       tipo: 'intro',
-      titulo: 'El sistema se construye de abajo arriba',
+      titulo: 'El enjambre de enjambres se construye desde la base hacia arriba',
       parrafos: [
-        'El conjunto tiene forma de pirámide. En la base está lo operativo: la conexión con los datos, la contabilidad y los informes. En el medio, los equipos que analizan, redactan y comprueban. Arriba, el análisis de cómo va la empresa y hacia dónde se dirige.',
-        'Cada nivel se construye cuando el de abajo ya funciona, porque un análisis de la empresa solo es fiable si los datos de la base cuadran. Por la misma razón, esta guía empieza por una sola skill.',
+        'Los enjambres de este proyecto se ordenan en tres capas. En la de abajo está lo operativo: la conexión con los datos, la contabilidad y los informes. En la intermedia están los enjambres que analizan, redactan y comprueban. En la de arriba, el análisis de cómo va la empresa y hacia dónde se dirige.',
+        'Cada capa se construye cuando la de abajo ya funciona, porque un análisis de la empresa solo es fiable si los datos de la base cuadran. Por la misma razón esta guía empieza por una sola skill: el orquestador solo tiene sentido cuando ya hay dos o más enjambres entre los que elegir.',
       ],
     },
     {
       tipo: 'destacado',
-      titulo: 'El director está probado con simulaciones y es la parte menos terminada',
-      texto: 'El director se probó con 31 encargos preparados de antemano, cada uno con el equipo al que debía llegar. Después se comparó el destino real con el esperado. Preparar casos con su respuesta correcta y comprobar el resultado contra ella es el método que explica esta guía. Una revisión del 23 de septiembre de 2026 encontró, sin embargo, que el director no siempre se carga al empezar a trabajar y que el reparto lo hace en la práctica un programa de apoyo que indica qué instrucciones abrir en cada tarea. Es la parte del sistema que queda por terminar.',
+      titulo: 'El orquestador se probó con 31 encargos y el reparto todavía no está terminado',
+      texto: 'Para probarlo se prepararon 31 encargos, cada uno con el enjambre al que debía llegar. Después se comparó el enjambre que eligió el orquestador con el esperado. Es el mismo método que esta guía propone para probar un asistente: casos preparados con su respuesta correcta. Una revisión del 23 de septiembre de 2026 encontró dos problemas que siguen abiertos. El primero es que el orquestador no siempre se carga al empezar a trabajar. El segundo, que en la práctica quien indica qué instrucciones abrir en cada tarea es un programa de apoyo.',
     },
   ],
-  prev: { href: '/nivel-2', texto: 'Un equipo' },
+  prev: { href: '/nivel-2', texto: 'Un enjambre de skills' },
   next: { href: '/casos', texto: 'Tres casos de principio a fin' },
   cta: {
-    titulo: 'Un sistema empieza por una skill',
-    sub: 'Los equipos y el director se añaden cuando la base funciona. La base es la primera tarea bien resuelta.',
+    titulo: 'Un enjambre de enjambres empieza por una skill',
+    sub: 'Los enjambres y el orquestador se añaden cuando la primera tarea ya está bien resuelta, porque todo lo demás se apoya en ella.',
     texto: 'Empezar por el nivel 1',
     href: '/nivel-1',
   },

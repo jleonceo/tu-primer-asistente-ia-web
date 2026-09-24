@@ -40,7 +40,7 @@ export const evolucion = {
       {
         n: 4,
         titulo: 'Comprueba que lo demás sigue bien',
-        texto: 'Repite algún caso que ya funcionaba para confirmar que el cambio no lo ha estropeado.',
+        texto: 'Repite las tres pruebas que te dio la guía al terminar y algún caso que ya funcionaba. Así confirmas que el cambio no ha estropeado nada.',
       },
     ],
     bucle: 'Y el ciclo se repite. Cada vuelta acerca un poco más las respuestas a tu forma de trabajar.',
@@ -96,8 +96,9 @@ export const evolucion = {
   },
 
   cierre: {
-    nota: 'Esta guía cubre el primer nivel. Los niveles 2 y 3 explican cómo seguir cuando una skill no basta.',
+    nota: 'Con el asistente creado y la primera corrección hecha, el nivel 1 está completo. El nivel 2 explica qué hacer cuando una tarea tiene pasos tan distintos que una sola skill los hace mal.',
     btnAtras: { href: '/resultado', texto: '← Atrás' },
-    btnInicio: { href: '/', texto: 'Volver al inicio →' },
+    btnInicio: { href: '/', texto: 'Volver al inicio' },
+    btnSiguiente: { href: '/nivel-2', texto: 'Siguiente nivel: un enjambre de skills →' },
   },
 };

@@ -18,7 +18,7 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- F4: aviso si todo sigue siendo el ejemplo por defecto -->
     <div id="aviso-generico" class="hidden mb-4 rounded-md border-2 border-[#7ec8ad] bg-[#eef6f2] px-4 py-4 text-[.9rem]">
-      <b class="text-acento">Antes de copiarlo:</b> los campos siguen siendo los del ejemplo, no los tuyos.
+      <b class="text-acento">Antes de copiarlo:</b> los campos siguen siendo los del ejemplo y todavía no has puesto los tuyos.
       Puedes <a href="/paso1" class="font-semibold text-acento underline">volver al principio y adaptarlo</a>, que lleva unos minutos, o copiar este texto sabiendo que es genérico y ajustarlo después en Claude.
     </div>
 
@@ -51,6 +51,23 @@ import Layout from '../layouts/Layout.astro';
         <button class="rounded-xl border-[1.5px] border-linea px-4 py-2 text-[.85rem] font-semibold text-tinta transition hover:border-acento hover:text-acento" id="descargar">
           Descargar como .txt
         </button>
+      </div>
+
+      <!-- MEJORA 1 (24/09/2026): la tarea como skill en .zip, generada en el navegador -->
+      <div id="bloque-skill" class="mt-3 rounded-md border border-linea bg-crema px-4 py-3 text-[.88rem] text-suave">
+        <b class="text-tinta">¿Quieres la tarea también como skill?</b>
+        Una skill es un archivo que Claude carga solo cuando le pides esa tarea. Es opcional, porque el texto de arriba ya funciona pegado en un proyecto.
+        La skill lleva la tarea y las normas. Tus datos se quedan en las instrucciones del proyecto, porque la skill solo se carga con esa tarea y los datos hacen falta en todas.
+        <label for="sk-desc" class="mt-3 block font-semibold text-tinta">Cuándo debe usarla Claude</label>
+        <span class="block">Claude lee esta frase para decidir si carga la skill, así que tiene que decir en qué casos se usa. Si es vaga, Claude no sabrá cuándo cargarla. La web propone una a partir de tu tarea y puedes cambiarla.</span>
+        <textarea id="sk-desc" maxlength="200" rows="2" class="mt-1 w-full rounded-lg border border-linea bg-papel px-3 py-2 text-[.9rem] text-tinta"></textarea>
+        <div id="sk-desc-cuenta" class="text-right text-[.8rem]">0/200</div>
+        <div class="mt-1">
+          <button class="rounded-xl border-[1.5px] border-linea px-4 py-2 text-[.85rem] font-semibold text-tinta transition hover:border-acento hover:text-acento" id="descargar-skill">
+            Descargar como skill (.zip)
+          </button>
+        </div>
+        <p class="mt-2">Para usarla en claude.ai, abre <b class="text-tinta">Personalizar &gt; Skills</b>, pulsa <b class="text-tinta">Añadir</b> y sube el .zip sin descomprimirlo. Funciona también en la cuenta gratuita, siempre que la ejecución de código esté activada en la configuración.</p>
       </div>
 
       <!-- F10: informe explicativo descargable -->
@@ -89,12 +106,40 @@ import Layout from '../layouts/Layout.astro';
           <span>Es el mismo texto que acabas de crear. Ahí queda guardado.</span>
         </li>
         <li>
-          <b>Abre una conversación nueva dentro del proyecto</b> y pídele una tarea real. Si responde a tu
-          manera, funciona.
+          <b>Abre una conversación nueva dentro del proyecto</b> y haz las tres pruebas que tienes justo
+          debajo para comprobar que funciona.
           <span>Abre la conversación desde dentro del proyecto, con su nombre arriba. No uses el "Nuevo chat" de la pantalla de inicio. Las instrucciones solo se aplican a las conversaciones del proyecto.</span>
         </li>
       </ol>
       <p class="mt-3 text-[.88rem] text-suave [&_b]:text-tinta">¿Te atascas en alguno de estos pasos dentro de Claude? Más abajo tienes <b>un prompt para pegarle</b> y que te guíe él.</p>
+    </div>
+
+    <!-- MEJORA 2 (24/09/2026): tres pruebas montadas con las respuestas de la persona -->
+    <div class="card" id="pruebas">
+      <div class="paso-label">Antes de fiarte de él</div>
+      <h2 class="mt-1 mb-1 text-[1.5rem] font-bold tracking-tight">Tres pruebas para tu asistente</h2>
+      <p class="ayuda">
+        Hazlas en una conversación nueva dentro del proyecto, porque en una conversación larga Claude tiene en cuenta lo que ya se ha dicho y el resultado se mezcla con lo anterior. Cada una dice lo que tiene que pasar.
+        Si no pasa, corrige la instrucción que ha fallado y vuelve a probar.
+      </p>
+      <ol class="pasos-claude" id="pruebas-lista"></ol>
+      <p class="mt-3 text-[.9rem] text-suave">Repite estas tres pruebas cada vez que cambies algo en las instrucciones. Así sabes que el cambio no ha estropeado lo que ya funcionaba.</p>
+      <p class="ayuda mt-4">
+        Esta web no puede escribir por ti los casos concretos, porque no tiene IA dentro. Para tenerlos, copia este prompt en una conversación del proyecto y Claude preparará las tres pruebas con casos de tu tarea.
+      </p>
+      <div class="salida">
+        <div class="salida-barra">
+          <span class="salida-et">Prompt para preparar las pruebas</span>
+          <button class="copiar" id="copiar-pruebas">Copiar prompt</button>
+        </div>
+        <pre id="prompt-pruebas" class="font-mono text-[.84rem] leading-[1.55] text-tinta bg-papel px-[18px] py-[18px] whitespace-pre-wrap break-words max-h-[220px] overflow-auto m-0">Quiero comprobar que sigues bien tus instrucciones. Prepárame tres pruebas concretas de mi tarea:
+
+1. Un caso normal: el mensaje exacto que te enviaría y cómo tendría que ser una buena respuesta.
+2. Un caso que te obligue a saltarte uno de mis límites o de mis normas, y qué tendrías que hacer tú.
+3. Un caso al que le falte un dato que necesitas, y qué dato tendrías que preguntarme.
+
+Escribe cada prueba como un mensaje que yo pueda copiar tal cual en una conversación nueva. Debajo de cada una, pon lo que debería pasar.</pre>
+      </div>
     </div>
 
     <!-- F2 + F8: los archivos reales — plegado por defecto (#2) -->
@@ -110,7 +155,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="skill-card">
         <div class="skill-fila">
           <b>Lo que pusiste como tarea</b> (qué hace) → es tu <b>skill</b>.<br>
-          <span class="text-[.88rem] text-suave">Archivo: <code class="rounded bg-crema px-1">.claude/skills/nombre-de-tu-asistente/SKILL.md</code></span>
+          <span class="text-[.88rem] text-suave">Archivo: <code class="rounded bg-crema px-1">.claude/skills/nombre-de-tu-asistente/SKILL.md</code>. Es el mismo archivo que va dentro del .zip que descargas arriba.</span>
         </div>
         <div class="skill-fila">
           <b>Las normas que elegiste</b> (cómo se comporta) → van en <b>CLAUDE.md</b>.<br>
@@ -123,7 +168,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="nota-aviso">
         Si solo vas a usar claude.ai en el navegador, <b>no necesitas ninguno de estos archivos</b>:
-        las instrucciones del proyecto cumplen la misma función.
+        las instrucciones del proyecto cumplen la misma función. La skill en .zip de arriba es la excepción, porque también se sube a claude.ai.
         Estos nombres solo hacen falta si llegas a usar <b>Claude Code</b>, la herramienta para el ordenador, que se instala aparte.
         <br><span class="mt-2 block text-[.85rem]">Para profundizar, la documentación oficial de Anthropic: <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener" class="font-semibold text-acento underline underline-offset-2">las skills en Claude Code</a> · <a href="https://support.claude.com/en/articles/12512176-what-are-skills" target="_blank" rel="noopener" class="font-semibold text-acento underline underline-offset-2">qué son las skills</a> (en claude.ai también se pueden subir en Personalizar > Skills, con la ejecución de código activada y sin instalar nada).</span>
       </div>
@@ -207,13 +252,13 @@ Empieza por la primera pregunta.</pre>
       corrige poco a poco lo que no te convenza.
     </p>
 
-    <!-- SIGUIENTE PELDAÑO: esta skill es el primer peldaño; el siguiente es un equipo (#5) -->
+    <!-- SIGUIENTE PELDAÑO: esta skill es el primer peldaño; el siguiente es un enjambre de skills (#5) -->
     <a href="/nivel-2" class="group mt-8 flex flex-col gap-1 rounded-lg border border-linea bg-papel px-6 py-5 no-underline transition hover:border-acento hover:shadow-[0_12px_30px_rgba(28,33,43,.07)]">
       <div class="text-[.8rem] font-semibold text-suave">El siguiente nivel · Nivel 2</div>
-      <div class="font-display text-[1.15rem] font-semibold text-tinta group-hover:text-acento">Cuando una skill no baste, el siguiente paso es un equipo →</div>
+      <div class="font-display text-[1.15rem] font-semibold text-tinta group-hover:text-acento">Cuando una skill no baste, el siguiente paso es un enjambre de skills →</div>
       <p class="mt-1 text-[.92rem] leading-relaxed text-suave">
         Lo que acabas de crear es <b class="text-tinta">una skill</b>, el primer nivel. Más adelante puedes montar
-        <b class="text-tinta">varias skills que trabajan juntas</b>, con un coordinador que reparte el trabajo y un verificador que lo revisa.
+        <b class="text-tinta">varias skills que se reparten una tarea</b>, con un coordinador que reparte el trabajo y un verificador que lo revisa. A ese conjunto se le llama enjambre.
         Cada una se construye igual que esta, paso a paso.
       </p>
     </a>
@@ -364,9 +409,14 @@ Empieza por la primera pregunta.</pre>
   var sinEjemplos = (localStorage.getItem('ht_sin_ejemplos') === '1');
   var normas = arr('ht_normas');
   var memoria = arr('ht_memoria');
+  // MEJORA 3: las normas para otros se guardan aparte; lo guardado antes del cambio no las
+  // tiene y cae entero en «CÓMO SE COMPORTA», como hasta ahora.
+  var normasOtros = arr('ht_normas_otros').filter(function(n) { return normas.indexOf(n) !== -1; });
+  var normasYo = normas.filter(function(n) { return normasOtros.indexOf(n) === -1; });
 
   var titulo = g('ht_titulo');
   if (!titulo) { titulo = tarea ? tarea : 'Mi asistente'; }
+  var tituloEntero = titulo;
   if (titulo.length > 52) { titulo = titulo.slice(0, 52) + '…'; }
   document.getElementById('titulo').textContent = titulo;
 
@@ -395,28 +445,45 @@ Empieza por la primera pregunta.</pre>
   }
 
   // Construir el texto del asistente
+  // Lo que dice de la tarea: lo comparten el texto final y la skill.
+  function lineasTarea() {
+    var T = [];
+    if (quien) T.push('Para quién: ' + quien);
+    if (sinEjemplos) {
+      T.push('(Sin ejemplos de bueno/malo: se añadirán con el uso)');
+    } else {
+      if (bueno) T.push('Un buen resultado: ' + bueno);
+      if (malo)  T.push('Evitar (un mal resultado): ' + malo);
+    }
+    if (nunca) T.push('Nunca debe: ' + nunca);
+    return T;
+  }
+
   var L = [];
+  // MEJORA 4: la cabecera dice a Claude qué es el bloque y qué hacer en los dos casos que siempre llegan.
+  L.push('Estas son las instrucciones de mi asistente. Aplícalas en todas las conversaciones de este proyecto.');
+  L.push('- Si te falta un dato para hacer la tarea, pregúntamelo en vez de inventarlo.');
+  L.push('- Si lo que te pido choca con alguna de estas normas, avísame antes de seguir.');
+  L.push('');
   L.push('# ' + (titulo || 'Mi asistente'));
   L.push('');
   L.push('## QUÉ HACE (su tarea)');
   L.push(tarea || '(sin definir)');
   L.push('');
-  if (quien) L.push('Para quién: ' + quien);
-  if (sinEjemplos) {
-    L.push('(Sin ejemplos de bueno/malo: se añadirán con el uso)');
-  } else {
-    if (bueno) L.push('Un buen resultado: ' + bueno);
-    if (malo)  L.push('Evitar (un mal resultado): ' + malo);
-  }
-  if (nunca) L.push('Nunca debe: ' + nunca);
-  if (normas.length) {
+  L = L.concat(lineasTarea());
+  if (normasYo.length) {
     L.push('');
     L.push('## CÓMO SE COMPORTA (sus normas de siempre)');
-    normas.forEach(function(n) { L.push('- ' + n); });
+    normasYo.forEach(function(n) { L.push('- ' + n); });
+  }
+  if (normasOtros.length) {
+    L.push('');
+    L.push('## CÓMO ESCRIBE LO QUE PREPARA PARA OTROS');
+    normasOtros.forEach(function(n) { L.push('- ' + n); });
   }
   if (memoria.length) {
     L.push('');
-    L.push('## QUÉ RECUERDA DE MÍ');
+    L.push('## DATOS QUE DEBES TENER EN CUENTA');
     memoria.forEach(function(m) { L.push('- ' + m); });
   }
   var texto = L.join('\n');
@@ -427,7 +494,134 @@ Empieza por la primera pregunta.</pre>
     document.getElementById('titulo').textContent = 'Aún no has creado nada';
     document.getElementById('texto').textContent =
       'Parece que has llegado aquí sin rellenar los pasos.\nVuelve al inicio y crea tu asistente.';
+    document.getElementById('bloque-skill').classList.add('hidden');
+    document.getElementById('pruebas').classList.add('hidden');
   }
+
+  // MEJORA 2: las tres pruebas, con lo que tiene que pasar en cada una.
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  var pruebas = [
+    {
+      t: 'Un caso normal.',
+      pide: 'Pídele: «' + tarea + '».' + (quien ? ' El destinatario: ' + quien + '.' : ''),
+      pasa: (!sinEjemplos && bueno)
+        ? 'Lo que tiene que pasar: la respuesta se parece a tu ejemplo bueno, «' + bueno + '».'
+        : 'Lo que tiene que pasar: responde como lo harías tú.',
+    },
+    nunca ? {
+      t: 'Un caso que le pide lo que no debe hacer.',
+      pide: 'Pídele algo que le obligue a hacer lo que escribiste que no debe hacer nunca: «' + nunca + '».',
+      pasa: 'Lo que tiene que pasar: se niega o te avisa antes de hacerlo.',
+    } : {
+      t: 'Un caso que le pide lo que no debe hacer.',
+      pide: 'Tu asistente no tiene ningún límite escrito, así que esta prueba todavía no se puede hacer.',
+      pasa: 'Vuelve al paso 1 y escribe qué no debe hacer nunca.',
+      enlace: true,
+    },
+    {
+      t: 'Un caso con un dato que falta.',
+      pide: 'Pídele la tarea sin darle un dato que necesita para hacerla.',
+      pasa: 'Lo que tiene que pasar: tiene que preguntarte ese dato en vez de inventarlo. Es lo que le pide la cabecera del texto.',
+    },
+  ];
+  var listaPruebas = document.getElementById('pruebas-lista');
+  pruebas.forEach(function(p) {
+    var li = document.createElement('li');
+    var pasa = p.enlace
+      ? esc(p.pasa).replace('Vuelve al paso 1', '<a href="/paso1" class="font-semibold text-acento underline">Vuelve al paso 1</a>')
+      : esc(p.pasa);
+    li.innerHTML = '<b>' + esc(p.t) + '</b> ' + esc(p.pide) + '<span>' + pasa + '</span>';
+    listaPruebas.appendChild(li);
+  });
+
+  // MEJORA 1: la skill. Nombre en minúsculas, cifras y guiones, de 64 caracteres como máximo.
+  function nombreSkill(s) {
+    var b = String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    // Precaución: la documentación de Anthropic reserva «anthropic» y «claude» en el nombre.
+    b = b.replace(/anthropic|claude/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    b = b.slice(0, 64).replace(/-+$/, '');
+    return b || 'mi-asistente';
+  }
+  var skNombre = nombreSkill(tituloEntero);
+  var skDesc = document.getElementById('sk-desc');
+  var skCuenta = document.getElementById('sk-desc-cuenta');
+  var descInicial = tarea
+    ? ('Úsala cuando te pida ' + tarea.charAt(0).toLowerCase() + tarea.slice(1).replace(/[.\s]+$/, '') + '.').slice(0, 200)
+    : '';
+  skDesc.value = descInicial;
+  function contar() {
+    if (skDesc.value.length > 200) { skDesc.value = skDesc.value.slice(0, 200); }
+    skCuenta.textContent = skDesc.value.length + '/200';
+  }
+  skDesc.addEventListener('input', contar);
+  contar();
+
+  function textoSkill() {
+    var desc = skDesc.value.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim() || descInicial;
+    var S = ['---', 'name: ' + skNombre, 'description: ' + JSON.stringify(desc.slice(0, 200)), '---', ''];
+    S.push('# ' + tituloEntero);
+    S.push('');
+    S.push('## Qué hace');
+    S.push(tarea);
+    S.push('');
+    S = S.concat(lineasTarea());
+    if (normasYo.length) {
+      S.push('');
+      S.push('## Cómo se comporta');
+      normasYo.forEach(function(n) { S.push('- ' + n); });
+    }
+    if (normasOtros.length) {
+      S.push('');
+      S.push('## Cómo escribe lo que prepara para otros');
+      normasOtros.forEach(function(n) { S.push('- ' + n); });
+    }
+    return S.join('\n') + '\n';
+  }
+
+  // ZIP de una sola entrada, sin comprimir (método 0), hecho aquí mismo: nada sale del navegador.
+  var TABLA_CRC = (function() {
+    var t = [];
+    for (var n = 0; n < 256; n++) {
+      var c = n;
+      for (var k = 0; k < 8; k++) { c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1); }
+      t[n] = c >>> 0;
+    }
+    return t;
+  })();
+  function crc32(b) {
+    var c = 0xFFFFFFFF;
+    for (var i = 0; i < b.length; i++) { c = TABLA_CRC[(c ^ b[i]) & 0xFF] ^ (c >>> 8); }
+    return (c ^ 0xFFFFFFFF) >>> 0;
+  }
+  function zipDeUno(ruta, texto) {
+    var nom = new TextEncoder().encode(ruta);
+    var dat = new TextEncoder().encode(texto);
+    var crc = crc32(dat);
+    var d = new Date();
+    var hora = (d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1);
+    var fecha = ((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate();
+    var loc = new DataView(new ArrayBuffer(30));
+    loc.setUint32(0, 0x04034b50, true); loc.setUint16(4, 20, true); loc.setUint16(6, 0x0800, true);
+    loc.setUint16(8, 0, true); loc.setUint16(10, hora, true); loc.setUint16(12, fecha, true);
+    loc.setUint32(14, crc, true); loc.setUint32(18, dat.length, true); loc.setUint32(22, dat.length, true);
+    loc.setUint16(26, nom.length, true); loc.setUint16(28, 0, true);
+    var cen = new DataView(new ArrayBuffer(46));
+    cen.setUint32(0, 0x02014b50, true); cen.setUint16(4, 20, true); cen.setUint16(6, 20, true);
+    cen.setUint16(8, 0x0800, true); cen.setUint16(10, 0, true); cen.setUint16(12, hora, true);
+    cen.setUint16(14, fecha, true); cen.setUint32(16, crc, true); cen.setUint32(20, dat.length, true);
+    cen.setUint32(24, dat.length, true); cen.setUint16(28, nom.length, true); cen.setUint32(42, 0, true);
+    var fin = new DataView(new ArrayBuffer(22));
+    fin.setUint32(0, 0x06054b50, true); fin.setUint16(8, 1, true); fin.setUint16(10, 1, true);
+    fin.setUint32(12, 46 + nom.length, true); fin.setUint32(16, 30 + nom.length + dat.length, true);
+    return new Blob([loc, nom, dat, cen, nom, fin], { type: 'application/zip' });
+  }
+
+  document.getElementById('descargar-skill').addEventListener('click', function() {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(zipDeUno(skNombre + '/SKILL.md', textoSkill()));
+    a.download = skNombre + '.zip';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
 
   // Botón copiar el asistente
   var btnCopiar = document.getElementById('copiar');
@@ -472,6 +666,7 @@ Empieza por la primera pregunta.</pre>
     informe.push('## Qué has creado');
     informe.push('Has construido un asistente de IA propio llamado **' + titulo + '**.');
     informe.push('Está formado por tres bloques: la tarea (qué hace), el comportamiento (cómo actúa siempre) y la memoria (los datos tuyos que tiene en cuenta).');
+    informe.push('El texto empieza con dos reglas para Claude: preguntarte si le falta un dato y avisarte si algo choca con tus normas.');
     informe.push('');
     informe.push('## Bloque 1: la tarea (tu skill)');
     informe.push('Este bloque define para qué sirve el asistente: es su tarea principal.');
@@ -490,13 +685,18 @@ Empieza por la primera pregunta.</pre>
     informe.push('Estas son las reglas que el asistente cumple siempre, en cualquier tarea.');
     informe.push('');
     if (normas.length) {
-      normas.forEach(function(n) { informe.push('- ' + n); });
+      normasYo.forEach(function(n) { informe.push('- ' + n); });
+      if (normasOtros.length) {
+        if (normasYo.length) informe.push('');
+        informe.push('**Cómo escribe lo que prepara para otros:**');
+        normasOtros.forEach(function(n) { informe.push('- ' + n); });
+      }
     } else {
       informe.push('_(No elegiste normas de comportamiento)_');
     }
     informe.push('');
     informe.push('## Bloque 3: la memoria');
-    informe.push('Los datos tuyos que el asistente tiene en cuenta sin que se los repitas. Para añadir uno nuevo, edita las instrucciones del proyecto.');
+    informe.push('Los datos tuyos que el asistente tiene en cuenta sin que se los repitas. En el texto van en el apartado «Datos que debes tener en cuenta». Para añadir uno nuevo, edita las instrucciones del proyecto.');
     informe.push('');
     if (memoria.length) {
       memoria.forEach(function(m) { informe.push('- ' + m); });
@@ -504,11 +704,18 @@ Empieza por la primera pregunta.</pre>
       informe.push('_(No añadiste datos de memoria)_');
     }
     informe.push('');
+    informe.push('## Tres pruebas para tu asistente');
+    informe.push('Hazlas en una conversación nueva dentro del proyecto y repítelas cada vez que cambies algo en las instrucciones.');
+    informe.push('');
+    pruebas.forEach(function(p, i) {
+      informe.push((i + 1) + '. **' + p.t + '** ' + p.pide + ' ' + (p.enlace ? p.pasa.replace('paso 1', 'paso 1 de la guía') : p.pasa));
+    });
+    informe.push('');
     informe.push('## Cómo replicarlo');
     informe.push('1. Abre claude.ai y crea un proyecto nuevo.');
     informe.push('2. Pega el contenido del archivo `' + nombre + '.txt` en las instrucciones del proyecto.');
     informe.push('3. Abre una conversación desde dentro del proyecto, no desde el botón general.');
-    informe.push('4. Pídele algo real tuyo: si responde a tu manera, funciona.');
+    informe.push('4. Haz las tres pruebas de arriba. Si las pasa, funciona.');
     informe.push('');
     informe.push('---');
     informe.push('_Informe generado en tu navegador. Los datos no han salido de él._');
@@ -518,6 +725,20 @@ Empieza por la primera pregunta.</pre>
     a.href = URL.createObjectURL(blob);
     a.download = 'informe-' + nombre + '.md';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+  // MEJORA 2: copiar el prompt que prepara las pruebas
+  var btnPruebas = document.getElementById('copiar-pruebas');
+  btnPruebas.addEventListener('click', function() {
+    var txt = document.getElementById('prompt-pruebas').textContent;
+    function ok() {
+      btnPruebas.textContent = '¡Copiado!';
+      btnPruebas.classList.add('ok');
+      setTimeout(function() { btnPruebas.textContent = 'Copiar prompt'; btnPruebas.classList.remove('ok'); }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(ok, function() {});
+    }
   });
 
   // F11: botón copiar el prompt de acompañamiento

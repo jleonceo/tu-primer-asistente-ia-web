@@ -18,18 +18,20 @@ Todo está en lenguaje normal. Quien sabe explicarle su trabajo a un compañero 
 
 Un recorrido en tres pasos, uno por cada pieza del método:
 
-- **La tarea**, que la web llama *skill*: qué tiene que hacer el asistente. En sentido estricto, una skill de Claude es un archivo `SKILL.md` que Claude carga cuando la tarea encaja con su descripción. La web prepara el mismo contenido para pegarlo en las instrucciones de un proyecto.
-- **Las normas**: cómo se comporta en cualquier tarea.
+- **La tarea**, que la web llama *skill*: qué tiene que hacer el asistente. En sentido estricto, una skill de Claude es un archivo `SKILL.md` que Claude carga cuando la tarea encaja con su descripción. La web prepara el mismo contenido para pegarlo en las instrucciones de un proyecto. Al final también lo descarga como skill, en un `.zip` listo para subir a claude.ai.
+- **Las normas**: cómo se comporta en cualquier tarea, con el trato a quien lo usa separado del de los textos que escribe para otras personas.
 - **La memoria**: los datos de quien lo usa que tiene que tener en cuenta.
 
 Al final, la web junta las respuestas en un texto que se copia en un proyecto de Claude. Sirve la cuenta gratuita. **La web no es la IA**: enseña y prepara el texto. Quien lo usa es Claude.
+
+Con el texto, la web propone **tres pruebas** montadas con las respuestas de cada persona: un caso normal, uno que le pide lo que no debe hacer y uno al que le falta un dato. Sirven para comprobar el asistente antes de fiarse de él y se repiten después de cada cambio.
 
 Además del recorrido, la web incluye:
 
 - La misma tarea resuelta **con y sin instrucciones**, con respuestas escritas a mano para mostrar la diferencia.
 - **El método**: lo que se suele creer que hace la IA frente a lo que se comprobó al montar un sistema contable. Explica también cómo se prueba un asistente antes de confiar en él.
 - **Un glosario** con cada palabra que usa la guía (skill, CLAUDE.md, Markdown, agente, enjambre y otras), explicada con una comparación.
-- **Tres niveles**, de menos a más: una tarea, un equipo y un sistema. Para empezar basta el primero. Los otros dos explican cómo crece un sistema cuando una skill no basta.
+- **Tres niveles**, de menos a más: una skill, un enjambre de skills que se reparten una tarea y un enjambre de enjambres, con uno para cada área de la empresa. Para empezar basta el primero. Los otros dos explican qué se monta cuando una skill no basta.
 
 ## Cómo está hecha
 
@@ -82,13 +84,15 @@ Everything is in plain language. If you can explain your job to a new colleague,
 
 A three-step walkthrough, one step per piece of the method:
 
-- **The task**, which the website calls a *skill*: what the assistant has to do. Strictly speaking, a Claude skill is a `SKILL.md` file that Claude loads when a task matches its description. The website prepares the same content to paste into a project's instructions.
-- **The rules**: how it behaves in any task.
+- **The task**, which the website calls a *skill*: what the assistant has to do. Strictly speaking, a Claude skill is a `SKILL.md` file that Claude loads when a task matches its description. The website prepares the same content to paste into a project's instructions. At the end it also downloads it as a skill, in a `.zip` ready to upload to claude.ai.
+- **The rules**: how it behaves in any task, with the way it addresses its user kept apart from the tone of what it writes for other people.
 - **The memory**: the details about the user it has to take into account.
 
 At the end, the website puts the answers together in a text you paste into a Claude project; a free account is enough. **The website is not the AI**: it teaches and prepares the text. Claude is what uses it.
 
-It also includes the same task answered **with and without instructions** (hand-written examples), a page on **the method** and on testing an assistant before trusting it, a **glossary** that explains every term with a comparison, and **three levels**: a task, a team and a system.
+Along with the text, the website suggests **three tests** built from each person's answers: a normal case, one that asks for something it must not do and one with a missing detail. They check the assistant before you trust it and are repeated after every change.
+
+It also includes the same task answered **with and without instructions** (hand-written examples), a page on **the method** and on testing an assistant before trusting it, a **glossary** that explains every term with a comparison, and **three levels**: a skill, a swarm of skills that share one task, and a swarm of swarms, with one for each area of a company.
 
 ## How it's built
 

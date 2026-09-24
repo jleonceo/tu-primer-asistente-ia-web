@@ -1,7 +1,7 @@
 // Nivel 1 · Una skill. La página "a fondo" de por dónde se empieza.
 // Material: GUIA_CLAUDE_v0.12 (las 3 piezas, el ejemplo hilo de reseñas,
 // las 4 preguntas, el momento de anclaje).
-// 24/09/2026: reescrita con el registro de la guía de automatización del M6
+// 24/09/2026: reescrita con el registro de la guía de estilo del proyecto
 // (impersonal, verbos literales, cada afirmación con su causa). Se corrige la
 // definición de skill contra la documentación oficial de Anthropic: una skill
 // es un SKILL.md que se carga cuando la tarea encaja; lo que prepara esta web
@@ -22,7 +22,7 @@ export const nivel1 = {
       parrafos: [
         'Un asistente se hace con un <b>texto de instrucciones</b>, sin instalar ningún programa. Claude lee ese texto antes de cada respuesta. En él encuentra qué tarea tiene que hacer, cómo debe comportarse y qué datos de quien lo usa tiene que tener en cuenta.',
         'Claude ofrece dos sitios para guardar esas instrucciones. Las <b>instrucciones de un proyecto</b> se aplican a todas las conversaciones que se abren dentro de ese proyecto. Es el sitio que usa esta guía, porque funciona en la cuenta gratuita sin configurar nada más. Una <b>skill</b>, en el sentido estricto que usa Anthropic, es un archivo llamado SKILL.md que lleva un nombre, una descripción y las instrucciones. Se sube en Personalizar > Skills, exige tener activada la ejecución de código y Claude solo la carga cuando la tarea que se le pide encaja con su descripción.',
-        'En los dos casos el contenido es el mismo: la tarea, cómo hacerla y lo que hay que evitar. Por eso esta guía llama skill a la primera pieza, aunque al final el texto se pegue en un proyecto.',
+        'En los dos casos el contenido es el mismo: la tarea, cómo hacerla y lo que hay que evitar. Por eso esta guía llama skill a la primera pieza, aunque el camino principal sea pegar el texto en un proyecto. Al terminar, la guía también la descarga como skill, en un .zip que se sube tal cual.',
       ],
     },
     {
@@ -40,7 +40,7 @@ export const nivel1 = {
           etiqueta: 'Las normas',
           pregunta: '¿cómo tiene que comportarse?',
           cristiano: 'lo que cumple en cualquier tarea',
-          detalle: 'Las reglas que se aplican siempre: el tono, el trato de tú o de usted, lo que no puede hacer nunca y cuándo tiene que avisar de que no está seguro. Son las que acercan el resultado al que escribiría quien lo usa.',
+          detalle: 'Las reglas que se aplican siempre: el tono, el trato de tú o de usted, tanto con quien lo usa como en los textos para otras personas, lo que no puede hacer nunca y cuándo tiene que avisar de que no está seguro. Son las que acercan el resultado al que escribiría quien lo usa.',
         },
         {
           etiqueta: 'La memoria',
@@ -78,7 +78,7 @@ export const nivel1 = {
     },
   ],
   prev: null,
-  next: { href: '/nivel-2', texto: 'Cuando una skill no basta: un equipo' },
+  next: { href: '/nivel-2', texto: 'Cuando una skill no basta: un enjambre de skills' },
   cta: {
     titulo: 'Para probarlo con una tarea propia',
     sub: 'El recorrido de esta web hace las cuatro preguntas y prepara el texto para pegarlo en un proyecto de Claude.',

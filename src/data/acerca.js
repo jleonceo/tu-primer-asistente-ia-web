@@ -1,7 +1,7 @@
 // ============================================================
 // CONTENIDO DE LA PÁGINA "QUÉ ES ESTO": fuente única de verdad.
 // Editar los textos AQUÍ; acerca.astro solo los coloca.
-// 24/09/2026: reescrito con el registro de la guía del M6. La sección de otras
+// 24/09/2026: reescrito con el registro de la guía de estilo del proyecto. La sección de otras
 // IA dice ya que Anthropic creó el formato de las skills y que después lo
 // adoptaron otras plataformas (lista comprobada en agentskills.io ese día).
 // ============================================================

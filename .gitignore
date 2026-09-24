@@ -33,3 +33,9 @@ sim_*.mjs
 
 # config local de Claude Code -- NUNCA se publica
 .claude/
+
+# Playwright — artefactos generados en cada ejecución (no se versionan)
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

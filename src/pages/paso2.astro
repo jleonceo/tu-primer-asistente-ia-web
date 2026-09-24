@@ -54,27 +54,39 @@ import Layout from '../layouts/Layout.astro';
           <label class="opcion"><input type="checkbox" data-r="Si citas una fuente o un dato, asegúrate de que existe."><span class="txt"><b>Si cita algo, que exista.</b><span>Sin fuentes inventadas.</span></span></label>
         </div>
 
-        <!-- 3 · Tono -->
+        <!-- 3 · Tono con quien lo usa. MEJORA 3 (24/09/2026): separado del tono de lo que escribe para otros -->
         <div class="cat">
-          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">3 · Cómo me habla</h3>
-          <div class="mb-3 text-[.85rem] text-suave">El tono con el que te responde.</div>
-          <label class="opcion"><input type="checkbox" data-r="Háblame de usted, con cercanía pero con respeto."><span class="txt"><b>De usted, cercano.</b><span>Si prefieres que te tutee, escríbelo en «Lo tuyo».</span></span></label>
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">3 · Cómo te habla a ti</h3>
+          <div class="mb-3 text-[.85rem] text-suave">El trato y el tono de sus respuestas cuando conversa contigo.</div>
+          <label class="opcion"><input type="checkbox" data-r="Háblame de tú." data-excl="trato-yo"><span class="txt"><b>De tú.</b><span>El trato de confianza de un compañero de trabajo.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Háblame de usted, con cercanía pero con respeto." data-excl="trato-yo"><span class="txt"><b>De usted, cercano.</b><span>Con respeto y sin frialdad.</span></span></label>
           <label class="opcion"><input type="checkbox" data-r="Ve al grano, sin rodeos ni relleno."><span class="txt"><b>Directo, sin relleno.</b><span>Primero lo importante.</span></span></label>
           <label class="opcion"><input type="checkbox" data-r="Nada de jerga; si usas un término técnico, explícamelo en lenguaje normal."><span class="txt"><b>Sin tecnicismos.</b><span>Si un término técnico es inevitable, que lo explique.</span></span></label>
         </div>
 
-        <!-- 4 · Forma de trabajar -->
+        <!-- 4 · Tono de lo que prepara para otros (MEJORA 3) -->
         <div class="cat">
-          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">4 · Cómo trabaja conmigo</h3>
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">4 · Cómo escribe lo que prepara para otros</h3>
+          <div class="mb-3 text-[.85rem] text-suave">El tono de los textos que prepara para otras personas: clientes, compañeros o proveedores. Puede ser distinto del que usa contigo. Separarlo evita que mezcle los dos tratos en un mismo texto.</div>
+          <label class="opcion"><input type="checkbox" data-r="En lo que escribas para otras personas, trátalas de tú." data-grupo="otros" data-excl="trato-otros"><span class="txt"><b>Trata de tú a los destinatarios.</b><span>Para clientes de confianza o un público joven.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="En lo que escribas para otras personas, trátalas de usted." data-grupo="otros" data-excl="trato-otros"><span class="txt"><b>Trata de usted a los destinatarios.</b><span>Para administraciones o clientes que no conoces.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Escribe con un tono cercano y natural, como lo haría una persona." data-grupo="otros" data-excl="tono-otros"><span class="txt"><b>Tono cercano.</b><span>Que no parezca un texto de plantilla.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Escribe con un tono formal y cuidado." data-grupo="otros" data-excl="tono-otros"><span class="txt"><b>Tono formal.</b><span>Para escritos oficiales o clientes de empresa.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Que los textos sean breves y se lean de un vistazo." data-grupo="otros"><span class="txt"><b>Textos breves.</b><span>Para mensajes, respuestas y avisos.</span></span></label>
+        </div>
+
+        <!-- 5 · Forma de trabajar -->
+        <div class="cat">
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">5 · Cómo trabaja conmigo</h3>
           <div class="mb-3 text-[.85rem] text-suave">Cómo actúa cuando le encargas algo.</div>
           <label class="opcion"><input type="checkbox" data-r="Propón antes de hacer; espera mi visto bueno antes de cambios importantes."><span class="txt"><b>Que proponga antes de actuar.</b><span>Tú das el OK antes de los cambios importantes.</span></span></label>
           <label class="opcion"><input type="checkbox" data-r="Un paso cada vez; no te adelantes."><span class="txt"><b>Un paso cada vez.</b><span>Sin adelantarse ni saltarse pasos.</span></span></label>
           <label class="opcion"><input type="checkbox" data-r="Si hay varias opciones, dímelas en vez de elegir tú por mí."><span class="txt"><b>Si hay opciones, que me las diga.</b><span>Así la decisión es tuya.</span></span></label>
         </div>
 
-        <!-- 5 · Lo tuyo — multi-entrada F1 -->
+        <!-- 6 · Lo tuyo — multi-entrada F1 -->
         <div class="cat">
-          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">5 · Lo tuyo</h3>
+          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">6 · Lo tuyo</h3>
           <div class="mb-3 text-[.85rem] text-suave">Lo que no esté arriba. Escríbelo con tus palabras y pulsa <b>Añadir</b> (puedes añadir varias).</div>
           <div class="flex gap-2">
             <input class="anade flex-1" id="propia" placeholder="Ej: 'nunca me hables de política'" />
@@ -90,7 +102,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="mb-1 text-[.78rem] font-bold text-[#7ec8ad]">Sus normas de siempre</div>
         <h4 class="mb-3 text-[1rem] font-semibold text-white">Esto es su comportamiento</h4>
         <div class="min-h-[60px] text-[.85rem] leading-[1.7] text-[#cfd4dc]" id="lista">
-          <span class="italic text-[#7c8493]">Ve marcando arriba y aparecerán aquí…</span>
+          <span class="italic text-tenue">Ve marcando arriba y aparecerán aquí…</span>
         </div>
         <div class="mt-[14px] border-t border-[#343b49] pt-[10px] text-[.8rem] text-[#9aa1ac]" id="cuenta">0 normas elegidas</div>
       </aside>
@@ -231,18 +243,33 @@ import Layout from '../layouts/Layout.astro';
 
   function pintar() {
     var reglas = [];
+    var otros = [];
     checks.forEach(function(c) {
       c.closest('.opcion').classList.toggle('on', c.checked);
-      if (c.checked) { reglas.push(c.getAttribute('data-r')); }
+      if (c.checked) {
+        reglas.push(c.getAttribute('data-r'));
+        if (c.getAttribute('data-grupo') === 'otros') { otros.push(c.getAttribute('data-r')); }
+      }
     });
     reglas = reglas.concat(propias);
     if (reglas.length) {
       lista.innerHTML = reglas.map(function(r) { return '· ' + r.replace(/</g, '&lt;'); }).join('<br>');
     } else {
-      lista.innerHTML = '<span class="italic text-[#7c8493]">Ve marcando arriba y aparecerán aquí…</span>';
+      lista.innerHTML = '<span class="italic text-tenue">Ve marcando arriba y aparecerán aquí…</span>';
     }
     cuenta.textContent = reglas.length + (reglas.length === 1 ? ' norma elegida' : ' normas elegidas');
+    // ht_normas sigue llevando TODAS, como antes; ht_normas_otros dice cuáles son para otros.
     localStorage.setItem('ht_normas', JSON.stringify(reglas));
+    localStorage.setItem('ht_normas_otros', JSON.stringify(otros));
+  }
+
+  // MEJORA 3: tú y usted (y cercano y formal) se excluyen dentro de su grupo.
+  function excluir(c) {
+    var g = c.getAttribute('data-excl');
+    if (!g || !c.checked) return;
+    checks.forEach(function(o) {
+      if (o !== c && o.getAttribute('data-excl') === g) { o.checked = false; }
+    });
   }
 
   function anadir() {
@@ -259,7 +286,7 @@ import Layout from '../layouts/Layout.astro';
   propia.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') { e.preventDefault(); anadir(); }
   });
-  checks.forEach(function(c) { c.addEventListener('change', pintar); });
+  checks.forEach(function(c) { c.addEventListener('change', function() { excluir(c); pintar(); }); });
 
   document.getElementById('siguiente').addEventListener('click', function() {
     pintar();

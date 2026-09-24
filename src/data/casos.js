@@ -2,7 +2,7 @@
 // CONTENIDO "CASOS": fuente única de verdad.
 // Tres recorridos COMPLETOS (no tarjetas sueltas): problema → 4 decisiones →
 // normas → entrada/salida → cómo mejora con el uso. Textos escritos a mano.
-// 24/09/2026: reescrito con el registro de la guía del M6. Deja de llamarse
+// 24/09/2026: reescrito con el registro de la guía de estilo del proyecto. Deja de llamarse
 // «Casos reales»: son casos de ejemplo, redactados para la guía.
 // ============================================================
 

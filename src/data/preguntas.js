@@ -2,7 +2,7 @@
 // CONTENIDO "PREGUNTAS" (FAQ): fuente única de verdad.
 // Preguntas habituales de gente no técnica, agrupadas por tema.
 // Material: GUIA v0.12 + informes de sesión.
-// 24/09/2026: reescrito con el registro de la guía del M6. Contrastado con la
+// 24/09/2026: reescrito con el registro de la guía de estilo del proyecto. Contrastado con la
 // ayuda oficial de Claude: hasta cinco proyectos en el plan gratuito, memoria
 // activada por defecto y el ajuste de entrenamiento en los planes gratuito,
 // Pro y Max. Las preguntas van en primera persona porque son de quien lee;

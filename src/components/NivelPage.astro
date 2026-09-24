@@ -1,6 +1,6 @@
 ---
-// Plantilla común de las páginas de nivel (1 · una skill, 2 · un equipo,
-// 3 · un sistema). Recibe los datos en src/data/nivelN.js y los coloca.
+// Plantilla común de las páginas de nivel (1 · una skill, 2 · un enjambre de skills,
+// 3 · un enjambre de enjambres). Recibe los datos en src/data/nivelN.js y los coloca.
 // Los "bloques" se renderizan según su tipo, para que cada nivel arme su
 // página combinando piezas sin repetir maquetación.
 import Layout from '../layouts/Layout.astro';
@@ -9,8 +9,8 @@ const { meta, n, nombre, titulo, lead, bloques = [], prev, next, cta } = data;
 
 const niveles = [
   { n: '1', nombre: 'Una skill', href: '/nivel-1' },
-  { n: '2', nombre: 'Un equipo', href: '/nivel-2' },
-  { n: '3', nombre: 'Un sistema', href: '/nivel-3' },
+  { n: '2', nombre: 'Un enjambre de skills', href: '/nivel-2' },
+  { n: '3', nombre: 'Un enjambre de enjambres', href: '/nivel-3' },
 ];
 ---
 <Layout title={meta.title} description={meta.description}>

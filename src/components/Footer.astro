@@ -1,5 +1,7 @@
 ---
 import { marca, footer } from '../data/site.js';
+// Mes y año de la compilación: Vercel compila en cada subida, así que es la fecha de la última.
+const actualizado = new Date().toLocaleDateString('es-ES', { month: 'long', year: 'numeric', timeZone: 'Europe/Madrid' });
 ---
 <footer class="mt-20 border-t border-linea bg-crema-deep py-10 text-center text-[.82rem] text-suave">
   <div class="mx-auto max-w-[960px] px-6">
@@ -12,5 +14,6 @@ import { marca, footer } from '../data/site.js';
       ))}
     </div>
     <p class="mx-auto max-w-[54ch] text-[.78rem] leading-relaxed text-suave">{footer.nota}</p>
+    <p id="actualizado" class="mt-2 text-[.75rem] text-suave">Versión {footer.version} · Última actualización: {actualizado}</p>
   </div>
 </footer>

@@ -2,7 +2,7 @@
 // CONTENIDO "EL MÉTODO": fuente única de verdad.
 // Lo que se suele creer que hace la IA frente a lo comprobado al montar el
 // sistema, los principios de la guía y cómo se prueba un asistente.
-// 24/09/2026: reescrito con el registro de la guía del M6. Deja de llamarse
+// 24/09/2026: reescrito con el registro de la guía de estilo del proyecto. Deja de llamarse
 // «el método honesto»: la honestidad se demuestra en el contenido, no en el
 // título.
 // ============================================================
@@ -82,7 +82,7 @@ export const metodo = {
       titulo: 'Después de cada arreglo se repiten también los casos que ya funcionaban',
       texto: 'Es la comprobación que más se olvida. Al corregir algo que fallaba, se vuelven a pasar también los casos que ya estaban bien, para confirmar que el cambio no ha estropeado nada en otra parte. Un empeoramiento de lo que ya funcionaba se llama regresión.',
       remate: 'Un arreglo que estropea otra cosa no cuenta como arreglo.',
-      experiencia: 'más de una vez, al mejorar el equipo de contabilidad de este proyecto, un cambio que parecía correcto estropeó algo que ya funcionaba. Se detectó porque se repitieron los casos anteriores. Sin esa repetición, el error habría aparecido más tarde y habría costado más localizarlo.',
+      experiencia: 'más de una vez, al mejorar el enjambre de contabilidad de este proyecto, un cambio que parecía correcto estropeó algo que ya funcionaba. Se detectó porque se repitieron los casos anteriores. Sin esa repetición, el error habría aparecido más tarde y habría costado más localizarlo.',
     },
 
     // 4) Los niveles / profundidad de una simulación, según el riesgo.
