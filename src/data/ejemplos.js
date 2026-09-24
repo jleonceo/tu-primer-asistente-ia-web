@@ -3,6 +3,7 @@
 // Las demos (demoEntrada / demoSalida) son texto ESTÁTICO redactado a mano.
 // No llaman a ninguna IA: muestran lo que puede hacer un asistente bien
 // configurado, sin exagerar.
+// 24/09/2026: revisada desde lo que el lector necesita entender (títulos, causas, antítesis y remates).
 // 24/09/2026: reescrito. Esta página abre los pasos, así que va en tú.
 // ============================================================
 
@@ -13,12 +14,12 @@ export const ejemplos = {
     titulo: 'Crea tu asistente a partir de una tarea',
     sub:   'Para no empezar con la hoja en blanco, elige la tarea que más se parezca a la tuya. En el paso siguiente la adaptas a tu caso o la cambias entera. <b>Si ninguna se parece</b>, empieza desde cero.',
     // Resumen de las tres piezas, para quien llega aquí sin pasar por el nivel 1.
-    primer: 'Tu asistente se monta en tres pasos, uno por pieza: <b>la tarea</b> (qué hace), <b>las normas</b> (cómo se comporta) y <b>la memoria</b> (qué datos tuyos tiene en cuenta). Se empieza por la tarea.',
+    primer: 'Tu asistente se monta en tres pasos, uno para cada parte de sus instrucciones: <b>la tarea</b> (qué hace), <b>las normas</b> (cómo se comporta) y <b>la memoria</b> (qué datos tuyos tiene en cuenta). Se empieza por la tarea.',
     primerLink: { texto: 'Si es la primera vez, aquí se explica cómo funciona. Lo que hayas rellenado se conserva', href: '/nivel-1' },
   },
 
   // Aviso temprano de cuenta, para que no aparezca por sorpresa al final.
-  avisoCuenta: 'Para guardar y usar el asistente necesitarás una cuenta en claude.ai. Sirve la gratuita.',
+  avisoCuenta: 'Para guardar y usar el asistente necesitarás una cuenta en claude.ai, que puede ser la gratuita.',
 
   tarjetas: [
     {
@@ -75,7 +76,7 @@ export const ejemplos = {
       titulo:      'Ideas de contenido',
       descripcion: 'Prepara un calendario de ideas de publicación para tu sector.',
       demoEntrada: 'Fisioterapeuta con clínica propia. Quiero publicar 3 veces por semana en Instagram.',
-      demoSalida:  'Lunes, consejo rápido: «Por qué te duele el cuello aunque no hayas hecho ningún esfuerzo»\nMiércoles, un mito falso: «Crujirse los dedos no provoca artritis»\nViernes, pregunta a tus seguidores: «¿Cuántas horas al día pasas sentado?»',
+      demoSalida:  'Lunes, consejo rápido: «Por qué te duele el cuello aunque no hayas hecho ningún esfuerzo»\nMiércoles, un mito: «Crujirse los dedos no provoca artritis»\nViernes, pregunta a tus seguidores: «¿Cuántas horas al día pasas sentado?»',
     },
   ],
 

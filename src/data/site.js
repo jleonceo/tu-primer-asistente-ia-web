@@ -1,7 +1,8 @@
 // ============================================================
 // CONTENIDO DE LA WEB: fuente única de verdad (separado de la estructura).
 // Editar los textos AQUÍ; las páginas .astro solo los colocan.
-// 24/09/2026: reescrito con el registro de la guía de estilo del proyecto.
+// 24/09/2026: reescrito con el registro de la guía de estilo del proyecto y revisada la portada
+// desde lo que el lector necesita entender.
 // Impersonal en las páginas que explican, tuteo solo en los pasos y el
 // resultado, botones en infinitivo. Sin cifras usadas como reclamo.
 // ============================================================
@@ -46,7 +47,7 @@ export const inicio = {
     kicker: 'Una guía paso a paso',
     titulo: 'Las instrucciones que convierten a Claude en <em>un asistente propio</em>',
     lead: 'Sin instrucciones guardadas, Claude no sabe qué tarea se le va a pedir, con qué tono ni con qué límites. Hay que explicárselo en cada conversación. Esta guía ayuda a escribir esas instrucciones <b>una sola vez</b> y a guardarlas en un proyecto de Claude, donde se aplican a todas las conversaciones.',
-    aclara: 'Esta web no es la IA. Aquí se prepara el texto de las instrucciones. Al final se pega en una cuenta de Claude, que puede ser la gratuita. Es Claude quien lo usa.',
+    aclara: 'Esta web no es una IA. Sirve para preparar el texto de las instrucciones, que al final se pega en una cuenta de Claude, también en la gratuita. A partir de ahí, quien lo usa es Claude.',
     cta: 'Crear un asistente',
     ctaHref: '/ejemplos',
     ctaSub: 'Cada paso queda guardado en el navegador',
@@ -107,7 +108,7 @@ export const inicio = {
         d: 'Las instrucciones se guardan en un proyecto de Claude y se aplican a todas las conversaciones que se abren dentro de él.',
       },
       {
-        t: 'Quien lo monta sabe arreglarlo.',
+        t: 'Quien escribe las instrucciones sabe arreglarlas.',
         d: 'Quien ha escrito sus instrucciones sabe qué cambiar cuando el asistente falla. Si otra persona lo monta entero, cada arreglo depende de ella.',
       },
     ],
@@ -117,8 +118,8 @@ export const inicio = {
 
   // RECORRIDO: los tres niveles, como índice de la guía.
   ascenso: {
-    titulo: 'Tres niveles: una skill, un enjambre de skills y un enjambre de enjambres',
-    sub: 'La guía empieza por una sola tarea, que es el nivel 1. Los niveles 2 y 3 explican cómo se combinan varias skills cuando una sola no basta. Para empezar solo hace falta el primero.',
+    titulo: 'La guía tiene tres niveles y para empezar basta el primero',
+    sub: 'El nivel 1 es una sola tarea. Los niveles 2 y 3 explican qué se monta cuando una skill no basta: primero un enjambre de skills para una tarea con varios pasos y después un enjambre para cada área de la empresa.',
     niveles: [
       {
         n: '1',
@@ -132,7 +133,7 @@ export const inicio = {
         n: '2',
         nombre: 'Un enjambre de skills',
         titulo: 'Varias skills que se reparten una tarea',
-        d: 'Un coordinador reparte el trabajo entre especialistas y un verificador lo revisa antes de darlo por bueno.',
+        d: 'Un coordinador reparte el trabajo entre varias skills y un verificador lo revisa antes de darlo por bueno.',
         prueba: 'Para tareas con varios pasos distintos.',
         href: '/nivel-2',
       },
@@ -150,7 +151,7 @@ export const inicio = {
   // DE DÓNDE SALE: el origen de los ejemplos, sin cifras de reclamo.
   contexto: {
     titulo: 'De dónde sale lo que cuenta esta guía',
-    sub: 'Lo que se explica aquí sale de montar estos asistentes y enjambres sobre la contabilidad de una empresa simulada. Los datos son ficticios, pero el sistema contable funciona y cada cifra tiene que cuadrar. Es la experiencia de quien lo ha montado, no una garantía que se pueda comprobar desde esta web.',
+    sub: 'Lo que se explica aquí sale de montar estos asistentes y enjambres sobre la contabilidad de una empresa simulada. Los datos son ficticios, pero el sistema contable funciona y cada cifra tiene que cuadrar. Es la experiencia de quien lo ha montado y no se puede comprobar desde esta web.',
     puntos: [
       'Las cifras que importan, como un importe o una fecha, las comprueba un programa. No se dan por buenas porque lo diga la IA.',
       'Un segundo revisor busca los errores del primero antes de cerrar una tarea.',

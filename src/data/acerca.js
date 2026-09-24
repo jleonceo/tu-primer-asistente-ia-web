@@ -1,6 +1,7 @@
 // ============================================================
 // CONTENIDO DE LA PÁGINA "QUÉ ES ESTO": fuente única de verdad.
 // Editar los textos AQUÍ; acerca.astro solo los coloca.
+// 24/09/2026: revisada desde lo que el lector necesita entender (títulos, causas, antítesis y remates).
 // 24/09/2026: reescrito con el registro de la guía de estilo del proyecto. La sección de otras
 // IA dice ya que Anthropic creó el formato de las skills y que después lo
 // adoptaron otras plataformas (lista comprobada en agentskills.io ese día).
@@ -22,7 +23,7 @@ export const acerca = {
       id: 'como-funciona',
       h2: 'Cómo funciona',
       parrafos: [
-        'La web lleva por tres pasos, uno por pieza: <b>la tarea</b> (qué hace), <b>las normas</b> (cómo se comporta siempre) y <b>la memoria</b> (qué datos de quien lo usa tiene en cuenta). Al final junta las respuestas en un solo texto para copiarlo.',
+        'La web lleva por tres pasos, uno para cada parte de las instrucciones: <b>la tarea</b> (qué hace), <b>las normas</b> (cómo se comporta siempre) y <b>la memoria</b> (qué datos de quien lo usa tiene en cuenta). Al final junta las respuestas en un solo texto para copiarlo, que también se puede descargar como skill en un .zip.',
         '<b>El asistente se crea en la cuenta de Claude de cada persona.</b> Esta web no es la IA, solo enseña y prepara el texto. El último paso es pegarlo en las instrucciones de un proyecto de Claude, donde queda guardado. Para usar la web no hace falta cuenta, ni pagar, ni instalar nada.',
       ],
     },
@@ -49,7 +50,7 @@ export const acerca = {
       h2: '¿Solo vale para Claude?',
       parrafos: [
         'La guía usa <b>Claude</b> porque Anthropic creó el formato de las <i>skills</i> y durante un tiempo fue la plataforma que mejor resolvía esta forma de trabajar. El método, sin embargo, <b>no depende de Claude</b>.',
-        'Anthropic publicó ese formato como <b>estándar abierto</b> en <a href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a>. Después lo han adoptado muchas otras herramientas, entre ellas ChatGPT y Codex de OpenAI, Gemini CLI de Google, GitHub Copilot y Cursor. Las tres piezas, la tarea, las normas y la memoria, existen también en esas plataformas con otros nombres. Lo que se aprende aquí <b>sirve en todas ellas</b>: cambia dónde se pega el texto y cómo se llama cada archivo.',
+        'Anthropic publicó ese formato como <b>estándar abierto</b> en <a href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a>. Después lo han adoptado muchas otras herramientas, entre ellas ChatGPT y Codex de OpenAI, Gemini CLI de Google, GitHub Copilot y Cursor. Las tres partes, la tarea, las normas y la memoria, existen también en esas plataformas con otros nombres. Lo que se aprende aquí <b>sirve en todas ellas</b>: cambia dónde se pega el texto y cómo se llama cada archivo.',
       ],
     },
   ],

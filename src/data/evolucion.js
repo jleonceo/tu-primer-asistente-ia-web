@@ -1,6 +1,7 @@
 // ============================================================
 // CONTENIDO DE LA PÁGINA EVOLUCIÓN: fuente única de verdad.
 // Editar los textos AQUÍ; evolucion.astro solo los coloca.
+// 24/09/2026: revisada desde lo que el lector necesita entender (títulos, causas, antítesis y remates).
 // 24/09/2026: reescrito. Sigue al resultado, así que va en tú. Se corrige la
 // memoria automática: según la ayuda de Claude viene activada por defecto
 // también en el plan gratuito, y cada proyecto tiene la suya.
@@ -25,7 +26,7 @@ export const evolucion = {
       {
         n: 1,
         titulo: 'Úsalo con casos reales',
-        texto: 'Los fallos aparecen al usarlo en tu trabajo diario, no antes.',
+        texto: 'Los fallos aparecen cuando lo usas en tu trabajo diario, con casos que no se habían previsto al escribir las instrucciones.',
       },
       {
         n: 2,
@@ -49,7 +50,7 @@ export const evolucion = {
   notaHonesta: {
     titulo: 'Lleva semanas:',
     texto:
-      'Un asistente que responde como tú se consigue en semanas o meses de uso, no en una tarde. Cada corrección que añades se aplica desde ese momento en todas las conversaciones del proyecto.',
+      'Un asistente que responde como tú se consigue tras semanas o meses de uso, porque cada caso nuevo enseña algo que corregir. Cada corrección que añades se aplica desde ese momento en todas las conversaciones del proyecto.',
   },
 
   practica: {

@@ -2,6 +2,7 @@
 // CONTENIDO "CASOS": fuente única de verdad.
 // Tres recorridos COMPLETOS (no tarjetas sueltas): problema → 4 decisiones →
 // normas → entrada/salida → cómo mejora con el uso. Textos escritos a mano.
+// 24/09/2026: revisada desde lo que el lector necesita entender (títulos, causas, antítesis y remates).
 // 24/09/2026: reescrito con el registro de la guía de estilo del proyecto. Deja de llamarse
 // «Casos reales»: son casos de ejemplo, redactados para la guía.
 // ============================================================
@@ -23,7 +24,7 @@ export const casos = {
     {
       perfil: 'Comercio · tienda online',
       titulo: 'Responder reseñas sin fórmulas de plantilla',
-      problema: 'Cada semana llegan reseñas buenas y malas. Responderlas bien lleva tiempo. Una respuesta que tarda días parece desinterés. Una copiada de otra se reconoce enseguida.',
+      problema: 'Cada semana llegan reseñas buenas y malas y responderlas bien lleva tiempo. Si la respuesta tarda días, el cliente la lee como desinterés. Si está copiada de otra, lo nota enseguida.',
       decisiones: [
         { q: '¿Qué hace?', a: 'Convierte una reseña en una respuesta con mi tono.' },
         { q: '¿Para quién?', a: 'Para el cliente que la escribió y para quien la lea después.' },

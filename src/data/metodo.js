@@ -2,6 +2,7 @@
 // CONTENIDO "EL MÉTODO": fuente única de verdad.
 // Lo que se suele creer que hace la IA frente a lo comprobado al montar el
 // sistema, los principios de la guía y cómo se prueba un asistente.
+// 24/09/2026: revisada desde lo que el lector necesita entender (títulos, causas, antítesis y remates).
 // 24/09/2026: reescrito con el registro de la guía de estilo del proyecto. Deja de llamarse
 // «el método honesto»: la honestidad se demuestra en el contenido, no en el
 // título.
@@ -16,7 +17,7 @@ export const metodo = {
   hero: {
     k: 'El método',
     titulo: 'Lo que se suele creer de la IA y lo que se ha comprobado al usarla',
-    lead: 'De la IA se oye que lo hace todo sola, que sustituye a un equipo o que basta un clic. Esta página recoge lo que se ha comprobado al montar asistentes para un sistema contable: el método de tres piezas, en qué principios se basa y cómo se prueba que un asistente funciona antes de confiar en él.',
+    lead: 'De la IA se oye que lo hace todo sola, que sustituye a un equipo o que basta un clic. Esta página recoge lo que se ha comprobado al montar asistentes para un sistema contable: el método de tres partes, en qué principios se basa y cómo se prueba que un asistente funciona antes de confiar en él.',
   },
 
   contraste: {
@@ -24,7 +25,7 @@ export const metodo = {
     titulo: 'Seis ideas frecuentes sobre la IA, contrastadas',
     filas: [
       { otros: '«La IA lo hace todo sola.»', nosotros: 'El asistente lo monta quien lo va a usar, siguiendo esta guía. Por eso sabe qué hace y cómo corregirlo.' },
-      { otros: '«Es un clic, sin esfuerzo.»', nosotros: 'Son tres piezas y un rato de trabajo. De ese rato depende que las respuestas se ajusten a la tarea.' },
+      { otros: '«Es un clic, sin esfuerzo.»', nosotros: 'Son tres partes y un rato de trabajo. De ese rato depende que las respuestas se ajusten a la tarea.' },
       { otros: '«Sustituye a un equipo.»', nosotros: 'Quita trabajo repetitivo. Las decisiones siguen siendo de las personas.' },
       { otros: '«Nunca se equivoca.»', nosotros: 'Comete menos errores con buenas instrucciones, pero sigue cometiéndolos. Lo que importa lo revisa una persona.' },
       { otros: '«Con los datos no hay de qué preocuparse.»', nosotros: 'La guía explica por dónde pasan los datos y qué no conviene escribir nunca.' },
@@ -61,7 +62,7 @@ export const metodo = {
   simulaciones: {
     k: 'Comprobar antes de confiar',
     titulo: 'Un asistente se prueba con muchos casos antes de confiarle algo importante',
-    lead: 'Esta parte es para quien quiera ir más allá de su primer asistente. Se puede saltar. Una respuesta que parece buena no demuestra que el asistente funcione. Antes de confiarle algo que importa hay que probarlo de forma ordenada, porque solo así se sabe en qué casos acierta y en cuáles falla.',
+    lead: 'Esta parte es para quien quiera ir más allá de su primer asistente y se puede saltar. Una respuesta que parece buena no demuestra que el asistente funcione. Antes de confiarle algo que importa hay que probarlo de forma ordenada, porque solo así se sabe en qué casos acierta y en cuáles falla.',
 
     // 1) Por qué probar es imprescindible.
     porQue: {
@@ -81,7 +82,7 @@ export const metodo = {
     regresion: {
       titulo: 'Después de cada arreglo se repiten también los casos que ya funcionaban',
       texto: 'Es la comprobación que más se olvida. Al corregir algo que fallaba, se vuelven a pasar también los casos que ya estaban bien, para confirmar que el cambio no ha estropeado nada en otra parte. Un empeoramiento de lo que ya funcionaba se llama regresión.',
-      remate: 'Un arreglo que estropea otra cosa no cuenta como arreglo.',
+      remate: 'Por eso un arreglo solo se da por bueno cuando los casos anteriores siguen saliendo bien.',
       experiencia: 'más de una vez, al mejorar el enjambre de contabilidad de este proyecto, un cambio que parecía correcto estropeó algo que ya funcionaba. Se detectó porque se repitieron los casos anteriores. Sin esa repetición, el error habría aparecido más tarde y habría costado más localizarlo.',
     },
 
@@ -101,7 +102,7 @@ export const metodo = {
     marco: {
       titulo: 'Las pruebas se pueden montar con ayuda de la propia IA',
       texto: 'No hace falta ser experto para montar estas pruebas. Se le puede pedir a la propia IA que ayude a preparar los casos, a anotar la respuesta correcta de cada uno y a comparar los resultados. Lo que aporta esta guía es el <b>criterio</b>: qué conviene probar, cómo, cuándo basta con poco y cuándo hace falta más.',
-      remate: 'Probar un asistente permite saber en qué se puede confiar en él y por qué.',
+      remate: 'Para empezar, al terminar el recorrido la web propone tres pruebas montadas con las respuestas de cada persona.',
     },
   },
 
