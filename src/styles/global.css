@@ -120,7 +120,7 @@ h1, h2, h3, .display {
   color: var(--color-acento-deep);
 }
 .eyebrow::before {
-  content: "";
+  content: none;
   display: inline-block;
   width: 1.5rem;
   height: 2px;

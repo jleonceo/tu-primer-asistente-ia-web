@@ -2,12 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import { acerca } from '../data/acerca.js';
 ---
-<Layout title="Qué es esto — Tu primer asistente de IA">
+<Layout title="Qué es esto · Tu primer asistente de IA">
   <div class="mx-auto max-w-[940px] px-6 pb-[60px] pt-[60px]">
 
     <!-- CABECERA -->
     <div class="mb-12 text-center">
-      <div class="eyebrow eyebrow-c mx-auto mb-3">Hablando claro</div>
+      <div class="eyebrow eyebrow-c mx-auto mb-3">Qué es esta web</div>
       <h1 class="mb-3 text-[clamp(2rem,5vw,2.6rem)] font-bold leading-tight">{acerca.titulo}</h1>
       <p class="mx-auto max-w-[52ch] text-[1.12rem] text-suave">{acerca.subtitulo}</p>
     </div>
@@ -28,7 +28,7 @@ import { acerca } from '../data/acerca.js';
               {sec.lista.map((item) => (
                 <li class="flex items-start gap-3">
                   <div aria-hidden="true" class={`mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-md text-[.8rem] font-bold ${item.si ? 'bg-[rgba(46,106,87,.15)] text-verde' : 'bg-[rgba(91,100,114,.12)] text-suave'}`}>
-                    {item.si ? '✓' : '✕'}
+                    <span class={`block h-1.5 w-1.5 rounded-full ${item.si ? 'bg-verde' : 'border border-current'}`}></span>
                   </div>
                   <span class="text-[.97rem] text-suave [&_b]:text-tinta" set:html={item.texto} />
                 </li>

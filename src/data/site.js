@@ -1,13 +1,9 @@
 // ============================================================
-// CONTENIDO DE LA WEB — fuente única de verdad (separado de la estructura).
+// CONTENIDO DE LA WEB: fuente única de verdad (separado de la estructura).
 // Editar los textos AQUÍ; las páginas .astro solo los colocan.
-// web_nueva v3: home como GUÍA (no como landing de venta). Manifiesto que
-// explica desde dónde se habla, demo "antes/después" con ejemplos reales,
-// recorrido por los 3 niveles y una nota honesta sobre dónde se usa esto.
-// Voz peninsular, directa, sin tics de IA (ni raya como conector, ni
-// "no es X sino Y" en cadena, ni "de verdad/sin humo" repetido).
-// 18/06: se quita el tono vendedor. Es una guía que informa y enseña, no
-// empuja a convertir. Se retiran las cifras usadas como gancho de venta.
+// 24/09/2026: reescrito con el registro de la guía de automatización del M6.
+// Impersonal en las páginas que explican, tuteo solo en los pasos y el
+// resultado, botones en infinitivo. Sin cifras usadas como reclamo.
 // ============================================================
 
 export const marca = {
@@ -15,13 +11,13 @@ export const marca = {
   nombreAcento: 'IA',
   titulo: 'Tu primer asistente de IA',
   descripcion:
-    'Una guía para aprender a darle a la IA tu forma de trabajar y tu memoria, para que deje de ser genérica. Con ejemplos reales y lenguaje claro, pensada para quien no programa.',
+    'Una guía para preparar las instrucciones que le dan a Claude una tarea, unas normas y los datos de quien lo usa. Con ellas no hace falta explicarle todo en cada conversación. Escrita en lenguaje normal, para quien no programa.',
 };
 
 export const nav = [
   { href: '/nivel-1', texto: 'Cómo funciona' },
   { href: '/glosario', texto: 'Conceptos clave' },
-  { href: '/casos', texto: 'Casos reales' },
+  { href: '/casos', texto: 'Casos' },
   { href: '/metodo', texto: 'El método' },
   { href: '/preguntas', texto: 'Preguntas' },
   { href: '/ejemplos', texto: 'Crear mi asistente', cta: true },
@@ -33,42 +29,40 @@ export const footer = {
     { href: '/nivel-1', texto: 'Nivel 1 · Una skill' },
     { href: '/nivel-2', texto: 'Nivel 2 · Un equipo' },
     { href: '/nivel-3', texto: 'Nivel 3 · Un sistema' },
-    { href: '/casos', texto: 'Casos reales' },
+    { href: '/casos', texto: 'Casos' },
     { href: '/metodo', texto: 'El método' },
     { href: '/glosario', texto: 'Conceptos clave' },
     { href: '/evolucion', texto: 'Mejorarlo con el uso' },
     { href: '/preguntas', texto: 'Preguntas' },
     { href: '/acerca', texto: 'Qué es esto' },
   ],
-  nota: 'Prototipo de prueba, sin uso comercial. Proyecto independiente, no afiliado a Anthropic.',
+  nota: 'Prototipo sin uso comercial. Proyecto independiente, sin relación con Anthropic.',
 };
 
 export const inicio = {
   hero: {
     kicker: 'Una guía paso a paso',
-    titulo: 'Una IA que <em>te conoce</em> y mañana no te olvida',
-    lead: 'Hoy se lo explicas todo en cada conversación, y al día siguiente vuelve a ser una desconocida. Esta guía te ayuda a darle <b>tu forma de trabajar y tu memoria</b> una sola vez, para que se quede.',
-    aclara: 'Para que quede claro: esta web no es la IA. Aquí preparas las instrucciones de tu asistente y, al final, las pegas en tu cuenta gratuita de Claude, que es quien las usa.',
-    cta: 'Crea tu primer asistente',
+    titulo: 'Las instrucciones que convierten a Claude en <em>un asistente propio</em>',
+    lead: 'Sin instrucciones guardadas, Claude no sabe qué tarea se le va a pedir, con qué tono ni con qué límites. Hay que explicárselo en cada conversación. Esta guía ayuda a escribir esas instrucciones <b>una sola vez</b> y a guardarlas en un proyecto de Claude, donde se aplican a todas las conversaciones.',
+    aclara: 'Esta web no es la IA. Aquí se prepara el texto de las instrucciones. Al final se pega en una cuenta de Claude, que puede ser la gratuita. Es Claude quien lo usa.',
+    cta: 'Crear un asistente',
     ctaHref: '/ejemplos',
-    ctaSub: 'A tu ritmo',
-    linkTexto: 'o entiende primero cómo funciona',
+    ctaSub: 'Cada paso queda guardado en el navegador',
+    linkTexto: 'o ver antes cómo funciona',
     linkHref: '/nivel-1',
   },
 
-  // PARA QUIÉN: nota breve y honesta para que el visitante se identifique
-  // sin tener que deducirlo. Nombra al público; no vende.
+  // PARA QUIÉN: nota breve para que el visitante sepa si le sirve.
   paraQuien: {
-    si: 'Es para ti si haces una y otra vez la misma tarea de escritura o de contestación, no programas, y quieres que la IA se adapte a tu forma en vez de empezar de cero cada día.',
-    no: 'No es para ti si buscas un botón que lo haga todo solo, o si necesitas montar algo a gran escala con un equipo técnico detrás.',
+    si: 'Sirve a quien repite a menudo la misma tarea de escritura o de respuesta, no programa y quiere que Claude la haga con sus criterios sin tener que explicárselos cada día.',
+    no: 'No sirve a quien busca que la tarea se haga sola, sin revisar el resultado, ni a quien necesita un sistema grande con un equipo técnico detrás.',
   },
 
-  // DEMO antes/después. La diferencia se ve mejor de lo que se cuenta.
-  // Honestidad: son respuestas reales de ejemplo, no una IA llamada en vivo.
+  // DEMO con y sin instrucciones. Textos escritos a mano, no generados en directo.
   demo: {
-    titulo: 'La misma tarea, antes y después',
-    sub: 'Elige una tarea. A la izquierda responde una IA que te acaba de conocer. A la derecha, la misma tarea con tu forma de trabajar ya guardada.',
-    nota: 'Son respuestas reales de ejemplo, escritas a mano para enseñar la diferencia. No es una IA llamada en directo.',
+    titulo: 'La misma tarea, con y sin instrucciones guardadas',
+    sub: 'Al elegir una tarea, a la izquierda aparece la respuesta de una IA sin instrucciones y a la derecha la de un asistente que ya tiene guardada la forma de trabajar de quien lo usa.',
+    nota: 'Las respuestas están escritas a mano para mostrar la diferencia. No las genera una IA en directo.',
     casos: [
       {
         etiqueta: 'Responder una reseña',
@@ -76,7 +70,7 @@ export const inicio = {
         generico:
           'Estimado cliente, lamentamos los inconvenientes ocasionados. Hemos tomado nota de su incidencia y trabajaremos para mejorar nuestros servicios. Le agradecemos su comprensión y quedamos a su entera disposición.',
         tuyo:
-          'Hola Marta, gracias por contárnoslo, y perdona el destrozo del envío. Tienes toda la razón: así no debería llegar. Te he preparado el reemplazo, sale hoy y lo tienes en 48 horas. Lo de la caja se lo digo ya a la empresa de transporte. Cualquier cosa, me escribes a mí directamente.',
+          'Hola Marta, gracias por contárnoslo y perdona el estado del envío. Tienes razón, así no debería llegar. Te preparamos hoy mismo el reemplazo y lo tendrás en 48 horas. Lo de la caja ya se lo hemos trasladado a la empresa de transporte. Para cualquier cosa, escríbeme directamente.',
       },
       {
         etiqueta: 'Vender un producto',
@@ -84,7 +78,7 @@ export const inicio = {
         generico:
           'Mochila de 22 litros fabricada en tela reciclada. Dispone de un bolsillo para portátil de 15 pulgadas. Es impermeable y pesa 680 gramos. Un producto versátil y de calidad para tu día a día.',
         tuyo:
-          'Te cabe el día entero y casi no la notas: 680 gramos para 22 litros, con un bolsillo acolchado donde el portátil de 15" viaja sin sustos. La tela es reciclada y aguanta el chaparrón de camino a la oficina. Para quien va ligero pero lo lleva todo.',
+          'Caben las cosas de todo el día y casi no se nota el peso: 680 gramos para 22 litros, con un bolsillo acolchado para un portátil de hasta 15". La tela es reciclada e impermeable, así que la lluvia de camino a la oficina no la atraviesa. Pensada para quien quiere llevarlo todo encima sin cargar la espalda.',
       },
       {
         etiqueta: 'Explicar algo difícil',
@@ -92,87 +86,81 @@ export const inicio = {
         generico:
           'La prorrata del IVA es el mecanismo mediante el cual se determina el porcentaje del IVA soportado que resulta deducible cuando un sujeto pasivo realiza simultáneamente operaciones que generan derecho a deducción y otras que no, aplicando la regla general o especial según corresponda.',
         tuyo:
-          'Cuando compras cosas para tu negocio pagas IVA. Si todo lo que vendes lleva IVA, te lo puedes descontar entero. Pero si una parte de lo que vendes está exenta (algunos seguros, ciertas clases), Hacienda dice: «solo te descuentas la parte proporcional». La prorrata es ese porcentaje, qué parte del IVA que pagaste recuperas.',
+          'Cuando compras algo para tu negocio pagas IVA. Si todo lo que vendes lleva IVA, puedes descontarte todo ese IVA. Si una parte de tus ventas está exenta, como algunos seguros o ciertas clases, Hacienda solo te deja descontar la parte proporcional. La prorrata es ese porcentaje: la parte del IVA pagado que recuperas.',
       },
     ],
   },
 
-  // MANIFIESTO: en qué creemos. Toma partido, habla al miedo del no-técnico.
-  // (Versión breve: el detalle de los principios y los avisos vive en /metodo,
-  //  para no repetir lo mismo en portada, método y acerca.)
+  // TRES IDEAS: la versión breve. El detalle vive en /metodo.
   credo: {
-    titulo: 'Cómo lo vemos',
-    sub: 'Cómo pensamos, en pocas palabras.',
+    titulo: 'Las tres ideas en las que se basa la guía',
+    sub: 'Aquí van resumidas. La página del método las explica con más detalle.',
     puntos: [
       {
-        t: 'No necesitas saber programar.',
-        d: 'Necesitas saber qué quieres que haga. Y eso lo sabes tú.',
+        t: 'No hace falta saber programar.',
+        d: 'Hace falta saber qué tarea se quiere encargar y cómo tiene que quedar el resultado. Eso lo sabe quien hace la tarea cada día.',
       },
       {
-        t: 'Lo escribes una vez y se queda.',
-        d: 'Tu manera de trabajar no se repite en cada chat: se guarda una vez y la IA la lee siempre que abres una conversación.',
+        t: 'Se escribe una vez y queda guardado.',
+        d: 'Las instrucciones se guardan en un proyecto de Claude y se aplican a todas las conversaciones que se abren dentro de él.',
       },
       {
-        t: 'Lo montas tú, y por eso lo entiendes.',
-        d: 'Cuando entiendes cómo está hecho, lo arreglas y lo mejoras solo. Si te lo hacen entero, dependes para siempre de quien te lo hizo.',
+        t: 'Quien lo monta sabe arreglarlo.',
+        d: 'Quien ha escrito sus instrucciones sabe qué cambiar cuando el asistente falla. Si otra persona lo monta entero, cada arreglo depende de ella.',
       },
     ],
-    remate: 'En qué nos apoyamos para decir esto (y lo que no te ocultamos sobre privacidad y errores) lo contamos entero en',
+    remate: 'En qué se basan estas ideas, qué riesgos de privacidad hay y qué errores comete un asistente se explica en',
     remateEnlace: { texto: 'el método', href: '/metodo' },
   },
 
-  // RECORRIDO: los 3 niveles como peldaños de una misma pirámide.
-  // (Antes "ascenso" con cifras de prueba social; ahora describe cada nivel
-  //  de forma neutra, como un índice de la guía.)
+  // RECORRIDO: los tres niveles, como índice de la guía.
   ascenso: {
-    titulo: 'El recorrido: de tu primera tarea a un sistema',
-    sub: 'Se empieza con una sola tarea. Lo que aprendes ahí es el primer peldaño de algo bastante más grande. Aquí están los tres niveles explicados, aunque al principio solo necesites el de abajo.',
+    titulo: 'Tres niveles: una tarea, un equipo y un sistema',
+    sub: 'La guía empieza por una sola tarea, que es el nivel 1. Los niveles 2 y 3 explican cómo se combinan varias skills cuando una sola no basta. Para empezar solo hace falta el primero.',
     niveles: [
       {
         n: '1',
         nombre: 'Una skill',
-        titulo: 'Tu primer asistente',
-        d: 'Una "skill" no es más que esto: una tarea, con sus normas y su memoria. Es por donde se empieza.',
-        prueba: 'El peldaño de partida.',
+        titulo: 'El primer asistente',
+        d: 'Una tarea con sus normas y los datos de quien la usa. Es el punto de partida.',
+        prueba: 'Por aquí se empieza.',
         href: '/nivel-1',
       },
       {
         n: '2',
         nombre: 'Un equipo',
         titulo: 'Varias skills que trabajan juntas',
-        d: 'Un coordinador que reparte el trabajo entre especialistas, y un verificador que lo comprueba antes de dar nada por bueno.',
-        prueba: 'Cuando una skill sola se queda corta.',
+        d: 'Un coordinador reparte el trabajo entre especialistas y un verificador lo revisa antes de darlo por bueno.',
+        prueba: 'Para tareas con varios pasos distintos.',
         href: '/nivel-2',
       },
       {
         n: '3',
         nombre: 'Un sistema',
         titulo: 'Un equipo de equipos',
-        d: 'Un director central que escucha lo que pides y manda el encargo al equipo correcto. La punta de la pirámide.',
-        prueba: 'La forma que toma cuando ya hay varios equipos.',
+        d: 'Un director central lee cada encargo y lo envía al equipo que corresponde.',
+        prueba: 'Para cuando ya hay varios equipos.',
         href: '/nivel-3',
       },
     ],
   },
 
-  // DE DÓNDE SALE ESTO: nota honesta sobre el origen de los ejemplos.
-  // (Antes "prueba viva" con cifras como gancho de venta y sin cotejar con la
-  //  fuente. Ahora explica el contexto sin presentar números como reclamo.)
+  // DE DÓNDE SALE: el origen de los ejemplos, sin cifras de reclamo.
   contexto: {
-    titulo: 'De dónde sale lo que aquí se cuenta',
-    sub: 'Esta guía no es teoría suelta: viene de usar estos asistentes y equipos en un caso real, la contabilidad de una empresa, donde un número mal puesto trae consecuencias de verdad. Es nuestra experiencia montándolo, no una garantía que puedas comprobar desde aquí.',
+    titulo: 'De dónde sale lo que cuenta esta guía',
+    sub: 'Lo que se explica aquí sale de montar estos asistentes y equipos sobre la contabilidad de una empresa simulada. Los datos son ficticios, pero el sistema contable funciona y cada cifra tiene que cuadrar. Es la experiencia de quien lo ha montado, no una garantía que se pueda comprobar desde esta web.',
     puntos: [
-      'Lo que de verdad importa (un importe, una fecha, un dato) se comprueba con un programa, no se da por bueno porque lo diga la IA.',
-      'Un segundo revisor busca el fallo del primero antes de dar nada por cerrado.',
-      'Y si algo no se ha podido comprobar, se dice claramente en lugar de adornarlo.',
+      'Las cifras que importan, como un importe o una fecha, las comprueba un programa. No se dan por buenas porque lo diga la IA.',
+      'Un segundo revisor busca los errores del primero antes de cerrar una tarea.',
+      'Lo que no se ha podido comprobar se declara como no comprobado.',
     ],
-    nota: 'Lo contamos porque puede serte útil para valorar si un método así encaja con lo que necesitas. Si quieres ver cómo se comprueba que un sistema así funciona, lo explicamos en el método.',
+    nota: 'Sirve para valorar si el método encaja con lo que se necesita. Cómo se comprueba que un asistente funciona se explica en la página del método.',
   },
 
   cierre: {
     titulo: 'Por dónde empezar',
-    sub: 'La primera versión es un borrador: funciona desde el primer día y se mejora con el uso. Lo demás se construye encima, a tu ritmo.',
-    cta: 'Crea tu primer asistente',
+    sub: 'La primera versión es un borrador que ya funciona y mejora con el uso. Los niveles 2 y 3 se construyen después, encima de ella.',
+    cta: 'Crear un asistente',
     ctaHref: '/ejemplos',
   },
 };

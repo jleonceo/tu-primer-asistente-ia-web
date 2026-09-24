@@ -1,52 +1,55 @@
 // ============================================================
-// CONTENIDO DE LA PÁGINA "QUÉ ES ESTO" — fuente única de verdad.
+// CONTENIDO DE LA PÁGINA "QUÉ ES ESTO": fuente única de verdad.
 // Editar los textos AQUÍ; acerca.astro solo los coloca.
+// 24/09/2026: reescrito con el registro de la guía del M6. La sección de otras
+// IA dice ya que Anthropic creó el formato de las skills y que después lo
+// adoptaron otras plataformas (lista comprobada en agentskills.io ese día).
 // ============================================================
 
 export const acerca = {
-  titulo: 'Qué es esto, en claro',
-  subtitulo: 'Lo que es, lo que no, y cómo trata tus datos. Sin rodeos.',
+  titulo: 'Qué es esta web y qué no es',
+  subtitulo: 'Para qué sirve, cómo funciona, qué hace con los datos y si vale para otras IA.',
 
   secciones: [
     {
       id: 'idea',
       h2: 'La idea',
       parrafos: [
-        'Casi todo el mundo usa la IA para pedirle tareas sueltas. <b>Esto va de otra cosa:</b> de darle tu forma de trabajar y tu memoria, para que deje de ser una IA genérica y pase a ser <b>tu</b> asistente. Y de aprender, de paso, cómo se hace, sin tecnicismos.',
+        'Lo habitual es usar la IA para tareas sueltas, explicando el contexto en cada conversación. Esta web enseña a <b>escribir unas instrucciones</b> con la tarea, las normas y los datos de quien la usa, para que Claude trabaje con ese criterio en todas las conversaciones. Al mismo tiempo explica, sin tecnicismos, por qué funciona así.',
       ],
     },
     {
       id: 'como-funciona',
       h2: 'Cómo funciona',
       parrafos: [
-        'Te guiamos por tres piezas, una cada vez: <b>su tarea</b> (qué hace), <b>su comportamiento</b> (cómo actúa siempre) y <b>su memoria</b> (qué recuerda de ti). Al final, juntamos todo en un texto que tú copias.',
-        '<b>El asistente se crea en tu propio Claude.</b> Esta web no es la IA: es el sitio que te enseña y te prepara el texto. El último paso, pegarlo en tu Claude, es el que lo hace tuyo y permanente. Aquí no hace falta cuenta, ni pagar nada, ni instalar nada.',
+        'La web lleva por tres pasos, uno por pieza: <b>la tarea</b> (qué hace), <b>las normas</b> (cómo se comporta siempre) y <b>la memoria</b> (qué datos de quien lo usa tiene en cuenta). Al final junta las respuestas en un solo texto para copiarlo.',
+        '<b>El asistente se crea en la cuenta de Claude de cada persona.</b> Esta web no es la IA, solo enseña y prepara el texto. El último paso es pegarlo en las instrucciones de un proyecto de Claude, donde queda guardado. Para usar la web no hace falta cuenta, ni pagar, ni instalar nada.',
       ],
     },
     {
       id: 'que-es-y-que-no',
-      h2: 'Lo que es… y lo que no',
+      h2: 'Lo que es y lo que no es',
       lista: [
-        { si: true,  texto: '<b>Es</b> un método y una estructura para que el tiempo que inviertas cuente.' },
-        { si: true,  texto: '<b>Es</b> medio formación, medio creación: lo entiendes mientras lo haces.' },
-        { si: false, texto: '<b>No es</b> instantáneo: un buen asistente se construye con tus respuestas y mejora con el uso.' },
-        { si: false, texto: '<b>No te hace experto</b>, pero sales con un asistente que antes no existía y que es tuyo.' },
+        { si: true,  texto: '<b>Es</b> un método ordenado para que el tiempo que se dedica a preparar un asistente se note en sus respuestas.' },
+        { si: true,  texto: '<b>Es</b> formación y creación a la vez: se entiende cómo funciona mientras se monta.' },
+        { si: false, texto: '<b>No es</b> instantáneo. Un buen asistente sale de respuestas pensadas y mejora con el uso.' },
+        { si: false, texto: '<b>No convierte en experto en IA</b>, pero al terminar hay un asistente propio que antes no existía.' },
       ],
     },
     {
       id: 'privacidad',
-      h2: 'Tu privacidad, lo propio de esta web',
+      h2: 'Qué hace esta web con los datos',
       parrafos: [
-        'Mientras rellenas esta web, <b>lo que escribes se queda en tu navegador</b> y no lo enviamos a ningún sitio. Solo más tarde, cuando pegues tu asistente en Claude, ese texto pasa por los servidores de Anthropic.',
-        'Lo que conviene tener en cuenta sobre privacidad y sobre la fiabilidad de un asistente (qué no escribir nunca, qué revisar siempre) lo explicamos entero en <b><a href="/metodo">el método</a></b>.',
+        'Lo que se escribe en esta web <b>se queda en el navegador</b> y no se envía a ningún sitio. Solo cuando el texto se pega en Claude pasa por los servidores de Anthropic.',
+        'Qué conviene no escribir nunca y qué hay que revisar siempre se explica en <b><a href="/metodo">el método</a></b>.',
       ],
     },
     {
       id: 'otras-ias',
-      h2: '¿Esto solo vale para Claude?',
+      h2: '¿Solo vale para Claude?',
       parrafos: [
-        'Aquí te enseñamos con <b>Claude</b>, porque es donde hoy mejor encaja esta forma de trabajar: fue de los primeros en usar un archivo de reglas como <b>CLAUDE.md</b> y va por delante en las <i>skills</i>. Pero el método <b>no es exclusivo suyo.</b>',
-        'Las tres piezas que aprendes —la tarea, las normas y la memoria— existen también en ChatGPT (OpenAI) y en Gemini (Google), con otros nombres. Y las <i>skills</i> siguen un <b>estándar abierto</b> (<a href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a>, creado por Anthropic y adoptado ya por muchas herramientas): la misma skill funciona en Claude, en el agente de Google o en el de OpenAI. Así que lo que aprendas aquí <b>te lo llevas</b>: cambia dónde lo pegas y cómo se llama cada archivo, no la idea de fondo.',
+        'La guía usa <b>Claude</b> porque Anthropic creó el formato de las <i>skills</i> y durante un tiempo fue la plataforma que mejor resolvía esta forma de trabajar. El método, sin embargo, <b>no depende de Claude</b>.',
+        'Anthropic publicó ese formato como <b>estándar abierto</b> en <a href="https://agentskills.io" target="_blank" rel="noopener">agentskills.io</a>. Después lo han adoptado muchas otras herramientas, entre ellas ChatGPT y Codex de OpenAI, Gemini CLI de Google, GitHub Copilot y Cursor. Las tres piezas, la tarea, las normas y la memoria, existen también en esas plataformas con otros nombres. Lo que se aprende aquí <b>sirve en todas ellas</b>: cambia dónde se pega el texto y cómo se llama cada archivo.',
       ],
     },
   ],
@@ -54,11 +57,11 @@ export const acerca = {
   avisoIndep: {
     negrita: 'Proyecto independiente.',
     texto:
-      ' No está afiliado ni respaldado por Anthropic. "Claude" es una marca de Anthropic; aquí solo te enseñamos a usarla. Esto es un prototipo de prueba, sin uso comercial.',
+      ' No tiene relación con Anthropic ni cuenta con su respaldo. Claude es una marca de Anthropic. Esta web solo explica cómo usarlo. Es un prototipo sin uso comercial.',
   },
 
   cta: {
-    texto: 'Si quieres, empieza la guía →',
+    texto: 'Empezar la guía →',
     href: '/ejemplos',
   },
 };

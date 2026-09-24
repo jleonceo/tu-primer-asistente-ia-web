@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Paso 1 — Tu skill · Tu primer asistente de IA">
+<Layout title="Paso 1 · Tu skill · Tu primer asistente de IA">
 
   <div class="mx-auto max-w-[680px] px-6 pb-16">
 
@@ -18,17 +18,17 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- ANCLA -->
     <div class="my-[18px] inline-block rounded-md bg-acento-claro px-[14px] py-[9px] text-[.82rem] text-suave [&_b]:text-acento" id="ancla" aria-live="polite">
-      Estás creando tu <b>skill</b>: la primera cosa que tu asistente sabrá hacer — una tarea, escrita una vez, que se queda guardada.
+      Estás creando tu <b>skill</b>: la tarea que tu asistente sabrá hacer, escrita una vez y guardada.
     </div>
 
     <!-- Aclaración temprana: la web prepara el texto; la IA (Claude) está aparte -->
-    <p class="mb-3 text-[.82rem] leading-relaxed text-suave">Esto todavía no es la IA: aquí preparas el texto de tu asistente. Al final lo pegas en tu cuenta gratuita de <b class="text-tinta">Claude</b>, que es quien lo usa.</p>
+    <p class="mb-3 text-[.82rem] leading-relaxed text-suave">Esta web todavía no es la IA: aquí preparas el texto de tu asistente. Al final lo pegas en tu cuenta de <b class="text-tinta">Claude</b>, que puede ser la gratuita.</p>
 
     <!-- PREGUNTA 1 -->
     <div class="card paso" data-step="0">
       <div class="paso-label">Tu tarea</div>
       <h2 id="lbl-q1">¿En qué tarea pierdes más tiempo, o te repites más?</h2>
-      <p class="ayuda">Eso que haces una y otra vez y se te hace cuesta arriba. Si no se te ocurre, coge una de estas:</p>
+      <p class="ayuda">La que haces a menudo y más tiempo te quita. Si no se te ocurre ninguna, elige una de estas:</p>
       <div class="chip-k">Toca una para usarla:</div>
       <div class="chips" data-target="q1">
         <button type="button" class="chip">Responder reseñas sin sonar a robot</button>
@@ -41,17 +41,17 @@ import Layout from '../layouts/Layout.astro';
     <!-- PREGUNTA 2 -->
     <div class="card paso hidden" data-step="1">
       <div class="paso-label">Tu tarea</div>
-      <h2 id="lbl-q2">¿Quién recibe el resultado, y qué espera de ti?</h2>
-      <p class="ayuda">Esto le da el tono. No es lo mismo un cliente enfadado que tu jefe o un alumno.</p>
+      <h2 id="lbl-q2">¿Quién recibe el resultado y qué espera de ti?</h2>
+      <p class="ayuda">La respuesta fija el tono: a un cliente enfadado no se le escribe igual que a tu jefe o a un alumno.</p>
       <textarea id="q2" aria-labelledby="lbl-q2" placeholder="¿A quién le hablas?"></textarea>
     </div>
 
     <!-- PREGUNTA 3 — con escape F6 -->
     <div class="card paso hidden" data-step="2">
       <div class="paso-label">Tu tarea</div>
-      <h2 id="lbl-q3">Pon un ejemplo BUENO y uno MALO</h2>
-      <p class="ayuda">Los dos importan: el bueno marca a dónde apuntar; el malo, de qué huir.</p>
-      <div class="mb-4 rounded-md bg-crema px-3 py-2 text-[.82rem] text-suave [&_b]:text-tinta">No hace falta que sea un caso real: con un ejemplo aproximado vale. <b>Lo que escribes se queda en tu navegador</b>, no lo enviamos a ningún sitio.</div>
+      <h2 id="lbl-q3">Pon un ejemplo bueno y uno malo</h2>
+      <p class="ayuda">Hacen falta los dos: el bueno indica a qué tiene que parecerse la respuesta y el malo, qué fórmulas evitar.</p>
+      <div class="mb-4 rounded-md bg-crema px-3 py-2 text-[.82rem] text-suave [&_b]:text-tinta">No hace falta que sea un caso real: con un ejemplo aproximado vale. <b>Lo que escribes se queda en tu navegador</b> y no se envía a ningún sitio.</div>
       <div class="chip-k">Bueno:</div>
       <textarea id="q3a" aria-label="Un ejemplo bueno" placeholder="Una respuesta tuya que quedó bien..."></textarea>
       <div class="chip-k mt-3">Malo:</div>
@@ -63,7 +63,7 @@ import Layout from '../layouts/Layout.astro';
           <input type="checkbox" id="q3-escape" class="mt-1 accent-[#2e6a57]" />
           <span class="text-[.9rem] text-suave">
             <b class="text-tinta">No tengo un ejemplo a mano ahora mismo</b><br>
-            <span class="text-[.84rem]">Tu asistente funcionará, pero será más genérico: sin ejemplos tuyos, no puede afinar el estilo. Cuanto antes los añadas, mejor.</span>
+            <span class="text-[.84rem]">Tu asistente funcionará, pero sin ejemplos tuyos no puede imitar tu estilo y sus respuestas serán más genéricas. Puedes añadirlos más adelante.</span>
           </span>
         </label>
       </div>
@@ -72,8 +72,8 @@ import Layout from '../layouts/Layout.astro';
     <!-- PREGUNTA 4 -->
     <div class="card paso hidden" data-step="3">
       <div class="paso-label">Tu tarea</div>
-      <h2 id="lbl-q4">¿Qué debe evitar SIEMPRE? ¿Qué no puede hacer nunca?</h2>
-      <p class="ayuda">Tus líneas rojas: lo que no quieres que haga nunca, pase lo que pase.</p>
+      <h2 id="lbl-q4">¿Qué no puede hacer nunca?</h2>
+      <p class="ayuda">Tus límites fijos: lo que no debe hacer en ningún caso, como inventar datos o prometer plazos que no controlas.</p>
       <textarea id="q4" aria-labelledby="lbl-q4" placeholder="Nunca debe..."></textarea>
     </div>
 
@@ -81,21 +81,21 @@ import Layout from '../layouts/Layout.astro';
     <div class="card paso hidden" data-step="4">
       <div class="paso-label">Tu primera skill</div>
       <h2>Esto lo has hecho tú</h2>
-      <p class="ayuda">Con tus cuatro respuestas, esta es tu skill. Yo solo la he ordenado:</p>
+      <p class="ayuda">Esta es tu skill, hecha con tus cuatro respuestas. La web solo las ha ordenado:</p>
       <div class="skill-card">
         <div class="skill-card-t">Skill</div>
         <h3 id="sk-titulo" class="mt-1 mb-3 text-[1.25rem] tracking-tight">Tu skill</h3>
-        <div class="skill-fila"><b>Qué hace:</b> <span id="sk-tarea">—</span></div>
-        <div class="skill-fila"><b>Para quién:</b> <span id="sk-quien">—</span></div>
-        <div class="skill-fila"><b>Suena así:</b> <span id="sk-bueno">—</span></div>
-        <div class="skill-fila"><b>Nunca:</b> <span id="sk-nunca">—</span></div>
+        <div class="skill-fila"><b>Qué hace:</b> <span id="sk-tarea">…</span></div>
+        <div class="skill-fila"><b>Para quién:</b> <span id="sk-quien">…</span></div>
+        <div class="skill-fila"><b>Suena así:</b> <span id="sk-bueno">…</span></div>
+        <div class="skill-fila"><b>Nunca:</b> <span id="sk-nunca">…</span></div>
       </div>
       <div class="nota-aviso">
         <b>Lo que escribes se va guardando en este navegador</b>. Si cierras y vuelves
-        (en este mismo dispositivo), sigue aquí. Lo que aún falta es el paso final:
-        <b>llevarlo a tu Claude</b>, que es donde se queda para siempre. Antes, vamos a darle
-        dos cosas más: <b>cómo se comporta</b> y <b>qué recuerda</b>.
-        <br><span style="font-size:.82rem;color:var(--color-suave);font-weight:400">Una sola cosa: no salta de un aparato a otro. Si empiezas en el móvil, termínalo en el móvil.</span>
+        desde el mismo dispositivo, sigue aquí. Falta el paso final, <b>llevarlo a tu Claude</b>,
+        que es donde queda guardado. Antes le vas a añadir dos cosas: <b>cómo se comporta</b>
+        y <b>qué datos tuyos tiene en cuenta</b>.
+        <br><span style="font-size:.82rem;color:var(--color-suave);font-weight:400">No pasa de un dispositivo a otro: si empiezas en el móvil, termínalo en el móvil.</span>
       </div>
     </div>
 
@@ -259,11 +259,11 @@ import Layout from '../layouts/Layout.astro';
   function anclaTxt() {
     var t = etiqueta();
     switch (step) {
-      case 0: return 'Estás creando tu <b>skill</b>: la primera cosa que tu asistente sabrá hacer — una tarea, escrita una vez, que se queda guardada.';
+      case 0: return 'Estás creando tu <b>skill</b>: la tarea que tu asistente sabrá hacer, escrita una vez y guardada.';
       case 1: return 'Para tu skill de <b>' + t + '</b>… ¿quién recibe el resultado?';
-      case 2: return 'Para tu skill de <b>' + t + '</b>… enséñame el bueno y el malo.';
+      case 2: return 'Para tu skill de <b>' + t + '</b>… un ejemplo bueno y uno malo.';
       case 3: return 'Para tu skill de <b>' + t + '</b>… ¿qué no debe hacer nunca?';
-      case 4: return 'Tu skill está montada. Falta lo importante: <b>llevarla a tu Claude</b>.';
+      case 4: return 'Tu skill está montada. Falta <b>llevarla a tu Claude</b>.';
     }
     return '';
   }

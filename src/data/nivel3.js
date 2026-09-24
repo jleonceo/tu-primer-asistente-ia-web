@@ -1,83 +1,85 @@
-// Nivel 3 — Un sistema (un "enjambre de enjambres"). Con profundidad real:
-// el director central, la taxonomía de 3 tipos con ejemplos del ecosistema,
-// el routing (carga perezosa + nota de relevo), un recorrido de ejemplo y la
-// pirámide. Material verificado: Registro_Enjambres_TechAcces (39 piezas, 3
-// tipos), conexion-enjambres-puntero, arquitectura-piramide, flujo del enjambre
-// contable (extractor → generador → validador → borrador → persona).
+// Nivel 3 · Un sistema (un "enjambre de enjambres"): el director central, los
+// tres tipos de equipo, la carga perezosa y el relevo, un recorrido de ejemplo
+// y la pirámide. Material: Registro_Enjambres_TechAcces, skill
+// orquestador-maestro (pasos 3 y 4, simulación de 31 casos) y el flujo del
+// enjambre contable.
+// 24/09/2026: reescrito con el registro de la guía del M6. Se corrige el cierre:
+// la revisión del 23/09/2026 midió que el director no siempre se carga al
+// empezar y que el reparto lo hace en la práctica un programa de apoyo.
 export const nivel3 = {
   meta: {
-    title: 'Nivel 3 · Un sistema — Tu primer asistente de IA',
-    description: 'Un equipo de equipos, con un director central que enruta cada encargo al equipo correcto. La punta de la pirámide, explicada con ejemplos reales.',
+    title: 'Nivel 3 · Un sistema · Tu primer asistente de IA',
+    description: 'Un equipo de equipos, con un director central que envía cada encargo al equipo que corresponde. Cómo se reparte el trabajo y qué parte está aún sin terminar.',
   },
   n: '3',
   nombre: 'Un sistema',
-  titulo: 'Un equipo de equipos, con un director',
-  lead: 'Cuando ya no tienes un equipo sino varios, hace falta alguien que escuche lo que pides y decida cuál se ocupa. Ese es el nivel 3: la punta de la pirámide. Al empezar no lo necesitas, pero conviene saber que existe y hacia dónde lleva todo esto.',
+  titulo: 'Con varios equipos hace falta un director que decida cuál atiende cada encargo',
+  lead: 'Cuando hay varios equipos, alguien tiene que leer cada encargo y decidir cuál se ocupa. Ese es el nivel 3. Para empezar no hace falta, pero explica hacia dónde crece un sistema cuando se le añaden equipos.',
   bloques: [
     {
       tipo: 'intro',
-      titulo: 'El director que reparte el trabajo',
+      titulo: 'El director central reparte el trabajo entre los equipos',
       parrafos: [
-        'En el nivel 2, cada equipo tiene su coordinador. En el nivel 3 hay uno por encima de todos: un <b>director central</b> que es lo primero que entra cuando pides algo.',
-        'Su papel es escuchar el encargo, decidir qué equipo encaja y pasárselo solo a ese. Así no tienes a toda la plantilla metida en la sala a la vez: llamas al especialista cuando toca y el resto ni se entera.',
-        'En el sistema que enseñamos, ese director coordina hoy <b>decenas de piezas</b> repartidas en equipos. Cada vez que pides algo, lo primero que ocurre es que él lee tu encargo y elige a quién pasárselo.',
+        'En el nivel 2 cada equipo tiene su coordinador. En el nivel 3 hay además un <b>director central</b> por encima de todos, que es el primero en leer cada encargo.',
+        'Su trabajo es decidir qué equipo corresponde y pasarle el encargo solo a ese. Los demás equipos no se cargan, de modo que Claude no tiene que leer las instrucciones de todos para atender una sola tarea.',
+        'En el sistema de este proyecto, el director consulta un registro con todos los equipos y sus funciones para elegir el destino de cada encargo.',
       ],
     },
     {
       tipo: 'taxonomia',
-      titulo: 'Tres tipos de equipo, y cómo los distingue',
-      intro: 'Para repartir bien, el director clasifica cada equipo por su papel. No es teoría: son los tres tipos reales del sistema.',
+      titulo: 'Los tres tipos de equipo que distingue el director',
+      intro: 'Para repartir el trabajo, el director clasifica cada equipo según su función. Estos son los tres tipos que usa el sistema:',
       items: [
-        { tipo: 'De proyecto', ejemplos: 'contabilidad · análisis de datos · marketing', texto: 'Llevan una iniciativa de principio a fin y tienen su propio contexto de negocio. El de contabilidad sabe de facturas y cuadre; el de marketing, de copy y campañas. No se pisan.' },
-        { tipo: 'De apoyo', ejemplos: 'programación · automatizaciones · verificadores', texto: 'Ayudantes transversales. No son de ningún proyecto en concreto: se llaman cuando hacen falta, para cualquier iniciativa. Un verificador comprueba lo mismo da igual quién lo pida.' },
-        { tipo: 'De herramienta', ejemplos: 'abrir un PDF, un Word, un PowerPoint', texto: 'Una herramienta suelta para una cosa concreta, sin coordinador ni contexto. Se usa y se cierra. El director la llama directamente, sin montar un equipo entero alrededor.' },
+        { tipo: 'De proyecto', ejemplos: 'contabilidad · análisis de datos · marketing', texto: 'Llevan una línea de trabajo de principio a fin y tienen su propio contexto de negocio. El de contabilidad conoce las facturas y el cuadre. El de marketing conoce los textos y las campañas. Cada uno trabaja solo en su dominio.' },
+        { tipo: 'De apoyo', ejemplos: 'programación · automatizaciones · verificadores', texto: 'No pertenecen a ningún proyecto y se llaman cuando hacen falta en cualquiera de ellos. Un verificador comprueba lo mismo lo pida quien lo pida.' },
+        { tipo: 'De herramienta', ejemplos: 'crear un PDF, un Word o un PowerPoint', texto: 'Resuelven una tarea concreta, sin coordinador ni contexto de negocio. El director las llama directamente, sin montar un equipo alrededor.' },
       ],
     },
     {
       tipo: 'destacado',
-      titulo: 'Por qué hay un director y no se llaman entre ellos',
-      texto: 'Los equipos no se llaman unos a otros a lo loco. Hay una regla de diseño dura: <b>un ayudante no puede crear otro ayudante</b>. Si cada uno pudiera invocar a los demás, acabarías con una cadena imposible de seguir y de auditar. Por eso siempre reparte el director: es el único punto por el que entra y sale el trabajo.',
+      titulo: 'Todo el trabajo pasa por el director para que se pueda seguir',
+      texto: 'Los equipos no se llaman entre sí. En Claude Code hay además una limitación técnica: <b>un subagente no puede lanzar otro subagente</b>. Si cada equipo pudiera llamar a los demás, el recorrido de un encargo sería imposible de seguir y de revisar. Por eso el trabajo entra y sale siempre por el director.',
     },
     {
       tipo: 'flujo',
-      titulo: 'Un encargo de principio a fin: «contabilízame esta factura»',
-      intro: 'Así viaja un encargo real por el sistema. Fíjate en que el director aparece al principio y que la persona decide al final:',
+      titulo: 'El recorrido de un encargo: «contabiliza esta factura»',
+      intro: 'Así recorre el sistema un encargo contable. El director interviene al principio y una persona decide al final:',
       pasos: [
-        { nombre: 'Tú pides algo', texto: '«Contabilízame esta factura.» El director central lo recibe primero.' },
-        { nombre: 'El director enruta', texto: 'Reconoce que es contabilidad y se lo pasa al equipo de contabilidad, solo a ese. Los demás equipos ni se cargan.' },
-        { nombre: 'El equipo trabaja por dentro', texto: 'Dentro de ese equipo, un especialista lee la factura, otro monta el apunte y un tercero comprueba que cuadra al céntimo.' },
-        { nombre: 'Queda en borrador', texto: 'El resultado espera, sin tocar la base de datos real todavía.' },
-        { nombre: 'Tú apruebas', texto: 'Lo revisas. Solo cuando das el visto bueno entra en la contabilidad real. Lo irreversible no lo decide la máquina.' },
+        { nombre: 'Llega el encargo', texto: '«Contabiliza esta factura.» Lo lee primero el director central.' },
+        { nombre: 'El director elige el equipo', texto: 'Reconoce que es un encargo contable y se lo pasa solo al equipo de contabilidad. Los demás equipos no se cargan.' },
+        { nombre: 'El equipo trabaja', texto: 'Dentro de ese equipo, una skill lee la factura, otra prepara el asiento y una tercera comprueba que cuadra al céntimo.' },
+        { nombre: 'Queda en borrador', texto: 'El asiento espera en una tabla de borradores, sin tocar la contabilidad.' },
+        { nombre: 'Una persona aprueba', texto: 'Revisa el borrador y, solo con su visto bueno, el asiento entra en la contabilidad. Lo que no se puede deshacer lo decide siempre una persona.' },
       ],
-      cierre: 'El director repartió, el equipo propuso y la persona aprobó. Cada uno en su sitio.',
+      cierre: 'El director reparte, el equipo propone y la persona aprueba.',
     },
     {
       tipo: 'intro',
-      titulo: 'Carga perezosa: nadie entra hasta que se le necesita',
+      titulo: 'Cada equipo se carga solo cuando se necesita',
       parrafos: [
-        'Una pieza clave: los equipos <b>no están todos despiertos a la vez</b>. El director carga solo el que va a usar, justo cuando lo va a usar. Es lo que se llama carga perezosa, y es lo que mantiene el sistema ligero por mucho que crezca.',
-        'Y cuando un equipo termina su parte y hace falta otro, no lo llama él directamente: deja una nota («ahora le toca a contabilidad»). El director lee esa nota y llama al siguiente. El relevo siempre pasa por arriba.',
+        'Los equipos <b>no se cargan todos a la vez</b>. El director carga solo el que va a usar y en el momento de usarlo. A esto se le llama carga perezosa. Es lo que permite añadir equipos sin que cada tarea obligue a leer más instrucciones.',
+        'Cuando un equipo termina su parte y hace falta otro, no lo llama él. Al cerrar su trabajo indica qué equipo debe seguir, el director lee esa indicación y llama al siguiente. El relevo pasa siempre por el director.',
       ],
     },
     {
       tipo: 'intro',
-      titulo: 'La pirámide',
+      titulo: 'El sistema se construye de abajo arriba',
       parrafos: [
-        'Todo esto tiene forma de pirámide. Abajo, lo operativo: la conexión con los datos, la contabilidad, los informes. En medio, los equipos que analizan, crean y comprueban. Arriba, la estrategia: cómo va la empresa y hacia dónde.',
-        'Se construye de abajo hacia arriba. Primero los cimientos que funcionan, y solo después la punta. No se empieza por el tejado, igual que tú no empiezas por aquí: empiezas por una skill.',
+        'El conjunto tiene forma de pirámide. En la base está lo operativo: la conexión con los datos, la contabilidad y los informes. En el medio, los equipos que analizan, redactan y comprueban. Arriba, el análisis de cómo va la empresa y hacia dónde se dirige.',
+        'Cada nivel se construye cuando el de abajo ya funciona, porque un análisis de la empresa solo es fiable si los datos de la base cuadran. Por la misma razón, esta guía empieza por una sola skill.',
       ],
     },
     {
       tipo: 'destacado',
-      titulo: '¿Y esto funciona?',
-      texto: 'El director central se probó con una simulación: un puñado de encargos distintos, a ver si cada uno acababa en el equipo correcto. La idea de esa prueba (preparar casos con su respuesta esperada y comprobar la realidad contra ella) es justo de lo que va el método. Es el peldaño más nuevo y el menos pulido del sistema, pero ya está en pie y reparte cada encargo de forma real.',
+      titulo: 'El director está probado con simulaciones y es la parte menos terminada',
+      texto: 'El director se probó con 31 encargos preparados de antemano, cada uno con el equipo al que debía llegar. Después se comparó el destino real con el esperado. Preparar casos con su respuesta correcta y comprobar el resultado contra ella es el método que explica esta guía. Una revisión del 23 de septiembre de 2026 encontró, sin embargo, que el director no siempre se carga al empezar a trabajar y que el reparto lo hace en la práctica un programa de apoyo que indica qué instrucciones abrir en cada tarea. Es la parte del sistema que queda por terminar.',
     },
   ],
   prev: { href: '/nivel-2', texto: 'Un equipo' },
-  next: { href: '/casos', texto: 'Ver casos reales, de principio a fin' },
+  next: { href: '/casos', texto: 'Tres casos de principio a fin' },
   cta: {
-    titulo: 'Todo esto empieza por una skill',
-    sub: 'La punta de la pirámide se sostiene sobre la base. Y la base es tu primera tarea bien hecha.',
+    titulo: 'Un sistema empieza por una skill',
+    sub: 'Los equipos y el director se añaden cuando la base funciona. La base es la primera tarea bien resuelta.',
     texto: 'Empezar por el nivel 1',
     href: '/nivel-1',
   },

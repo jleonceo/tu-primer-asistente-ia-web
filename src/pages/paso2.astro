@@ -18,16 +18,17 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- INTRO -->
     <div class="mb-5 rounded-lg bg-tinta px-[30px] py-[30px] text-[#eef0f3]">
-      <h2 class="mb-2 text-[1.5rem] font-bold tracking-tight">Cómo se comporta: esto es lo que lo hace tuyo</h2>
+      <h2 class="mb-2 text-[1.5rem] font-bold tracking-tight">Cómo se comporta: las normas que cumple en cualquier tarea</h2>
       <p class="text-[.98rem] text-[#c3c9d2]">
-        Aquí <b class="text-white">no hay cuatro preguntas y listo.</b> Estas son las normas que tu asistente cumple
-        <b class="text-white">siempre</b>, en cualquier tarea, y es lo que más tiempo lleva afinar. Como empezar con la hoja en blanco cuesta, te damos <b class="text-white">ejemplos reales</b>. Elige los que te encajen,
-        cámbialos, añade los tuyos. No hace falta acertar hoy: esto se mejora con el uso. <b class="text-white">Con marcar tres o cuatro que te encajen basta para empezar</b>; si no sabes por dónde, ve a Honestidad y Tono.
+        Estas son las normas que tu asistente cumple <b class="text-white">siempre</b>, en cualquier tarea,
+        y son lo que más tiempo lleva ajustar. Para no empezar de cero tienes <b class="text-white">ejemplos</b>:
+        marca los que te sirvan, cámbialos o añade los tuyos. No hace falta acertar hoy, porque se ajustan con el uso.
+        <b class="text-white">Para empezar bastan tres o cuatro.</b> Si no sabes cuáles elegir, empieza por Honestidad y por el tono.
       </p>
     </div>
 
     <!-- recordatorio del modelo mental (#6): esto aún no es la IA -->
-    <p class="mb-5 text-[.82rem] leading-relaxed text-suave">Recuerda: esto todavía no es la IA. Sigues preparando el texto de tu asistente; lo llevarás a tu Claude al final.</p>
+    <p class="mb-5 text-[.82rem] leading-relaxed text-suave">Esta web todavía no es la IA: sigues preparando el texto, que al final llevarás a tu Claude.</p>
 
     <!-- LAYOUT DOS COLUMNAS -->
     <div class="grid grid-cols-1 items-start gap-6 md:grid-cols-[1fr_300px]">
@@ -38,37 +39,37 @@ import Layout from '../layouts/Layout.astro';
         <!-- 1 · Honestidad -->
         <div class="cat">
           <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">1 · Honestidad</h3>
-          <div class="mb-3 text-[.85rem] text-suave">Lo más importante. Una IA que te dice la verdad ayuda más que una que te agrada.</div>
+          <div class="mb-3 text-[.85rem] text-suave">La más importante: una IA que te dice la verdad te ayuda más que una que te da la razón.</div>
           <label class="opcion"><input type="checkbox" data-r="Si no estás seguro, dímelo en vez de inventarte la respuesta."><span class="txt"><b>Si no estás seguro, dímelo; no te lo inventes.</b><span>Una respuesta inventada hace más daño que un "no lo sé".</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Prefiero la verdad incómoda a que me des la razón para quedar bien."><span class="txt"><b>Dime la verdad aunque incomode.</b><span>Darte la razón para agradar es un engaño suave.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="No me des una falsa sensación de que voy bien si no es así."><span class="txt"><b>No me hagas creer que voy bien si no es verdad.</b><span>La falsa sensación de logro te perjudica.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Prefiero la verdad incómoda a que me des la razón para quedar bien."><span class="txt"><b>Dime la verdad aunque incomode.</b><span>Si te da la razón para quedar bien, no ves el error.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="No me des una falsa sensación de que voy bien si no es así."><span class="txt"><b>No me hagas creer que voy bien si no es verdad.</b><span>Creer que vas bien cuando no es así retrasa la corrección.</span></span></label>
         </div>
 
         <!-- 2 · Verificar -->
         <div class="cat">
           <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">2 · Antes de afirmar, comprueba</h3>
           <div class="mb-3 text-[.85rem] text-suave">Para que no te dé por ciertas cosas que no lo son.</div>
-          <label class="opcion"><input type="checkbox" data-r="Comprueba los datos antes de darlos por ciertos; no tires de memoria."><span class="txt"><b>Verifica antes de afirmar.</b><span>Lo que cuenta es el dato real, no lo que recuerda.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Comprueba los datos antes de darlos por ciertos; no tires de memoria."><span class="txt"><b>Verifica antes de afirmar.</b><span>Que parta del dato comprobado y no de lo que recuerda.</span></span></label>
           <label class="opcion"><input type="checkbox" data-r="Las cuentas y los números, calcúlalos con rigor, no los estimes."><span class="txt"><b>Los números, calculados con rigor.</b><span>Nada de cifras "a ojo".</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Si citas una fuente o un dato, asegúrate de que existe."><span class="txt"><b>Si cita algo, que exista.</b><span>Nada de fuentes inventadas.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Si citas una fuente o un dato, asegúrate de que existe."><span class="txt"><b>Si cita algo, que exista.</b><span>Sin fuentes inventadas.</span></span></label>
         </div>
 
         <!-- 3 · Tono -->
         <div class="cat">
           <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">3 · Cómo me habla</h3>
-          <div class="mb-3 text-[.85rem] text-suave">El tono. Aquí empieza a sonar a ti.</div>
-          <label class="opcion"><input type="checkbox" data-r="Háblame de usted, con cercanía pero con respeto."><span class="txt"><b>De usted, cercano.</b><span>(o cámbialo por "de tú" más abajo)</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Ve al grano, sin rodeos ni relleno."><span class="txt"><b>Al grano, sin rollos.</b><span>Primero lo importante.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Nada de jerga; si usas un término técnico, explícamelo en lenguaje normal."><span class="txt"><b>Cero jerga.</b><span>Si un palabro es inevitable, que lo explique.</span></span></label>
+          <div class="mb-3 text-[.85rem] text-suave">El tono con el que te responde.</div>
+          <label class="opcion"><input type="checkbox" data-r="Háblame de usted, con cercanía pero con respeto."><span class="txt"><b>De usted, cercano.</b><span>Si prefieres que te tutee, escríbelo en «Lo tuyo».</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Ve al grano, sin rodeos ni relleno."><span class="txt"><b>Directo, sin relleno.</b><span>Primero lo importante.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Nada de jerga; si usas un término técnico, explícamelo en lenguaje normal."><span class="txt"><b>Sin tecnicismos.</b><span>Si un término técnico es inevitable, que lo explique.</span></span></label>
         </div>
 
         <!-- 4 · Forma de trabajar -->
         <div class="cat">
           <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">4 · Cómo trabaja conmigo</h3>
-          <div class="mb-3 text-[.85rem] text-suave">Su forma de actuar, paso a paso.</div>
-          <label class="opcion"><input type="checkbox" data-r="Propón antes de hacer; espera mi visto bueno antes de cambios importantes."><span class="txt"><b>Propón, no ejecutes a lo loco.</b><span>Tú das el OK antes de los cambios importantes.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Un paso cada vez; no te adelantes."><span class="txt"><b>Un paso cada vez.</b><span>Sin correr ni saltarse cosas.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Si hay varias opciones, dímelas en vez de elegir tú por mí."><span class="txt"><b>Si hay opciones, que me las diga.</b><span>Decides tú, no él.</span></span></label>
+          <div class="mb-3 text-[.85rem] text-suave">Cómo actúa cuando le encargas algo.</div>
+          <label class="opcion"><input type="checkbox" data-r="Propón antes de hacer; espera mi visto bueno antes de cambios importantes."><span class="txt"><b>Que proponga antes de actuar.</b><span>Tú das el OK antes de los cambios importantes.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Un paso cada vez; no te adelantes."><span class="txt"><b>Un paso cada vez.</b><span>Sin adelantarse ni saltarse pasos.</span></span></label>
+          <label class="opcion"><input type="checkbox" data-r="Si hay varias opciones, dímelas en vez de elegir tú por mí."><span class="txt"><b>Si hay opciones, que me las diga.</b><span>Así la decisión es tuya.</span></span></label>
         </div>
 
         <!-- 5 · Lo tuyo — multi-entrada F1 -->
@@ -98,8 +99,8 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- NOTA HONESTA -->
     <div class="mt-[26px] rounded-md border border-acento-claro bg-[#eef6f2] px-[16px] py-[14px] text-[.9rem] text-tinta">
-      <b class="text-acento">Una cosa clara:</b> cuantas más normas le des y mejor las afines, mejor te conoce.
-      Pero esto no se acaba hoy: quien lleva meses tiene muchas más. Es un buen comienzo.
+      <b class="text-acento">Para tener en cuenta:</b> cuantas más normas precisas tenga, más se parecerán sus respuestas a las tuyas.
+      Un asistente que lleva meses en uso suele tener bastantes más que hoy, porque se añaden a medida que aparecen los fallos.
     </div>
 
     <!-- NAVEGACIÓN -->

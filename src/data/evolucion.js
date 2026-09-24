@@ -1,104 +1,102 @@
 // ============================================================
-// CONTENIDO DE LA PÁGINA EVOLUCIÓN — fuente única de verdad.
+// CONTENIDO DE LA PÁGINA EVOLUCIÓN: fuente única de verdad.
 // Editar los textos AQUÍ; evolucion.astro solo los coloca.
+// 24/09/2026: reescrito. Sigue al resultado, así que va en tú. Se corrige la
+// memoria automática: según la ayuda de Claude viene activada por defecto
+// también en el plan gratuito, y cada proyecto tiene la suya.
 // ============================================================
 
 export const evolucion = {
   meta: {
-    title: 'Mejorar con el tiempo — Tu primer asistente de IA',
+    title: 'Mejorar con el uso · Tu primer asistente de IA',
     description:
-      'La parte más larga y la más importante: usar tu asistente, detectar lo que falla y hacerlo mejorar, poco a poco.',
+      'Cómo se mejora un asistente después de crearlo: usarlo con casos reales, anotar lo que falla, corregir una cosa cada vez y comprobar que lo demás sigue bien.',
   },
 
   hero: {
-    k: 'La evolución',
-    titulo: 'Ya lo tienes funcionando. Ahora, a mejorarlo',
-    lead: 'Lo que tienes hoy <b>ya funciona</b>: puedes usarlo desde ya. Y si quieres que llegue a conocerte a fondo, eso se gana <b>usándolo y afinándolo</b> poco a poco, sin prisa. Es la parte más larga y la más importante.',
+    k: 'Mejorarlo con el uso',
+    titulo: 'Tu asistente ya funciona y mejora a medida que lo corriges',
+    lead: 'Lo que has creado <b>ya se puede usar</b>. Para que responda cada vez más como tú, hay que <b>usarlo y corregirlo</b> poco a poco. Es la parte que más tiempo lleva y la que más cambia el resultado.',
   },
 
   lazo: {
-    intro: 'La cadena de mejora',
+    intro: 'El ciclo de mejora',
     eslabones: [
       {
         n: 1,
-        titulo: 'Úsalo a diario',
-        texto: 'En tu día a día, con casos reales. Ahí salen las cosas, no antes.',
+        titulo: 'Úsalo con casos reales',
+        texto: 'Los fallos aparecen al usarlo en tu trabajo diario, no antes.',
       },
       {
         n: 2,
-        titulo: 'Detecta lo que no te cuadra',
-        texto: '"Esto lo diría de otra forma", "aquí se ha pasado". Apúntalo.',
+        titulo: 'Anota lo que no te convence',
+        texto: '«Esto lo diría de otra forma», «aquí se ha excedido». Apunta el caso y lo que esperabas.',
       },
       {
         n: 3,
-        titulo: 'Dile qué falló y por qué',
-        texto: 'Vuelves, se lo explicas, y ajustáis la norma o el ejemplo.',
+        titulo: 'Corrige la instrucción',
+        texto: 'Cambia la norma o el ejemplo que provocó la respuesta, o pídele a Claude que te ayude a redactar el cambio.',
       },
       {
         n: 4,
-        titulo: 'Comprueba que lo bueno sigue bien',
-        texto: 'Al cambiar algo, mira que no se haya roto lo que ya iba fino.',
+        titulo: 'Comprueba que lo demás sigue bien',
+        texto: 'Repite algún caso que ya funcionaba para confirmar que el cambio no lo ha estropeado.',
       },
     ],
-    bucle: '↻ Y vuelta a empezar. Cada vuelta, un poco más tuyo.',
+    bucle: 'Y el ciclo se repite. Cada vuelta acerca un poco más las respuestas a tu forma de trabajar.',
   },
 
   notaHonesta: {
-    titulo: 'Esto va poco a poco:',
-    // F9 corregido: la vía universal es "Instrucciones del proyecto"; la memoria automática solo como plus si el plan la tiene.
+    titulo: 'Lleva semanas:',
     texto:
-      'Un asistente que te conoce bien se construye con el tiempo, semanas y meses, igual que una relación. No hay atajo: es dedicación. Pero cada rato que le dedicas cuenta.',
+      'Un asistente que responde como tú se consigue en semanas o meses de uso, no en una tarde. Cada corrección que añades se aplica desde ese momento en todas las conversaciones del proyecto.',
   },
 
   practica: {
-    k: 'Cómo se hace, en la práctica',
-    titulo: 'Mejorar tu asistente, paso a paso',
-    // F9 corregido: paso 4 reescrito — vía universal = Instrucciones del proyecto; memoria automática solo como plus.
+    k: 'En la práctica',
+    titulo: 'Cómo se corrige un asistente, paso a paso',
     pasos: [
       {
-        b: 'Abre tu Proyecto en Claude',
-        texto: 'Entra en "Instrucciones del proyecto" (donde pegaste tu asistente).',
+        b: 'Abre tu proyecto en Claude',
+        texto: 'Entra en claude.ai, abre el proyecto donde pegaste tu asistente y busca sus instrucciones.',
       },
       {
-        b: 'Edita lo que falló',
-        texto: 'En claude.ai, abre tu Proyecto y entra en "Instrucciones del proyecto" (el campo donde pegaste tu asistente). Cambia ahí la norma o el ejemplo que no te cuadró y guarda. Un cambio cada vez: así sabes qué lo arregló.',
+        b: 'Cambia lo que falló',
+        texto: 'Edita en las instrucciones la norma o el ejemplo que no te convenció y guarda. Haz un solo cambio cada vez, porque así sabes cuál de ellos arregló el problema.',
       },
       {
-        b: 'Abre un chat nuevo dentro del Proyecto',
-        texto: 'Vuelve a probar ese mismo caso. ¿Mejor? Sigue. ¿Igual? Prueba otro ajuste.',
+        b: 'Abre una conversación nueva dentro del proyecto',
+        texto: 'Repite el mismo caso. Si la respuesta ha mejorado, sigue usándolo. Si no, prueba otro cambio.',
       },
       {
-        b: '¿Quieres que recuerde algo nuevo?',
-        // F9 — vía universal: añadir a Instrucciones del proyecto (funciona siempre).
-        // La memoria automática se menciona solo como plus, no como única vía.
+        b: '¿Quieres que tenga en cuenta un dato nuevo?',
         texto:
-          'Añádelo directamente a las <b>Instrucciones del proyecto</b>: es la vía universal, funciona en todos los planes. Algunos planes de pago tienen además una "memoria automática" (Claude guarda recuerdos de tus conversaciones sin que los añadas a mano); si la tienes, úsala como complemento, pero lo que pones en las Instrucciones siempre está.',
+          'Añádelo a las <b>instrucciones del proyecto</b>. Así queda fijo y lo puedes corregir cuando quieras. Claude tiene además una <b>memoria automática</b>, activada por defecto también en el plan gratuito, que guarda información de las conversaciones y es distinta en cada proyecto. Puedes pedirle «recuerda esto» o revisar lo que guarda en el apartado Memoria de la configuración. Lo que está en las instrucciones, en cambio, solo cambia cuando lo editas tú.',
       },
     ],
   },
 
   notaAyuda: {
-    inicio: '¿Te atascas en algún momento?',
-    b: 'Pídele ayuda a tu propia IA:',
-    texto: 'pégale tu asistente, dile qué falla, y te ayuda a afinarlo. Para eso está.',
+    inicio: '¿Te atascas en algún paso?',
+    b: 'Pide ayuda a Claude:',
+    texto: 'pégale las instrucciones de tu asistente, explícale qué respuesta no te convence y pídele una propuesta de cambio.',
   },
 
-  // Cierre consolidador (#7): el recorrido no recogía las 3 piezas al final.
-  // Este recap recuerda qué se llevó el usuario y le da un primer paso concreto.
+  // Cierre: recoge las tres piezas y da un primer paso concreto.
   recap: {
-    titulo: 'Lo que te llevas',
-    texto: 'Tu asistente tiene <b>una tarea</b> (qué hace), <b>unas normas</b> (cómo se comporta) y <b>una memoria</b> (lo que recuerda de ti). Y mejora cuando lo usas y le vas corrigiendo, poco a poco.',
-    accion: 'Esta semana: úsalo en un caso real y ajústale una sola cosa. Con eso ya estás en la rueda de mejora.',
+    titulo: 'Lo que has construido',
+    texto: 'Tu asistente tiene <b>una tarea</b> (qué hace), <b>unas normas</b> (cómo se comporta) y <b>una memoria</b> (qué datos tuyos tiene en cuenta). Mejora cada vez que lo usas y corriges lo que falla.',
+    accion: 'Para esta semana: úsalo en un caso real y corrige una sola cosa. Con eso ya has hecho la primera vuelta del ciclo.',
   },
 
-  // Voz "nuestra experiencia" (#2): los archivos crecen con el uso; a este proyecto le pasó.
+  // Experiencia del proyecto: los ficheros de instrucciones crecen con el uso.
   experiencia: {
-    titulo: 'Lo que vimos montándolo',
-    texto: 'Las instrucciones y la memoria de este mismo proyecto empezaron siendo cuatro líneas. Hoy son bastante más: han ido creciendo a base de usarlas, corregir lo que fallaba y anotar lo que no queríamos repetir. No nacieron perfectas — ninguna nace así, y tampoco hace falta.',
+    titulo: 'Lo que pasó al montar este proyecto',
+    texto: 'Las instrucciones y la memoria de este proyecto empezaron siendo unas pocas líneas. Han crecido con el uso: cada error corregido y cada cosa que no se quería repetir se añadió por escrito. Ninguna versión fue perfecta al principio y no hizo falta que lo fuera.',
   },
 
   cierre: {
-    nota: 'Esta guía cubre el primer nivel. Si quieres ir más allá, los niveles 2 y 3 están en sus secciones.',
+    nota: 'Esta guía cubre el primer nivel. Los niveles 2 y 3 explican cómo seguir cuando una skill no basta.',
     btnAtras: { href: '/resultado', texto: '← Atrás' },
     btnInicio: { href: '/', texto: 'Volver al inicio →' },
   },

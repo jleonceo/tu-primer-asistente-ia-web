@@ -1,5 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+// 24/09/2026: cada casilla abre un campo para escribir el dato. Antes el texto
+// final recibía el rótulo de la casilla («A qué me dedico y dónde trabajo») y
+// no el dato, así que Claude recibía el título sin contenido. Ahora solo pasan
+// al resultado las casillas con el dato escrito, como «Rótulo: dato».
+const opciones = [
+  { cat: '1 · Quién eres', sub: 'Lo básico, para que no tenga que volver a preguntártelo.', items: [
+    { r: 'Mi oficio y dónde trabajo', b: 'Tu oficio y dónde trabajas.', s: 'Para que adapte las respuestas a tu trabajo.', ph: 'Ej.: fontanero, trabajo en Madrid' },
+    { r: 'Mi negocio y a qué se dedica', b: 'Tu negocio y a qué se dedica.', s: 'Para que use el nombre sin que se lo digas cada vez.', ph: 'Ej.: Aroma, tienda de café de tueste propio' },
+    { r: 'Si trabajo solo o con equipo', b: 'Si trabajas solo o con equipo.', s: 'Cambia el tipo de ayuda que te ofrece.', ph: 'Ej.: somos tres personas' },
+  ]},
+  { cat: '2 · Con quién y con qué trabajas', sub: 'El contexto que se aplica a todas las tareas.', items: [
+    { r: 'Cómo son mis clientes', b: 'Cómo son tus clientes.', s: 'Con esto adapta el tono y los ejemplos.', ph: 'Ej.: gente mayor, poco habituada a la tecnología' },
+    { r: 'Herramientas que uso', b: 'Qué herramientas usas.', s: 'Para que no te proponga programas que no tienes.', ph: 'Ej.: Gmail, Excel y una tienda en Shopify' },
+    { r: 'Proveedores o colaboradores habituales', b: 'Tus proveedores o colaboradores habituales.', s: 'Los que aparecen a menudo en tus tareas.', ph: 'Ej.: la gestoría y la empresa de transporte' },
+  ]},
+  { cat: '3 · Tus preferencias fijas', sub: 'Detalles que siempre quieres igual y que cansa repetir.', items: [
+    { r: 'Idioma de las respuestas', b: 'En qué idioma te responde.', s: 'Castellano, catalán o el que uses.', ph: 'Ej.: castellano' },
+    { r: 'Moneda y formato de fecha', b: 'Moneda y formato de fecha.', s: 'Para no tener que corregirlo en cada respuesta.', ph: 'Ej.: euros y día/mes/año' },
+    { r: 'Largo de las respuestas', b: 'Respuestas cortas o detalladas.', s: 'El largo que te resulta más útil.', ph: 'Ej.: cortas, de tres o cuatro frases' },
+  ]},
+  { cat: '4 · Decisiones que ya tomaste', sub: 'Para no volver a discutir lo mismo cada semana.', items: [
+    { r: 'Decisiones ya tomadas', b: 'Lo que ya está decidido.', s: 'Lo que no quieres que vuelva a plantearte.', ph: 'Ej.: no hago envíos fuera de España' },
+    { r: 'Formas de trabajar que me funcionan', b: 'Tu forma de hacer las cosas.', s: 'Lo que ya sabes que te funciona.', ph: 'Ej.: primero el presupuesto y después la visita' },
+  ]},
+];
 ---
 <Layout title="Su memoria · Tu primer asistente de IA">
 
@@ -8,7 +33,7 @@ import Layout from '../layouts/Layout.astro';
     <!-- BARRA DE PROGRESO -->
     <div class="py-[26px] pb-2">
       <div class="mb-2 flex justify-between text-[.78rem] text-suave">
-        <span>Lo que recuerda de ti</span>
+        <span>Lo que sabe de ti</span>
         <span>Paso 3 de 3 · Su memoria</span>
       </div>
       <div class="h-[7px] overflow-hidden rounded-full bg-linea">
@@ -18,22 +43,21 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- INTRO -->
     <div class="mb-5 rounded-lg bg-tinta px-[30px] py-[30px] text-[#eef0f3]">
-      <h2 class="mb-2 text-[1.5rem] font-bold tracking-tight">Qué recuerda de ti, para no repetírselo nunca más</h2>
+      <h2 class="mb-2 text-[1.5rem] font-bold tracking-tight">Qué datos tuyos tiene en cuenta, para no repetírselos cada vez</h2>
       <p class="text-[.98rem] text-[#c3c9d2]">
-        Si el comportamiento es <b class="text-white">cómo</b> actúa, la memoria es <b class="text-white">lo que sabe de ti</b> y no se le
-        olvida de una conversación a otra. Sin esto, cada día empiezas de cero y le cuentas otra vez
-        quién eres. Igual que antes: te damos <b class="text-white">ejemplos reales</b> para que no partas de una hoja en
-        blanco. Marca los que te valgan, cámbialos, suma los tuyos. <b class="text-white">Y ojo:</b> esto no se rellena
-        entero hoy: la memoria <b class="text-white">crece con el uso</b>, según le vas diciendo qué recordar (eso es el último paso).
+        Si el comportamiento es <b class="text-white">cómo</b> actúa, la memoria es <b class="text-white">lo que sabe de ti</b>:
+        tu oficio, tu negocio o tus clientes. Sin estos datos, en cada conversación tienes que volver a contarle quién eres.
+        Marca los que quieras incluir y <b class="text-white">escribe el dato en el campo que aparece</b>, o añade los tuyos al final.
+        No hace falta completarlo todo hoy, porque la memoria crece con el uso.
       </p>
     </div>
 
-    <!-- recordatorio del modelo mental (#6): esto aún no es la IA -->
-    <p class="mb-4 text-[.82rem] leading-relaxed text-suave">Recuerda: esto todavía no es la IA. Sigues preparando el texto de tu asistente; lo llevarás a tu Claude al final.</p>
+    <!-- recordatorio: esto aún no es la IA -->
+    <p class="mb-4 text-[.82rem] leading-relaxed text-suave">Esta web todavía no es la IA: sigues preparando el texto, que al final llevarás a tu Claude.</p>
 
-    <!-- PRIVACIDAD en el punto de entrada de datos (#3) -->
+    <!-- PRIVACIDAD en el punto de entrada de datos -->
     <div class="mb-5 rounded-md border border-acento-claro bg-[#eef6f2] px-4 py-3 text-[.86rem] text-tinta [&_b]:text-acento">
-      <b>Lo que marcas o escribes aquí se queda en tu navegador</b>, no se envía a ningún sitio. Aun así, no necesitas datos sensibles: con que el asistente sepa <b>cómo</b> son tus clientes o <b>qué</b> herramientas usas basta. No hacen falta nombres ni datos privados de nadie.
+      <b>Lo que escribes aquí se queda en tu navegador</b> y no se envía a ningún sitio. Aun así, no hacen falta datos sensibles: basta con que el asistente sepa <b>cómo</b> son tus clientes o <b>qué</b> herramientas usas, sin nombres ni datos privados de nadie.
     </div>
 
     <!-- LAYOUT DOS COLUMNAS -->
@@ -42,48 +66,26 @@ import Layout from '../layouts/Layout.astro';
       <!-- BIBLIOTECA -->
       <div class="flex flex-col gap-[22px]">
 
-        <!-- 1 · Quién eres -->
-        <div class="cat">
-          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">1 · Quién eres</h3>
-          <div class="mb-3 text-[.85rem] text-suave">Lo básico que no debería volver a preguntarte.</div>
-          <label class="opcion"><input type="checkbox" data-r="A qué me dedico y dónde trabajo."><span class="txt"><b>Tu oficio y dónde trabajas.</b><span>Ej: "soy fontanero y trabajo en Madrid".</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="El nombre de mi negocio y a qué se dedica."><span class="txt"><b>El nombre de tu negocio.</b><span>Para que lo use sin que se lo digas cada vez.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Si trabajo solo o con un equipo, y de qué tamaño."><span class="txt"><b>Si vas solo o con equipo.</b><span>Cambia el tipo de ayuda que necesitas.</span></span></label>
-        </div>
+        {opciones.map((g) => (
+          <div class="cat">
+            <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">{g.cat}</h3>
+            <div class="mb-3 text-[.85rem] text-suave">{g.sub}</div>
+            {g.items.map((o) => (
+              <div class="mem">
+                <label class="opcion"><input type="checkbox" data-r={o.r}><span class="txt"><b>{o.b}</b><span>{o.s}</span></span></label>
+                <input type="text" class="dato oculto" placeholder={o.ph} aria-label={`${o.r}: escribe el dato`} />
+              </div>
+            ))}
+          </div>
+        ))}
 
-        <!-- 2 · Tu mundo -->
-        <div class="cat">
-          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">2 · Tu mundo</h3>
-          <div class="mb-3 text-[.85rem] text-suave">Con quién y con qué trabajas. Le da contexto a todo.</div>
-          <label class="opcion"><input type="checkbox" data-r="Cómo son mis clientes (para que adapte el tono y los ejemplos)."><span class="txt"><b>Cómo son tus clientes.</b><span>Ej: "gente mayor, nada técnica" cambia cómo te escribe los textos.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Las herramientas o programas que uso en el día a día."><span class="txt"><b>Qué herramientas usas.</b><span>Para que no te proponga cosas que no tienes.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Mis proveedores o colaboradores habituales."><span class="txt"><b>Tus proveedores habituales.</b><span>Nombres que salen una y otra vez.</span></span></label>
-        </div>
-
-        <!-- 3 · Preferencias fijas -->
-        <div class="cat">
-          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">3 · Tus preferencias fijas</h3>
-          <div class="mb-3 text-[.85rem] text-suave">Detalles que siempre quieres igual. Pequeños, pero cansa repetirlos.</div>
-          <label class="opcion"><input type="checkbox" data-r="El idioma en el que quiero las respuestas."><span class="txt"><b>En qué idioma te responde.</b><span>Castellano, catalán, lo que sea, y fijo.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="La moneda y el formato de fecha que uso (euros, día/mes/año)."><span class="txt"><b>Moneda y formato de fecha.</b><span>Euros, día/mes/año. Sin tener que corregirlo.</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="El largo que me gusta: respuestas cortas o detalladas."><span class="txt"><b>Cortas o detalladas.</b><span>Tu medida preferida de respuesta.</span></span></label>
-        </div>
-
-        <!-- 4 · Decisiones tomadas -->
-        <div class="cat">
-          <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">4 · Decisiones que ya tomaste</h3>
-          <div class="mb-3 text-[.85rem] text-suave">Para no volver a discutir lo mismo cada semana.</div>
-          <label class="opcion"><input type="checkbox" data-r="Cosas que ya decidí y no quiero replantear cada vez."><span class="txt"><b>Lo que ya está decidido.</b><span>Ej: "ya decidí que no hago envíos fuera de España".</span></span></label>
-          <label class="opcion"><input type="checkbox" data-r="Maneras de hacer las cosas que en mi caso funcionan y prefiero mantener."><span class="txt"><b>Tu forma de hacer las cosas.</b><span>Lo que ya sabes que te funciona.</span></span></label>
-        </div>
-
-        <!-- 5 · Lo tuyo — multi-entrada F1 -->
+        <!-- 5 · Lo tuyo: entrada múltiple -->
         <div class="cat">
           <h3 class="mb-1 text-[1.08rem] font-bold tracking-tight">5 · Lo tuyo</h3>
-          <div class="mb-3 text-[.85rem] text-suave">Cualquier cosa que quieras que recuerde y no esté arriba. Escríbela y pulsa <b>Añadir</b> (puedes añadir varias).</div>
+          <div class="mb-3 text-[.85rem] text-suave">Cualquier otro dato que quieras que tenga en cuenta. Escríbelo y pulsa <b>Añadir</b>. Puedes añadir varios.</div>
           <div class="flex gap-2">
-            <input class="anade flex-1" id="propia" placeholder="Ej: 'mi web es ...', 'cierro los lunes'" />
-            <button type="button" aria-label="Añadir recuerdo" class="rounded-xl border-[1.5px] border-linea px-4 py-[11px] text-[.9rem] font-semibold text-tinta transition hover:border-acento hover:text-acento whitespace-nowrap" id="add-propia">Añadir +</button>
+            <input class="anade flex-1" id="propia" placeholder="Ej.: 'mi web es ...', 'cierro los lunes'" />
+            <button type="button" aria-label="Añadir dato" class="rounded-xl border-[1.5px] border-linea px-4 py-[11px] text-[.9rem] font-semibold text-tinta transition hover:border-acento hover:text-acento whitespace-nowrap" id="add-propia">Añadir +</button>
           </div>
           <div class="mt-[10px] flex flex-wrap gap-2" id="propias-list"></div>
         </div>
@@ -91,22 +93,21 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- PANEL LATERAL -->
-      <aside aria-label="Resumen de lo que recordará" class="sticky top-[18px] rounded-lg bg-tinta p-5 text-[#eef0f3]">
-        <div class="mb-1 text-[.78rem] font-bold text-[#7ec8ad]">Lo que no olvida</div>
+      <aside aria-label="Resumen de los datos que tendrá en cuenta" class="sticky top-[18px] rounded-lg bg-tinta p-5 text-[#eef0f3]">
+        <div class="mb-1 text-[.78rem] font-bold text-[#7ec8ad]">Lo que sabrá de ti</div>
         <h4 class="mb-3 text-[1rem] font-semibold text-white">Esto es su memoria</h4>
         <div class="min-h-[60px] text-[.85rem] leading-[1.7] text-[#cfd4dc]" id="lista">
-          <span class="italic text-[#7c8493]">Ve marcando arriba y aparecerán aquí…</span>
+          <span class="italic text-[#7c8493]">Lo que marques y escribas aparecerá aquí…</span>
         </div>
-        <div class="mt-[14px] border-t border-[#343b49] pt-[10px] text-[.8rem] text-[#9aa1ac]" id="cuenta">0 cosas que recordará</div>
+        <div class="mt-[14px] border-t border-[#343b49] pt-[10px] text-[.8rem] text-[#9aa1ac]" id="cuenta">0 datos</div>
       </aside>
 
     </div>
 
-    <!-- NOTA HONESTA -->
+    <!-- NOTA -->
     <div class="mt-[26px] rounded-md border border-acento-claro bg-[#eef6f2] px-[16px] py-[14px] text-[.9rem] text-tinta">
-      <b class="text-acento">Lo importante viene ahora:</b> la memoria no se llena de golpe el primer día. Empiezas con cuatro
-      cosas y, <b>según lo vas usando</b>, le vas diciendo "recuerda esto", y va creciendo. Por eso el
-      verdadero trabajo no es montarlo hoy, sino <b>afinarlo con el tiempo</b>.
+      <b class="text-acento">La memoria crece con el uso:</b> no hace falta llenarla el primer día. Empieza con los datos que tengas claros
+      y añade los demás a las instrucciones de tu proyecto <b>a medida que veas que el asistente los necesita</b>.
     </div>
 
     <!-- NAVEGACIÓN -->
@@ -152,6 +153,22 @@ import Layout from '../layouts/Layout.astro';
   }
   .opcion .txt b { display: block; font-size: .96rem; color: var(--color-tinta); }
   .opcion .txt span { font-size: .84rem; color: var(--color-suave); }
+  /* Campo del dato: aparece al marcar la casilla, pegado a ella. */
+  .dato {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    margin: -4px 0 12px;
+    border: 1.5px solid var(--color-acento);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: .92rem;
+    background: #fff;
+    color: var(--color-tinta);
+  }
+  .dato:focus { outline: 3px solid var(--color-acento); outline-offset: 2px; }
+  .dato.oculto { display: none; }
   .anade {
     border: 1.5px dashed var(--color-linea);
     border-radius: 12px;
@@ -194,6 +211,10 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
+  // Claves de localStorage:
+  //   ht_memoria          líneas finales que lee el resultado («Rótulo: dato» y las propias)
+  //   ht_memoria_datos    { rótulo: dato } de cada casilla marcada, para restaurar
+  //   ht_memoria_propias  lo añadido a mano en «Lo tuyo»
   var checks = document.querySelectorAll('.opcion input');
   var lista = document.getElementById('lista');
   var cuenta = document.getElementById('cuenta');
@@ -202,19 +223,21 @@ import Layout from '../layouts/Layout.astro';
   var propiasList = document.getElementById('propias-list');
   var propias = [];
 
-  function dataRs() {
-    return Array.prototype.map.call(checks, function(c) { return c.getAttribute('data-r'); });
-  }
+  function campo(c) { return c.closest('.mem').querySelector('.dato'); }
+  function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 
   (function restaurar() {
-    var prev = [];
-    try { prev = JSON.parse(localStorage.getItem('ht_memoria') || '[]'); } catch(e) { prev = []; }
-    if (!prev.length) return;
-    var rs = dataRs();
+    var datos = {};
+    try { datos = JSON.parse(localStorage.getItem('ht_memoria_datos') || '{}') || {}; } catch(e) { datos = {}; }
+    try { propias = JSON.parse(localStorage.getItem('ht_memoria_propias') || '[]'); } catch(e) { propias = []; }
+    if (!Array.isArray(propias)) { propias = []; }
     checks.forEach(function(c) {
-      if (prev.indexOf(c.getAttribute('data-r')) !== -1) { c.checked = true; }
+      var r = c.getAttribute('data-r');
+      if (Object.prototype.hasOwnProperty.call(datos, r)) {
+        c.checked = true;
+        campo(c).value = datos[r] || '';
+      }
     });
-    propias = prev.filter(function(r) { return rs.indexOf(r) === -1; });
   })();
 
   function pintarPropias() {
@@ -235,19 +258,38 @@ import Layout from '../layouts/Layout.astro';
   }
 
   function pintar() {
-    var datos = [];
+    var lineas = [];
+    var visibles = [];
+    var datos = {};
+    var pendientes = 0;
     checks.forEach(function(c) {
+      var r = c.getAttribute('data-r');
+      var f = campo(c);
       c.closest('.opcion').classList.toggle('on', c.checked);
-      if (c.checked) { datos.push(c.getAttribute('data-r')); }
+      f.classList.toggle('oculto', !c.checked);
+      if (!c.checked) return;
+      var v = f.value.trim();
+      datos[r] = v;
+      if (v) {
+        lineas.push(r + ': ' + v);
+        visibles.push('· ' + esc(r + ': ' + v));
+      } else {
+        pendientes++;
+        visibles.push('· ' + esc(r) + ': <span class="italic text-[#7c8493]">falta escribir el dato</span>');
+      }
     });
-    datos = datos.concat(propias);
-    if (datos.length) {
-      lista.innerHTML = datos.map(function(r) { return '· ' + r.replace(/</g, '&lt;'); }).join('<br>');
+    propias.forEach(function(p) { lineas.push(p); visibles.push('· ' + esc(p)); });
+    if (visibles.length) {
+      lista.innerHTML = visibles.join('<br>');
     } else {
-      lista.innerHTML = '<span class="italic text-[#7c8493]">Ve marcando arriba y aparecerán aquí…</span>';
+      lista.innerHTML = '<span class="italic text-[#7c8493]">Lo que marques y escribas aparecerá aquí…</span>';
     }
-    cuenta.textContent = datos.length + (datos.length === 1 ? ' cosa que recordará' : ' cosas que recordará');
-    localStorage.setItem('ht_memoria', JSON.stringify(datos));
+    var txt = lineas.length + (lineas.length === 1 ? ' dato' : ' datos');
+    if (pendientes) { txt += ' · ' + pendientes + (pendientes === 1 ? ' casilla sin dato, que no pasará al texto final' : ' casillas sin dato, que no pasarán al texto final'); }
+    cuenta.textContent = txt;
+    localStorage.setItem('ht_memoria', JSON.stringify(lineas));
+    localStorage.setItem('ht_memoria_datos', JSON.stringify(datos));
+    localStorage.setItem('ht_memoria_propias', JSON.stringify(propias));
   }
 
   function anadir() {
@@ -264,7 +306,13 @@ import Layout from '../layouts/Layout.astro';
   propia.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') { e.preventDefault(); anadir(); }
   });
-  checks.forEach(function(c) { c.addEventListener('change', pintar); });
+  checks.forEach(function(c) {
+    c.addEventListener('change', function() {
+      pintar();
+      if (c.checked) { campo(c).focus(); }
+    });
+    campo(c).addEventListener('input', pintar);
+  });
 
   document.getElementById('siguiente').addEventListener('click', function() {
     pintar();

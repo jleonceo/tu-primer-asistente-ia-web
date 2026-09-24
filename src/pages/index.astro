@@ -24,11 +24,11 @@ const { hero, paraQuien, demo, credo, ascenso, contexto, cierre } = inicio;
       <!-- PARA QUIÉN: que el visitante se reconozca sin deducirlo -->
       <div class="mt-9 grid max-w-[56ch] grid-cols-1 gap-3 sm:grid-cols-2">
         <div class="rounded-md border border-linea bg-papel px-5 py-4">
-          <div class="mb-1 text-[.8rem] font-bold text-verde">Esto es para ti si…</div>
+          <div class="mb-1 text-[.8rem] font-bold text-verde">Para quién es</div>
           <p class="text-[.94rem] leading-relaxed text-suave">{paraQuien.si}</p>
         </div>
         <div class="rounded-md border border-linea bg-crema-deep px-5 py-4">
-          <div class="mb-1 text-[.8rem] font-bold text-suave">No es para ti si…</div>
+          <div class="mb-1 text-[.8rem] font-bold text-suave">Para quién no es</div>
           <p class="text-[.94rem] leading-relaxed text-suave">{paraQuien.no}</p>
         </div>
       </div>
@@ -58,7 +58,7 @@ const { hero, paraQuien, demo, credo, ascenso, contexto, cierre } = inicio;
 
       <!-- orden -->
       <div class="mt-5 rounded-md border border-linea bg-crema-deep px-5 py-4 text-[.98rem] leading-relaxed text-tinta-soft">
-        <span class="mr-2 font-semibold text-acento-deep">Le pides:</span>
+        <span class="mr-2 font-semibold text-acento-deep">El encargo:</span>
         <span id="demo-orden">{demo.casos[0].orden}</span>
       </div>
 
@@ -66,15 +66,15 @@ const { hero, paraQuien, demo, credo, ascenso, contexto, cierre } = inicio;
       <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         <div class="rounded-lg border border-linea bg-papel p-6">
           <div class="mb-3 flex items-center gap-2 text-[.86rem] font-semibold text-suave">
-            <span aria-hidden="true" class="flex h-5 w-5 items-center justify-center rounded-md bg-[rgba(91,100,114,.12)] text-suave">○</span>
-            Una IA que te acaba de conocer
+            <span aria-hidden="true" class="flex h-5 w-5 items-center justify-center rounded-md bg-[rgba(91,100,114,.12)] text-suave"><span class="block h-1.5 w-1.5 rounded-full border border-current"></span></span>
+            Una IA sin instrucciones
           </div>
           <p id="demo-gen" class="demo-panel text-[.98rem] leading-relaxed text-suave">{demo.casos[0].generico}</p>
         </div>
         <div class="rounded-lg border-2 border-acento bg-[#f3f9f6] p-6 shadow-[0_10px_34px_rgba(46,106,87,.08)]">
           <div class="mb-3 flex items-center gap-2 text-[.86rem] font-semibold text-acento">
-            <span aria-hidden="true" class="flex h-5 w-5 items-center justify-center rounded-md bg-acento-claro text-acento">●</span>
-            Tu asistente, con tu forma de trabajar
+            <span aria-hidden="true" class="flex h-5 w-5 items-center justify-center rounded-md bg-acento-claro text-acento"><span class="block h-1.5 w-1.5 rounded-full bg-current"></span></span>
+            Un asistente con las instrucciones guardadas
           </div>
           <p id="demo-tuyo" class="demo-panel text-[.98rem] leading-relaxed text-tinta">{demo.casos[0].tuyo}</p>
         </div>
@@ -112,7 +112,7 @@ const { hero, paraQuien, demo, credo, ascenso, contexto, cierre } = inicio;
     <!-- ASCENSO por los 3 niveles -->
     <section class="reveal mb-[64px]">
       <div class="mb-9 max-w-[60ch]">
-        <div class="eyebrow mb-3">Los tres peldaños</div>
+        <div class="eyebrow mb-3">Los tres niveles</div>
         <h2 class="mb-2 text-[1.9rem] font-bold">{ascenso.titulo}</h2>
         <p class="text-[1.05rem] text-suave">{ascenso.sub}</p>
       </div>

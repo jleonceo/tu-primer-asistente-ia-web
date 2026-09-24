@@ -18,14 +18,14 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- F4: aviso si todo sigue siendo el ejemplo por defecto -->
     <div id="aviso-generico" class="hidden mb-4 rounded-md border-2 border-[#7ec8ad] bg-[#eef6f2] px-4 py-4 text-[.9rem]">
-      <b class="text-acento">Un momento antes de que copies esto:</b> los campos siguen siendo nuestro ejemplo, no los tuyos.
-      Puedes <a href="/paso1" class="font-semibold text-acento underline">volver al inicio y personalizarlo</a> (unos minutos), o copiar este texto sabiendo que es genérico y ajustarlo tú a mano en Claude.
+      <b class="text-acento">Antes de copiarlo:</b> los campos siguen siendo los del ejemplo, no los tuyos.
+      Puedes <a href="/paso1" class="font-semibold text-acento underline">volver al principio y adaptarlo</a>, que lleva unos minutos, o copiar este texto sabiendo que es genérico y ajustarlo después en Claude.
     </div>
 
     <!-- aviso "asistente muy básico": dio la tarea pero nada más (calidad del output) -->
     <div id="aviso-basico" class="hidden mb-4 rounded-md border-2 border-[#7ec8ad] bg-[#eef6f2] px-4 py-4 text-[.9rem]">
-      <b class="text-acento">Tu asistente ha salido muy básico:</b> solo le has dado la tarea. Funcionará, pero no sonará especialmente <b class="text-tinta">tuyo</b>.
-      Si <a href="/paso1" class="font-semibold text-acento underline">vuelves y le añades</a> aunque sea un ejemplo, una norma de comportamiento o un dato que recuerde de ti, la diferencia es enorme: es justo eso lo que lo hace tuyo.
+      <b class="text-acento">Tu asistente solo tiene la tarea.</b> Funcionará, pero sus respuestas no se parecerán a las <b class="text-tinta">tuyas</b>.
+      Si <a href="/paso1" class="font-semibold text-acento underline">vuelves y le añades</a> al menos un ejemplo, una norma o un dato tuyo, las respuestas se acercarán mucho más a tu forma de trabajar.
     </div>
 
     <!-- TARJETA PRINCIPAL — el texto copiable -->
@@ -34,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="mt-1 mb-1 text-[1.5rem] font-bold tracking-tight" id="titulo">Esto lo has hecho tú</h2>
       <p class="ayuda">
         Aquí está, en un solo texto, todo lo que has decidido: su tarea, cómo se comporta y
-        qué recuerda de ti. Esto es tu asistente, y se lo das a tu Claude para que sea tuyo.
+        qué datos tuyos tiene en cuenta. Este texto es tu asistente. El último paso es pegarlo en tu Claude.
       </p>
 
       <!-- Caja de texto copiable -->
@@ -56,8 +56,8 @@ import Layout from '../layouts/Layout.astro';
       <!-- F10: informe explicativo descargable -->
       <div class="mt-3 rounded-md border border-linea bg-crema px-4 py-3 text-[.88rem] text-suave">
         <b class="text-tinta">¿Quieres llevarte también la explicación?</b>
-        El botón de abajo descarga un informe en texto (.md, un archivo de texto que abre cualquier programa) que explica qué has creado y por qué funciona.
-        Útil si quieres replicarlo más adelante o contárselo a alguien.
+        El botón de abajo descarga un informe en texto (.md, un formato que abre cualquier editor) que explica qué has creado y cómo se usa.
+        Sirve para repetirlo más adelante o para enseñárselo a otra persona.
         <div class="mt-2">
           <button class="rounded-xl border-[1.5px] border-linea px-4 py-2 text-[.85rem] font-semibold text-tinta transition hover:border-acento hover:text-acento" id="descargar-informe">
             Descargar la explicación
@@ -68,44 +68,44 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- CÓMO DARLE VIDA EN CLAUDE -->
     <div class="card">
-      <div class="paso-label">El último paso, el que cuenta</div>
+      <div class="paso-label">El último paso</div>
       <h2 class="mt-1 mb-1 text-[1.5rem] font-bold tracking-tight">Cómo darle vida en tu Claude</h2>
       <p class="ayuda">
-        Hasta aquí lo has preparado. Ahora lo guardas en tu Claude, que es donde
-        <b>perdura</b> y deja de vivir solo en esta pantalla. Es el único paso que ocurre fuera de
-        esta web; es más sencillo de lo que parece y te lo marcamos uno a uno.
+        Hasta aquí lo has preparado. Ahora lo pasas a tu Claude, que es donde
+        <b>queda guardado</b> y se aplica en cada conversación. Es el único paso que se hace fuera de
+        esta web. Estos son sus cuatro pasos.
       </p>
       <ol class="pasos-claude">
         <li>
           <b>Copia el texto de arriba</b> con el botón "Copiar".
         </li>
         <li>
-          <b>Abre Claude</b> (en el navegador, claude.ai) y entra en <b>Proyectos</b>. Crea uno nuevo
+          <b>Abre Claude</b> en el navegador (claude.ai) y entra en <b>Proyectos</b>. Crea uno nuevo
           y ponle el nombre de tu asistente.
-          <span>¿No ves "Proyectos"? Está en el menú de la izquierda, o entra directo en claude.ai/projects. Y si tu cuenta no tuviera Proyectos, no pasa nada: pega tu asistente al principio de cada conversación nueva. Es más manual, pero funciona igual.</span>
+          <span>¿No ves "Proyectos"? Está en el menú de la izquierda, o entra directamente en claude.ai/projects. La cuenta gratuita permite hasta cinco proyectos. Si aun así no te aparece, pega tu asistente al principio de cada conversación nueva: es más manual, pero el resultado es el mismo.</span>
         </li>
         <li>
-          <b>Pega el texto</b> en el apartado "Instrucciones del proyecto" y guárdalo.
-          <span>Eso es exactamente lo que acabas de crear: mismo contenido, ahí se queda guardado.</span>
+          <b>Pega el texto</b> en las instrucciones del proyecto y guárdalo.
+          <span>Es el mismo texto que acabas de crear. Ahí queda guardado.</span>
         </li>
         <li>
-          <b>Ábrele un chat nuevo dentro del Proyecto</b> y pídele algo real tuyo. Si responde a tu
-          manera, ha funcionado.
-          <span>El detalle que marca la diferencia (en la interfaz actual de Claude.ai): abre el chat desde dentro del Proyecto, con su nombre arriba, no con el "Nuevo chat" de la pantalla de inicio. Así es como Claude tiene en cuenta lo que le has enseñado.</span>
+          <b>Abre una conversación nueva dentro del proyecto</b> y pídele una tarea real. Si responde a tu
+          manera, funciona.
+          <span>Abre la conversación desde dentro del proyecto, con su nombre arriba. No uses el "Nuevo chat" de la pantalla de inicio. Las instrucciones solo se aplican a las conversaciones del proyecto.</span>
         </li>
       </ol>
-      <p class="mt-3 text-[.88rem] text-suave [&_b]:text-tinta">¿Se te atasca alguno de estos pasos dentro de Claude? Más abajo tienes <b>un prompt que puedes pegarle</b> para que te guíe él mismo.</p>
+      <p class="mt-3 text-[.88rem] text-suave [&_b]:text-tinta">¿Te atascas en alguno de estos pasos dentro de Claude? Más abajo tienes <b>un prompt para pegarle</b> y que te guíe él.</p>
     </div>
 
     <!-- F2 + F8: los archivos reales — plegado por defecto (#2) -->
     <details class="card">
       <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-        <div class="paso-label">Para usuarios avanzados · opcional</div>
+        <div class="paso-label">Para más adelante · opcional</div>
         <h2 class="mt-1 text-[1.3rem] font-bold tracking-tight">¿Algún día quieres los archivos en tu ordenador? <span class="text-[.85rem] font-normal text-suave">(toca para abrir)</span></h2>
       </summary>
       <p class="ayuda mt-3">
-        No necesitas nada de esto para usar tu asistente. Pero si algún día pasas de "pegar en Claude.ai" a
-        tener archivos en tu ordenador (la forma de los usuarios avanzados), así se llaman y dónde van:
+        No necesitas nada de esto para usar tu asistente. Si algún día pasas de pegar el texto en claude.ai a
+        trabajar con archivos en tu ordenador, así se llaman y dónde van:
       </p>
       <div class="skill-card">
         <div class="skill-fila">
@@ -114,18 +114,18 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="skill-fila">
           <b>Las normas que elegiste</b> (cómo se comporta) → van en <b>CLAUDE.md</b>.<br>
-          <span class="text-[.88rem] text-suave">Archivo: <code class="rounded bg-crema px-1">CLAUDE.md</code> en la raíz de tu proyecto. Este archivo manda sobre todo lo demás.</span>
+          <span class="text-[.88rem] text-suave">Archivo: <code class="rounded bg-crema px-1">CLAUDE.md</code> en la carpeta principal de tu proyecto. Claude Code lo lee al empezar a trabajar en ella.</span>
         </div>
         <div class="skill-fila">
-          <b>Lo que quieres que recuerde</b> de ti → es su <b>memoria</b>.<br>
-          <span class="text-[.88rem] text-suave">Son los archivos de notas que el asistente va escribiendo según lo usas.</span>
+          <b>Los datos tuyos</b> que tiene en cuenta → son su <b>memoria</b>.<br>
+          <span class="text-[.88rem] text-suave">Pueden ir en el propio CLAUDE.md. Claude Code guarda además sus propias notas de memoria a medida que lo usas.</span>
         </div>
       </div>
       <div class="nota-aviso">
-        Si hoy solo vas a usar Claude.ai (el navegador), <b>no necesitas ninguno de estos archivos</b>.
-        Pegarlo en "Instrucciones del proyecto" hace exactamente lo mismo, sin tecnicismos.
-        Estos nombres solo te hacen falta si llegas a usar la herramienta de terminal <b>Claude Code</b>, que se instala aparte.
-        <br><span class="mt-2 block text-[.85rem]">Para profundizar, la documentación oficial de Anthropic: <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener" class="font-semibold text-acento underline underline-offset-2">las skills en Claude Code</a> · <a href="https://support.claude.com/en/articles/12512176-what-are-skills" target="_blank" rel="noopener" class="font-semibold text-acento underline underline-offset-2">qué son las skills</a> (en claude.ai también puedes gestionarlas en Personalizar → Skills, sin instalar nada).</span>
+        Si solo vas a usar claude.ai en el navegador, <b>no necesitas ninguno de estos archivos</b>:
+        las instrucciones del proyecto cumplen la misma función.
+        Estos nombres solo hacen falta si llegas a usar <b>Claude Code</b>, la herramienta para el ordenador, que se instala aparte.
+        <br><span class="mt-2 block text-[.85rem]">Para profundizar, la documentación oficial de Anthropic: <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener" class="font-semibold text-acento underline underline-offset-2">las skills en Claude Code</a> · <a href="https://support.claude.com/en/articles/12512176-what-are-skills" target="_blank" rel="noopener" class="font-semibold text-acento underline underline-offset-2">qué son las skills</a> (en claude.ai también se pueden subir en Personalizar > Skills, con la ejecución de código activada y sin instalar nada).</span>
       </div>
     </details>
 
@@ -138,9 +138,9 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="mt-1 text-[1.3rem] font-bold tracking-tight">¿Prefieres hacerlo por chat? <span class="text-[.85rem] font-normal text-suave">(toca para abrir)</span></h2>
       </summary>
       <p class="ayuda mt-3">
-        <b>No hace falta que hagas las dos cosas.</b> Lo de arriba (copiar tu asistente y pegarlo en un Proyecto) es el camino principal.
-        Esto es una <b>alternativa</b>: si rellenar formularios se te ha hecho cuesta arriba, copia el prompt de abajo,
-        pégalo en tu Claude y él te lleva paso a paso por conversación, la forma más natural si prefieres el diálogo.
+        <b>No hace falta que hagas las dos cosas.</b> El camino principal es el de arriba: copiar tu asistente y pegarlo en un proyecto.
+        Esto es una <b>alternativa</b> para quien prefiere conversar a rellenar formularios: copia el prompt de abajo,
+        pégalo en tu Claude y te hará las mismas preguntas en una conversación.
       </p>
 
       <!-- Prompt copiable -->
@@ -158,38 +158,38 @@ import Layout from '../layouts/Layout.astro';
 5. Ayúdame a elegir las normas de comportamiento que más me convienen (honestidad, tono, forma de trabajar).
 6. Pregúntame qué necesitas recordar de mí para no tener que repetírtelo cada vez.
 
-Al final, dime en un solo bloque de texto todo lo que hemos decidido: eso es mi asistente, y lo pegaré en las instrucciones de un Proyecto de Claude.
+Al final, dime en un solo bloque de texto todo lo que hemos decidido: eso es mi asistente. Lo pegaré en las instrucciones de un Proyecto de Claude.
 
 Empieza por la primera pregunta.</pre>
       </div>
 
       <p class="text-[.88rem] text-suave">
-        Si en cualquier momento te atascas con algo de tu asistente, <b class="text-tinta">pregúntale directamente a tu Claude</b>.
-        Para eso está. Y si te quedan dudas, las más habituales están resueltas en <a href="/preguntas" class="font-semibold text-acento no-underline hover:underline">Preguntas</a>.
+        Si te atascas con algo de tu asistente, <b class="text-tinta">pregúntaselo directamente a tu Claude</b>.
+        Las dudas más habituales están resueltas en <a href="/preguntas" class="font-semibold text-acento no-underline hover:underline">Preguntas</a>.
       </p>
     </details>
 
     <!-- AUTORÍA -->
     <div class="mb-6 rounded-lg bg-acento-claro px-[28px] py-[26px] text-center">
-      <div class="mb-2 text-[.8rem] font-bold text-acento">Conviene que lo tengas claro</div>
+      <div class="mb-2 text-[.8rem] font-bold text-acento">De quién es este asistente</div>
       <p class="mx-auto max-w-[52ch] text-[1.08rem] text-tinta">
-        La plantilla y los ejemplos los pusimos nosotros. Pero <b>las decisiones (tu tarea, tu tono,
-        tus límites, lo que recuerda de ti) las pusiste tú</b>. Por eso esto es tuyo, no nuestro.
+        La plantilla y los ejemplos los pone esta web. <b>Las decisiones, que son tu tarea, tu tono,
+        tus límites y tus datos, las has tomado tú</b>. Por eso el asistente es tuyo.
       </p>
     </div>
 
     <!-- DOS HONESTAS -->
-    <h2 class="mb-3 text-center text-[1.25rem] font-bold tracking-tight">Dos cosas honestas antes de irte</h2>
+    <h2 class="mb-3 text-center text-[1.25rem] font-bold tracking-tight">Dos riesgos que conviene conocer</h2>
     <div class="mb-8 grid grid-cols-1 gap-[14px] md:grid-cols-2">
       <div class="rounded-md bg-tinta px-5 py-[18px] text-[#eef0f3]">
         <b class="mb-1 block text-[.98rem] text-white">Sobre tu privacidad</b>
-        <span class="text-[.88rem] text-[#c3c9d2]">Lo que escribes a Claude pasa por los servidores de Anthropic. No metas contraseñas ni datos
-        muy sensibles. El texto de instrucciones que has creado es tuyo y se queda contigo.</span>
+        <span class="text-[.88rem] text-[#c3c9d2]">Lo que escribes a Claude pasa por los servidores de Anthropic, así que no incluyas contraseñas ni datos
+        sensibles. El texto de instrucciones que has creado es tuyo y puedes guardarlo en un archivo.</span>
       </div>
       <div class="rounded-md bg-tinta px-5 py-[18px] text-[#eef0f3]">
         <b class="mb-1 block text-[.98rem] text-white">Sobre la fiabilidad</b>
-        <span class="text-[.88rem] text-[#c3c9d2]">Esto reduce los errores, no los elimina. Un asistente ayuda, pero a veces se equivoca:
-        lo que de verdad cuenta (los datos y los números) revísalo siempre tú.</span>
+        <span class="text-[.88rem] text-[#c3c9d2]">Las instrucciones reducen los errores, pero no los eliminan. Un asistente se equivoca a veces.
+        Los datos y las cifras que importan revísalos siempre tú.</span>
       </div>
     </div>
 
@@ -203,18 +203,18 @@ Empieza por la primera pregunta.</pre>
     </div>
 
     <p class="mt-5 text-center text-[.9rem] text-suave">
-      Ya tienes algo que funciona. Lo que lo hace <b>realmente tuyo</b> es usarlo y, poco a poco,
-      ajustarlo a tu gusto.
+      Ya tienes un asistente que funciona. Para que responda <b>cada vez más como tú</b>, úsalo y
+      corrige poco a poco lo que no te convenza.
     </p>
 
     <!-- SIGUIENTE PELDAÑO: esta skill es el primer peldaño; el siguiente es un equipo (#5) -->
     <a href="/nivel-2" class="group mt-8 flex flex-col gap-1 rounded-lg border border-linea bg-papel px-6 py-5 no-underline transition hover:border-acento hover:shadow-[0_12px_30px_rgba(28,33,43,.07)]">
-      <div class="text-[.8rem] font-semibold text-suave">El siguiente peldaño · Nivel 2</div>
-      <div class="font-display text-[1.15rem] font-semibold text-tinta group-hover:text-acento">Cuando una skill se te quede corta, el siguiente paso es un equipo →</div>
+      <div class="text-[.8rem] font-semibold text-suave">El siguiente nivel · Nivel 2</div>
+      <div class="font-display text-[1.15rem] font-semibold text-tinta group-hover:text-acento">Cuando una skill no baste, el siguiente paso es un equipo →</div>
       <p class="mt-1 text-[.92rem] leading-relaxed text-suave">
-        Lo que acabas de crear es <b class="text-tinta">una skill</b>: el primer peldaño. Más adelante puedes montar
-        <b class="text-tinta">varias skills que trabajan juntas</b>, con un coordinador que reparte y un verificador que comprueba.
-        No se genera solo: se construye igual que esta, paso a paso.
+        Lo que acabas de crear es <b class="text-tinta">una skill</b>, el primer nivel. Más adelante puedes montar
+        <b class="text-tinta">varias skills que trabajan juntas</b>, con un coordinador que reparte el trabajo y un verificador que lo revisa.
+        Cada una se construye igual que esta, paso a paso.
       </p>
     </a>
 
@@ -467,13 +467,13 @@ Empieza por la primera pregunta.</pre>
     var fecha = new Date().toLocaleDateString('es-ES');
     var informe = [];
     informe.push('# Informe de tu asistente personalizado');
-    informe.push('_Creado con la guía «Tu primer asistente de IA» — ' + fecha + '_');
+    informe.push('_Creado con la guía «Tu primer asistente de IA» · ' + fecha + '_');
     informe.push('');
     informe.push('## Qué has creado');
-    informe.push('Has construido un asistente de IA personalizado llamado **' + titulo + '**.');
-    informe.push('Está formado por tres bloques: la tarea (qué hace), el comportamiento (cómo actúa siempre) y la memoria (lo que sabe de ti).');
+    informe.push('Has construido un asistente de IA propio llamado **' + titulo + '**.');
+    informe.push('Está formado por tres bloques: la tarea (qué hace), el comportamiento (cómo actúa siempre) y la memoria (los datos tuyos que tiene en cuenta).');
     informe.push('');
-    informe.push('## Bloque 1 — La tarea (tu skill)');
+    informe.push('## Bloque 1: la tarea (tu skill)');
     informe.push('Este bloque define para qué sirve el asistente: es su tarea principal.');
     informe.push('');
     informe.push('**Tarea:** ' + (tarea || '(no definida)'));
@@ -486,7 +486,7 @@ Empieza por la primera pregunta.</pre>
     }
     if (nunca) informe.push('**Nunca debe:** ' + nunca);
     informe.push('');
-    informe.push('## Bloque 2 — El comportamiento (las normas)');
+    informe.push('## Bloque 2: el comportamiento (las normas)');
     informe.push('Estas son las reglas que el asistente cumple siempre, en cualquier tarea.');
     informe.push('');
     if (normas.length) {
@@ -495,8 +495,8 @@ Empieza por la primera pregunta.</pre>
       informe.push('_(No elegiste normas de comportamiento)_');
     }
     informe.push('');
-    informe.push('## Bloque 3 — La memoria');
-    informe.push('Lo que el asistente no te volverá a preguntar. Crece con el uso: cada vez que le dices "recuerda esto", lo añade.');
+    informe.push('## Bloque 3: la memoria');
+    informe.push('Los datos tuyos que el asistente tiene en cuenta sin que se los repitas. Para añadir uno nuevo, edita las instrucciones del proyecto.');
     informe.push('');
     if (memoria.length) {
       memoria.forEach(function(m) { informe.push('- ' + m); });
@@ -505,13 +505,13 @@ Empieza por la primera pregunta.</pre>
     }
     informe.push('');
     informe.push('## Cómo replicarlo');
-    informe.push('1. Abre Claude.ai y crea un Proyecto nuevo.');
-    informe.push('2. Pega el contenido del archivo `' + nombre + '.txt`  en el campo "Instrucciones del proyecto".');
-    informe.push('3. Abre un chat desde dentro del Proyecto (no desde el botón general).');
+    informe.push('1. Abre claude.ai y crea un proyecto nuevo.');
+    informe.push('2. Pega el contenido del archivo `' + nombre + '.txt` en las instrucciones del proyecto.');
+    informe.push('3. Abre una conversación desde dentro del proyecto, no desde el botón general.');
     informe.push('4. Pídele algo real tuyo: si responde a tu manera, funciona.');
     informe.push('');
     informe.push('---');
-    informe.push('_Informe generado automáticamente. Los datos nunca salieron de tu navegador._');
+    informe.push('_Informe generado en tu navegador. Los datos no han salido de él._');
 
     var blob = new Blob([informe.join('\n')], { type: 'text/markdown;charset=utf-8' });
     var a = document.createElement('a');
