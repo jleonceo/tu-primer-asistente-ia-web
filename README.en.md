@@ -27,12 +27,15 @@ Along with the text, the website suggests **three tests** built from each person
 It also includes the same task answered **with and without instructions** (hand-written examples), a page on **the method** and on testing an assistant before trusting it, a **glossary** that explains every term with a comparison, and **three levels**: a skill, a swarm of skills that share one task, and a swarm of swarms, with one for each area of a company.
 
 ```mermaid
-flowchart TD
-    T[1. The task<br/>what the assistant has to do] --> N[2. The rules<br/>how it behaves]
-    N --> M[3. The memory<br/>the user's own details]
-    M --> X[The site puts the answers together<br/>in a text for a Claude project]
-    X --> P[Three tests<br/>normal, forbidden and with missing data]
-    P --> C[Assistant checked<br/>before trusting it]
+flowchart LR
+    subgraph S1[Three questions]
+        direction TB
+        T[1. The task<br/>what the assistant has to do] --> N[2. The rules<br/>how it behaves]
+        N --> M[3. The memory<br/>the user's own details]
+    end
+    S1 --> X[The site puts the answers<br/>together in a text for<br/>a Claude project]
+    X --> P[Three tests<br/>normal, forbidden and<br/>with missing data]
+    P --> C[Assistant<br/>checked<br/>before trusting it]
     style C fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20
 ```
 

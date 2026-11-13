@@ -34,12 +34,15 @@ Además del recorrido, la web incluye:
 - **Tres niveles**, de menos a más: una skill, un enjambre de skills que se reparten una tarea y un enjambre de enjambres, con uno para cada área de la empresa. Para empezar basta el primero. Los otros dos explican qué se monta cuando una skill no basta.
 
 ```mermaid
-flowchart TD
-    T[1. La tarea<br/>qué tiene que hacer el asistente] --> N[2. Las normas<br/>cómo se comporta]
-    N --> M[3. La memoria<br/>los datos de quien lo usa]
-    M --> X[La web junta las respuestas<br/>en un texto para un proyecto de Claude]
-    X --> P[Tres pruebas<br/>normal, prohibida y con un dato que falta]
-    P --> C[Asistente comprobado<br/>antes de fiarse de él]
+flowchart LR
+    subgraph S1[Tres preguntas]
+        direction TB
+        T[1. La tarea<br/>qué tiene que hacer el asistente] --> N[2. Las normas<br/>cómo se comporta]
+        N --> M[3. La memoria<br/>los datos de quien lo usa]
+    end
+    S1 --> X[La web junta las respuestas<br/>en un texto para un<br/>proyecto de Claude]
+    X --> P[Tres pruebas<br/>normal, prohibida y con<br/>un dato que falta]
+    P --> C[Asistente<br/>comprobado<br/>antes de fiarse de él]
     style C fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20
 ```
 
